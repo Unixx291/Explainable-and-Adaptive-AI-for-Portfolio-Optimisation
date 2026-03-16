@@ -8,6 +8,7 @@ Task 2: Data preparation module (Python)
 - Leakage-safe walk-forward splits
 - Train-only scaling per split
 - Save panel dataset + per-split train/test + split metadata
+- Save report-friendly descriptive tables and figures
 
 Notes
 - end date is treated as exclusive by yfinance in many cases, so use a day after your intended last day.
@@ -21,12 +22,14 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+import joblib
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
 import yfinance as yf
 from sklearn.preprocessing import StandardScaler
-import joblib
 
 
 # =========================
@@ -110,6 +113,11 @@ def write_df(df: pd.DataFrame, path_no_suffix: Path, prefer_parquet: bool) -> Pa
     out = path_no_suffix.with_suffix(".csv")
     df.to_csv(out, index=True)
     return out
+
+
+def _save_table(df: pd.DataFrame, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(path, index=True)
 
 
 # =========================
@@ -390,6 +398,163 @@ def save_splits_with_scaling(
 
 
 # =========================
+# Report tables and figures
+# =========================
+def _max_drawdown_from_returns(returns: pd.Series) -> float:
+    returns = returns.dropna()
+    if returns.empty:
+        return np.nan
+    equity = (1.0 + returns).cumprod()
+    peak = equity.cummax()
+    dd = (equity / peak) - 1.0
+    return float(dd.min())
+
+
+def create_task2_report_outputs(
+    prices: pd.DataFrame,
+    volumes: pd.DataFrame,
+    panel: pd.DataFrame,
+    outdir: Path,
+    cfg: PrepConfig,
+) -> None:
+    tables_dir = outdir / "tables"
+    figures_dir = outdir / "figures"
+    ensure_dir(tables_dir)
+    ensure_dir(figures_dir)
+
+    simple_rets = prices.pct_change().dropna(how="any")
+    log_rets = np.log(prices / prices.shift(1)).dropna(how="any")
+
+    # Overview table
+    overview = pd.DataFrame(
+        {
+            "value": [
+                len(prices.columns),
+                str(prices.index.min().date()),
+                str(prices.index.max().date()),
+                int(len(prices.index)),
+                int(panel.index.get_level_values("date").nunique()),
+                int(panel.shape[0]),
+                int(panel.shape[1] - 1),
+                int(cfg.train_days),
+                int(cfg.test_days),
+                int(cfg.step_days),
+            ]
+        },
+        index=[
+            "n_assets",
+            "price_start_date",
+            "price_end_date",
+            "n_price_rows",
+            "n_panel_dates",
+            "n_panel_rows",
+            "n_features",
+            "train_days",
+            "test_days",
+            "step_days",
+        ],
+    )
+    _save_table(overview, tables_dir / "task2_dataset_overview.csv")
+
+    # Per-asset descriptive statistics
+    asset_stats = pd.DataFrame(index=prices.columns)
+    asset_stats["start_date"] = prices.apply(lambda s: str(s.dropna().index.min().date()))
+    asset_stats["end_date"] = prices.apply(lambda s: str(s.dropna().index.max().date()))
+    asset_stats["n_obs"] = prices.notna().sum().astype(int)
+    asset_stats["start_price"] = prices.iloc[0]
+    asset_stats["end_price"] = prices.iloc[-1]
+    asset_stats["cumulative_return"] = (prices.iloc[-1] / prices.iloc[0]) - 1.0
+    asset_stats["ann_return"] = simple_rets.mean() * 252.0
+    asset_stats["ann_vol"] = simple_rets.std(ddof=1) * np.sqrt(252.0)
+    asset_stats["sharpe_rf0"] = asset_stats["ann_return"] / (asset_stats["ann_vol"] + 1e-12)
+    asset_stats["min_daily_return"] = simple_rets.min()
+    asset_stats["max_daily_return"] = simple_rets.max()
+    asset_stats["avg_daily_volume"] = volumes.mean()
+    asset_stats["max_drawdown"] = pd.Series({t: _max_drawdown_from_returns(simple_rets[t]) for t in simple_rets.columns})
+    asset_stats = asset_stats.round(6)
+    _save_table(asset_stats, tables_dir / "task2_asset_descriptive_stats.csv")
+
+    # Correlation and feature summary tables
+    corr = simple_rets.corr().round(6)
+    _save_table(corr, tables_dir / "task2_return_correlation.csv")
+
+    feature_cols = [c for c in panel.columns if c != "target_next_log_return"]
+    feature_summary = panel[feature_cols].describe().T[["mean", "std", "min", "max"]].round(6)
+    _save_table(feature_summary, tables_dir / "task2_feature_summary.csv")
+
+    # Split schedule preview for easier methodology write-up
+    split_dates = sorted(panel.index.get_level_values("date").unique())
+    split_windows = generate_walk_forward_splits(split_dates, cfg.train_days, cfg.test_days, cfg.step_days)
+    split_df = pd.DataFrame(
+        [
+            {
+                "split": f"split_{i:03d}",
+                "train_start": str(tr_s.date()),
+                "train_end": str(tr_e.date()),
+                "test_start": str(te_s.date()),
+                "test_end": str(te_e.date()),
+                "train_days": cfg.train_days,
+                "test_days": cfg.test_days,
+            }
+            for i, (tr_s, tr_e, te_s, te_e) in enumerate(split_windows, start=1)
+        ]
+    )
+    split_df.to_csv(tables_dir / "task2_split_schedule.csv", index=False)
+
+    # Figure 1: normalised price paths
+    norm_prices = prices / prices.iloc[0]
+    plt.figure(figsize=(10, 6))
+    for col in norm_prices.columns:
+        plt.plot(norm_prices.index, norm_prices[col], label=col, linewidth=1.5)
+    plt.title("Normalised asset price paths")
+    plt.xlabel("Date")
+    plt.ylabel("Growth of 1 unit")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(figures_dir / "task2_normalised_price_paths.png", dpi=200)
+    plt.close()
+
+    # Figure 2: annualised return vs annualised volatility scatter
+    plt.figure(figsize=(8, 6))
+    x = asset_stats["ann_vol"].astype(float)
+    y = asset_stats["ann_return"].astype(float)
+    plt.scatter(x, y)
+    for ticker, xv, yv in zip(asset_stats.index, x, y):
+        plt.annotate(ticker, (xv, yv), textcoords="offset points", xytext=(5, 5))
+    plt.title("Per-asset annualised return vs annualised volatility")
+    plt.xlabel("Annualised volatility")
+    plt.ylabel("Annualised return")
+    plt.tight_layout()
+    plt.savefig(figures_dir / "task2_ann_return_vs_volatility.png", dpi=200)
+    plt.close()
+
+    # Figure 3: return correlation heatmap
+    plt.figure(figsize=(7, 6))
+    im = plt.imshow(corr.values, vmin=-1, vmax=1, aspect="auto")
+    plt.xticks(range(len(corr.columns)), corr.columns, rotation=45, ha="right")
+    plt.yticks(range(len(corr.index)), corr.index)
+    plt.title("Daily return correlation heatmap")
+    cbar = plt.colorbar(im)
+    cbar.set_label("Correlation")
+    plt.tight_layout()
+    plt.savefig(figures_dir / "task2_return_correlation_heatmap.png", dpi=200)
+    plt.close()
+
+    # Figure 4: rolling 60-day volatility
+    rolling_vol = log_rets.rolling(60, min_periods=60).std() * np.sqrt(252.0)
+    plt.figure(figsize=(10, 6))
+    for col in rolling_vol.columns:
+        plt.plot(rolling_vol.index, rolling_vol[col], label=col, linewidth=1.2)
+    plt.title("Rolling 60-day annualised volatility")
+    plt.xlabel("Date")
+    plt.ylabel("Annualised volatility")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(figures_dir / "task2_rolling_60d_volatility.png", dpi=200)
+    plt.close()
+
+
+# =========================
 # Pipeline runner
 # =========================
 def run_task2_pipeline(cfg: PrepConfig) -> None:
@@ -400,11 +565,11 @@ def run_task2_pipeline(cfg: PrepConfig) -> None:
     with open(outdir / "prep_config.json", "w", encoding="utf-8") as f:
         json.dump(asdict(cfg), f, indent=2)
 
-    print(f"[1/5] Downloading data (yfinance) for {len(cfg.tickers)} tickers...")
+    print(f"[1/6] Downloading data (yfinance) for {len(cfg.tickers)} tickers...")
     prices, volumes = download_data_yfinance(cfg.tickers, cfg.start, cfg.end, cfg.interval)
     print(f"      Raw shapes: prices={prices.shape}, volumes={volumes.shape}")
 
-    print("[2/5] Cleaning and aligning...")
+    print("[2/6] Cleaning and aligning...")
     prices, volumes, kept = clean_align(
         prices,
         volumes,
@@ -415,7 +580,7 @@ def run_task2_pipeline(cfg: PrepConfig) -> None:
     print(f"      Kept tickers: {kept}")
     print(f"      Clean shapes: prices={prices.shape}, volumes={volumes.shape}")
 
-    print("[3/5] Feature engineering and panel build...")
+    print("[3/6] Feature engineering and panel build...")
     panel = build_panel(
         prices,
         volumes,
@@ -428,11 +593,11 @@ def run_task2_pipeline(cfg: PrepConfig) -> None:
     print(f"      Panel shape: {panel.shape}")
     print(f"      Unique dates in panel: {panel.index.get_level_values('date').nunique()}")
 
-    print("[4/5] Saving full panel...")
+    print("[4/6] Saving full panel...")
     panel_path = write_df(panel, outdir / "panel_full", cfg.prefer_parquet)
     print(f"      Saved: {panel_path}")
 
-    print("[5/5] Walk-forward splits + train-only scaling + save...")
+    print("[5/6] Walk-forward splits + train-only scaling + save...")
     save_splits_with_scaling(
         panel,
         outdir,
@@ -441,6 +606,9 @@ def run_task2_pipeline(cfg: PrepConfig) -> None:
         cfg.test_days,
         cfg.step_days,
     )
+
+    print("[6/6] Exporting report-friendly tables and figures...")
+    create_task2_report_outputs(prices, volumes, panel, outdir, cfg)
     print(f"      Done. Output folder: {outdir}")
 
 

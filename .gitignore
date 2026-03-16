@@ -1,0 +1,28 @@
+# Python / IDE
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.idea/
+.vscode/
+.venv/
+venv/
+
+# Local generated artefacts (your current folders)
+data_prepared_task2/
+results_task3_classical/
+
+# Standard local folders for this project
+data/
+outputs/
+models/
+
+# Common large files
+*.parquet
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.joblib
+*.zip

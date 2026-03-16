@@ -16,7 +16,7 @@ Task 3: Classical model design (baseline framework)
   - Per-split equity curves (gross + net)
   - Per-rebalance weights debug CSVs for each model
   - Per-split summary CSV and aggregated summary CSV
-
+  - Report-friendly plots and tables
 """
 
 from __future__ import annotations
@@ -25,14 +25,17 @@ import json
 from pathlib import Path
 from typing import Callable, Dict, List, Tuple
 
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 # PyPortfolioOpt imports
 try:
     from pypfopt import expected_returns, risk_models
-    from pypfopt.efficient_frontier import EfficientFrontier
     from pypfopt.black_litterman import BlackLittermanModel, market_implied_prior_returns
+    from pypfopt.efficient_frontier import EfficientFrontier
 except Exception as e:
     raise SystemExit(
         "PyPortfolioOpt is required.\n"
@@ -299,6 +302,12 @@ def _max_drawdown(equity: pd.Series) -> float:
     return float(dd.min())
 
 
+def _downside_deviation(port_rets: pd.Series, rf_daily: float, frequency: int) -> float:
+    downside = np.minimum(port_rets - rf_daily, 0.0)
+    downside_sq_mean = float(np.mean(np.square(downside)))
+    return float(np.sqrt(downside_sq_mean) * np.sqrt(frequency))
+
+
 def compute_metrics(port_rets: pd.Series, frequency: int, risk_free_rate: float) -> Dict[str, float]:
     port_rets = port_rets.dropna()
     if port_rets.empty:
@@ -306,6 +315,7 @@ def compute_metrics(port_rets: pd.Series, frequency: int, risk_free_rate: float)
             "ann_return": np.nan,
             "ann_vol": np.nan,
             "sharpe": np.nan,
+            "sortino": np.nan,
             "cumulative_return": np.nan,
             "max_drawdown": np.nan,
         }
@@ -318,10 +328,15 @@ def compute_metrics(port_rets: pd.Series, frequency: int, risk_free_rate: float)
     excess = port_rets - rf_daily
     sharpe = float(excess.mean() / (port_rets.std(ddof=1) + 1e-12) * np.sqrt(frequency))
 
+    downside_dev = _downside_deviation(port_rets, rf_daily, frequency)
+    ann_excess_return = float(excess.mean() * frequency)
+    sortino = float(ann_excess_return / (downside_dev + 1e-12))
+
     return {
         "ann_return": ann_return,
         "ann_vol": ann_vol,
         "sharpe": sharpe,
+        "sortino": sortino,
         "cumulative_return": float(equity.iloc[-1] - 1.0),
         "max_drawdown": _max_drawdown(equity),
     }
@@ -456,6 +471,156 @@ def simulate_rebalanced_portfolio(
     debug_df = pd.DataFrame(debug_rows)
 
     return gross, net, turnover_total, tc_total, len(rebalance_dates), debug_df
+
+
+# =========================
+# Report helpers
+# =========================
+def _flatten_columns(df: pd.DataFrame) -> pd.DataFrame:
+    out = df.copy()
+    out.columns = ["_".join([str(x) for x in col if str(x) != ""]).strip("_") for col in out.columns.to_flat_index()]
+    return out
+
+
+def _plot_per_split_equity_curves(curves_dir: Path, figures_dir: Path) -> None:
+    for csv_path in sorted(curves_dir.glob("*_equity.csv")):
+        df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
+        plt.figure(figsize=(10, 6))
+        for col in df.columns:
+            linestyle = "--" if col.endswith("gross") else "-"
+            plt.plot(df.index, df[col], label=col, linewidth=1.5, linestyle=linestyle)
+        plt.title(f"Equity curve comparison: {csv_path.stem.replace('_equity', '')}")
+        plt.xlabel("Date")
+        plt.ylabel("Portfolio value")
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(figures_dir / f"{csv_path.stem}.png", dpi=200)
+        plt.close()
+
+
+def _plot_metric_boxplots(results_df: pd.DataFrame, figures_dir: Path) -> None:
+    metrics = [
+        ("net_ann_return", "Annualised return by model"),
+        ("net_sharpe", "Sharpe ratio by model"),
+        ("net_sortino", "Sortino ratio by model"),
+        ("net_max_drawdown", "Max drawdown by model"),
+    ]
+    models = list(results_df["model"].dropna().unique())
+    for metric, title in metrics:
+        plt.figure(figsize=(8, 6))
+        data = [results_df.loc[results_df["model"] == m, metric].dropna().values for m in models]
+        plt.boxplot(data, labels=models)
+        plt.title(title)
+        plt.ylabel(metric)
+        plt.tight_layout()
+        plt.savefig(figures_dir / f"{metric}_boxplot.png", dpi=200)
+        plt.close()
+
+
+def _plot_summary_bars(summary_flat: pd.DataFrame, figures_dir: Path) -> None:
+    metrics = [
+        ("net_ann_return_mean", "Mean annualised return"),
+        ("net_sharpe_mean", "Mean Sharpe ratio"),
+        ("net_sortino_mean", "Mean Sortino ratio"),
+        ("net_max_drawdown_mean", "Mean max drawdown"),
+        ("turnover_total_mean", "Mean turnover"),
+        ("tc_total_mean", "Mean transaction cost"),
+    ]
+    for col, title in metrics:
+        plt.figure(figsize=(8, 6))
+        plt.bar(summary_flat["model"], summary_flat[col])
+        plt.title(title)
+        plt.ylabel(col)
+        plt.tight_layout()
+        plt.savefig(figures_dir / f"{col}_bar.png", dpi=200)
+        plt.close()
+
+
+def _plot_example_weights(rebal_dir: Path, figures_dir: Path) -> None:
+    for model_name in ["markowitz", "black_litterman"]:
+        matches = sorted(rebal_dir.glob(f"*_ {model_name}_rebalances.csv"))
+        if not matches:
+            matches = sorted(rebal_dir.glob(f"*_{model_name}_rebalances.csv"))
+        if not matches:
+            continue
+        df = pd.read_csv(matches[0])
+        if df.empty:
+            continue
+        weight_cols = [c for c in df.columns if c.startswith("w_")]
+        if not weight_cols:
+            continue
+        weight_df = df[["rebalance_date"] + weight_cols].copy()
+        weight_df["rebalance_date"] = pd.to_datetime(weight_df["rebalance_date"])
+        weight_df = weight_df.set_index("rebalance_date")
+        weight_df.columns = [c.replace("w_", "") for c in weight_df.columns]
+
+        plt.figure(figsize=(10, 6))
+        plt.stackplot(weight_df.index, weight_df.T.values, labels=weight_df.columns)
+        plt.title(f"Example rebalance weights: {model_name}")
+        plt.xlabel("Rebalance date")
+        plt.ylabel("Weight")
+        plt.legend(loc="upper left")
+        plt.tight_layout()
+        plt.savefig(figures_dir / f"example_weights_{model_name}.png", dpi=200)
+        plt.close()
+
+
+def create_task3_report_outputs(
+    results_df: pd.DataFrame,
+    curves_dir: Path,
+    rebal_dir: Path,
+    task3_outdir: Path,
+) -> None:
+    tables_dir = task3_outdir / "tables"
+    figures_dir = task3_outdir / "figures"
+    _ensure_dir(tables_dir)
+    _ensure_dir(figures_dir)
+
+    if results_df.empty:
+        return
+
+    summary = (
+        results_df
+        .groupby("model")[[
+            "net_ann_return", "net_ann_vol", "net_sharpe", "net_sortino",
+            "net_cumulative_return", "net_max_drawdown", "turnover_total", "tc_total"
+        ]]
+        .agg(["mean", "std"])
+    )
+    summary.to_csv(tables_dir / "task3_summary_by_model.csv")
+    summary_flat = _flatten_columns(summary.reset_index()).round(6)
+    summary_flat.to_csv(tables_dir / "task3_summary_by_model_flat.csv", index=False)
+
+    split_pivot = results_df.pivot_table(
+        index="split",
+        columns="model",
+        values=["net_ann_return", "net_sharpe", "net_sortino", "net_max_drawdown", "turnover_total", "tc_total"],
+    )
+    split_pivot = _flatten_columns(split_pivot).round(6)
+    split_pivot.to_csv(tables_dir / "task3_split_metric_pivot.csv")
+
+    win_rows = []
+    higher_is_better = ["net_ann_return", "net_sharpe", "net_sortino", "net_cumulative_return"]
+    lower_is_better = ["net_max_drawdown", "turnover_total", "tc_total"]
+    for metric in higher_is_better:
+        best = results_df.groupby("split")[metric].transform("max")
+        winners = results_df.loc[results_df[metric] == best, "model"].value_counts()
+        for model, wins in winners.items():
+            win_rows.append({"metric": metric, "model": model, "wins": int(wins), "direction": "higher_is_better"})
+    for metric in lower_is_better:
+        best = results_df.groupby("split")[metric].transform("min")
+        winners = results_df.loc[results_df[metric] == best, "model"].value_counts()
+        for model, wins in winners.items():
+            win_rows.append({"metric": metric, "model": model, "wins": int(wins), "direction": "lower_is_better"})
+    win_df = pd.DataFrame(win_rows)
+    if not win_df.empty:
+        win_df = win_df.sort_values(["metric", "model"]).reset_index(drop=True)
+        win_df.to_csv(tables_dir / "task3_metric_win_counts.csv", index=False)
+
+    _plot_per_split_equity_curves(curves_dir, figures_dir)
+    _plot_metric_boxplots(results_df, figures_dir)
+    _plot_summary_bars(summary_flat, figures_dir)
+    _plot_example_weights(rebal_dir, figures_dir)
 
 
 # =========================
@@ -623,6 +788,7 @@ def run_task3() -> None:
                 "net_ann_return": float(net_m_metrics["ann_return"]),
                 "net_ann_vol": float(net_m_metrics["ann_vol"]),
                 "net_sharpe": float(net_m_metrics["sharpe"]),
+                "net_sortino": float(net_m_metrics["sortino"]),
                 "net_cumulative_return": float(net_m_metrics["cumulative_return"]),
                 "net_max_drawdown": float(net_m_metrics["max_drawdown"]),
             }
@@ -641,6 +807,7 @@ def run_task3() -> None:
                 "net_ann_return": float(net_bl_metrics["ann_return"]),
                 "net_ann_vol": float(net_bl_metrics["ann_vol"]),
                 "net_sharpe": float(net_bl_metrics["sharpe"]),
+                "net_sortino": float(net_bl_metrics["sortino"]),
                 "net_cumulative_return": float(net_bl_metrics["cumulative_return"]),
                 "net_max_drawdown": float(net_bl_metrics["max_drawdown"]),
             }
@@ -648,13 +815,15 @@ def run_task3() -> None:
 
         print(
             f"  Markowitz: net_ann_return={net_m_metrics['ann_return']:.4f}, "
-            f"net_sharpe={net_m_metrics['sharpe']:.3f}, net_mdd={net_m_metrics['max_drawdown']:.3f}, "
-            f"turnover_total={turnover_m:.3f}, tc_total={tc_m:.5f}, n_reb={nreb_m}"
+            f"net_sharpe={net_m_metrics['sharpe']:.3f}, net_sortino={net_m_metrics['sortino']:.3f}, "
+            f"net_mdd={net_m_metrics['max_drawdown']:.3f}, turnover_total={turnover_m:.3f}, "
+            f"tc_total={tc_m:.5f}, n_reb={nreb_m}"
         )
         print(
             f"  BL:        net_ann_return={net_bl_metrics['ann_return']:.4f}, "
-            f"net_sharpe={net_bl_metrics['sharpe']:.3f}, net_mdd={net_bl_metrics['max_drawdown']:.3f}, "
-            f"turnover_total={turnover_bl:.3f}, tc_total={tc_bl:.5f}, n_reb={nreb_bl}"
+            f"net_sharpe={net_bl_metrics['sharpe']:.3f}, net_sortino={net_bl_metrics['sortino']:.3f}, "
+            f"net_mdd={net_bl_metrics['max_drawdown']:.3f}, turnover_total={turnover_bl:.3f}, "
+            f"tc_total={tc_bl:.5f}, n_reb={nreb_bl}"
         )
 
     # Save results
@@ -663,10 +832,15 @@ def run_task3() -> None:
 
     summary = (
         results_df
-        .groupby("model")[["net_ann_return", "net_ann_vol", "net_sharpe", "net_cumulative_return", "net_max_drawdown", "turnover_total", "tc_total"]]
+        .groupby("model")[[
+            "net_ann_return", "net_ann_vol", "net_sharpe", "net_sortino",
+            "net_cumulative_return", "net_max_drawdown", "turnover_total", "tc_total"
+        ]]
         .agg(["mean", "std"])
     )
     summary.to_csv(task3_outdir / "task3_summary_by_model.csv")
+
+    create_task3_report_outputs(results_df, curves_dir, rebal_dir, task3_outdir)
 
     print("\nDone.")
     print(f"Saved split results: {task3_outdir / 'task3_split_results.csv'}")
@@ -674,6 +848,8 @@ def run_task3() -> None:
     print(f"Final weights in:    {weights_dir}")
     print(f"Equity curves in:    {curves_dir}")
     print(f"Rebalance debug in:  {rebal_dir}")
+    print(f"Tables in:           {task3_outdir / 'tables'}")
+    print(f"Figures in:          {task3_outdir / 'figures'}")
 
 
 if __name__ == "__main__":
