@@ -1,0 +1,19 @@
+{
+  "task3_outdir": "results_task3_classical",
+  "task4_1_outdir": "results_task4_1_dnn_only",
+  "task4_2_outdir": "results_task4_2_dnn_rl",
+  "task5_outdir": "results_task5_comparative_evaluation",
+  "metrics": [
+    "net_ann_return",
+    "net_ann_vol",
+    "net_sharpe",
+    "net_sortino",
+    "net_cumulative_return",
+    "net_max_drawdown",
+    "turnover_total",
+    "tc_total"
+  ],
+  "make_equity_comparison_plots": true,
+  "equity_compare_all_common_splits": true,
+  "equity_compare_recent_n": 6
+}
