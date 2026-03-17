@@ -1,0 +1,51 @@
+{
+  "split": "split_007_2016-09-28_2018-12-28",
+  "seed": 42,
+  "target_col": "target_next_log_return",
+  "feature_cols": [
+    "log_return_1",
+    "simple_return_1",
+    "ret_mean_5",
+    "ret_std_5",
+    "mom_5",
+    "ret_mean_10",
+    "ret_std_10",
+    "mom_10",
+    "ret_mean_20",
+    "ret_std_20",
+    "mom_20",
+    "ret_mean_60",
+    "ret_std_60",
+    "mom_60",
+    "rsi_14",
+    "macd_12_26",
+    "macd_signal_9",
+    "macd_hist",
+    "volume",
+    "volume_chg",
+    "volume_roll_mean_20"
+  ],
+  "ticker_categories": [
+    "EFA",
+    "IWM",
+    "SPY",
+    "TLT"
+  ],
+  "use_ticker_one_hot": true,
+  "n_features": 25,
+  "n_train_rows": 2016,
+  "n_test_rows": 252,
+  "model_config": {
+    "hidden_units": [
+      64,
+      32
+    ],
+    "dropout_rate": 0.1,
+    "l2_reg": 1e-05,
+    "learning_rate": 0.001,
+    "batch_size": 256,
+    "epochs": 40,
+    "patience": 6,
+    "validation_ratio": 0.2
+  }
+}

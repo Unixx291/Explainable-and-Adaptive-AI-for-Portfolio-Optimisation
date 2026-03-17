@@ -340,17 +340,19 @@ def train_and_predict_split(
     target_col: str,
     ticker_categories: List[str],
     outdir: Path,
-) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, float]]:
+) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, Dict[str, float], Dict[str, object]]:
     history_dir = outdir / "histories"
     models_dir = outdir / "models"
     preds_dir = outdir / "predictions"
+    metadata_dir = outdir / "metadata"
     _ensure_dir(history_dir)
     _ensure_dir(models_dir)
     _ensure_dir(preds_dir)
+    _ensure_dir(metadata_dir)
 
     train_part, val_part = time_based_train_val_split(train_df, float(CONFIG["validation_ratio"]))
 
-    x_train, y_train, feature_names = build_xy(
+    x_train_fit, y_train_fit, feature_names = build_xy(
         train_part,
         feature_cols=feature_cols,
         target_col=target_col,
@@ -364,6 +366,13 @@ def train_and_predict_split(
         ticker_categories=ticker_categories,
         use_ticker_one_hot=bool(CONFIG["use_ticker_one_hot"]),
     )
+    x_train_full, y_train_full, _ = build_xy(
+        train_df,
+        feature_cols=feature_cols,
+        target_col=target_col,
+        ticker_categories=ticker_categories,
+        use_ticker_one_hot=bool(CONFIG["use_ticker_one_hot"]),
+    )
     x_test, y_test, _ = build_xy(
         test_df,
         feature_cols=feature_cols,
@@ -372,7 +381,7 @@ def train_and_predict_split(
         use_ticker_one_hot=bool(CONFIG["use_ticker_one_hot"]),
     )
 
-    model = build_dnn(input_dim=x_train.shape[1])
+    model = build_dnn(input_dim=x_train_fit.shape[1])
 
     cb = [
         callbacks.EarlyStopping(
@@ -383,8 +392,8 @@ def train_and_predict_split(
     ]
 
     history = model.fit(
-        x_train,
-        y_train,
+        x_train_fit,
+        y_train_fit,
         validation_data=(x_val, y_val),
         epochs=int(CONFIG["epochs"]),
         batch_size=int(CONFIG["batch_size"]),
@@ -396,18 +405,31 @@ def train_and_predict_split(
     if bool(CONFIG["save_models"]):
         model.save(models_dir / f"{split_name}.keras")
 
+    pred_train = model.predict(x_train_full, verbose=0).reshape(-1)
     pred_test = model.predict(x_test, verbose=0).reshape(-1)
 
-    pred_df = test_df[[target_col]].copy()
-    pred_df = pred_df.rename(columns={target_col: "y_true"})
-    pred_df["y_pred"] = pred_test.astype(np.float32)
-    pred_df["abs_error"] = np.abs(pred_df["y_true"] - pred_df["y_pred"]).astype(np.float32)
-    pred_df["signal_for_trade"] = (
-        pred_df.groupby(level="ticker")["y_pred"].shift(1).astype(np.float32)
+    train_pred_df = train_df[[target_col]].copy().rename(columns={target_col: "y_true"})
+    train_pred_df["y_pred"] = pred_train.astype(np.float32)
+    train_pred_df["abs_error"] = np.abs(train_pred_df["y_true"] - train_pred_df["y_pred"]).astype(np.float32)
+    train_pred_df["dataset_part"] = "train"
+
+    test_pred_df = test_df[[target_col]].copy().rename(columns={target_col: "y_true"})
+    test_pred_df["y_pred"] = pred_test.astype(np.float32)
+    test_pred_df["abs_error"] = np.abs(test_pred_df["y_true"] - test_pred_df["y_pred"]).astype(np.float32)
+    test_pred_df["dataset_part"] = "test"
+
+    combined_pred_df = pd.concat([train_pred_df, test_pred_df], axis=0).sort_index()
+    combined_pred_df["signal_for_trade"] = (
+        combined_pred_df.groupby(level="ticker")["y_pred"].shift(1).astype(np.float32)
     )
 
+    train_pred_df = combined_pred_df[combined_pred_df["dataset_part"] == "train"].copy()
+    test_pred_df = combined_pred_df[combined_pred_df["dataset_part"] == "test"].copy()
+
     if bool(CONFIG["save_predictions"]):
-        pred_df.to_csv(preds_dir / f"{split_name}_test_predictions.csv")
+        train_pred_df.to_csv(preds_dir / f"{split_name}_train_predictions.csv")
+        test_pred_df.to_csv(preds_dir / f"{split_name}_test_predictions.csv")
+        combined_pred_df.to_csv(preds_dir / f"{split_name}_combined_predictions.csv")
 
     hist_df = pd.DataFrame(history.history)
     hist_df.to_csv(history_dir / f"{split_name}_history.csv", index=False)
@@ -417,17 +439,39 @@ def train_and_predict_split(
         "rmse": _rmse(y_test, pred_test),
         "direction_acc": _directional_accuracy(y_test, pred_test),
         "pred_real_corr": _safe_corr(y_test, pred_test),
+        "train_mae": float(np.mean(np.abs(y_train_full - pred_train))),
+        "train_rmse": _rmse(y_train_full, pred_train),
+        "n_train_rows": int(len(y_train_full)),
         "n_test_rows": int(len(y_test)),
-        "n_features": int(x_train.shape[1]),
+        "n_features": int(x_train_fit.shape[1]),
         "n_epochs_trained": int(len(hist_df)),
     }
 
-    feature_meta = pd.DataFrame({
-        "feature_name": feature_names,
+    split_meta = {
         "split": split_name,
-    })
+        "seed": int(CONFIG["seed"]),
+        "target_col": target_col,
+        "feature_cols": feature_cols,
+        "ticker_categories": ticker_categories,
+        "use_ticker_one_hot": bool(CONFIG["use_ticker_one_hot"]),
+        "n_features": int(len(feature_names)),
+        "n_train_rows": int(len(train_pred_df)),
+        "n_test_rows": int(len(test_pred_df)),
+        "model_config": {
+            "hidden_units": [int(x) for x in CONFIG["hidden_units"]],
+            "dropout_rate": float(CONFIG["dropout_rate"]),
+            "l2_reg": float(CONFIG["l2_reg"]),
+            "learning_rate": float(CONFIG["learning_rate"]),
+            "batch_size": int(CONFIG["batch_size"]),
+            "epochs": int(CONFIG["epochs"]),
+            "patience": int(CONFIG["patience"]),
+            "validation_ratio": float(CONFIG["validation_ratio"]),
+        },
+    }
+    with open(metadata_dir / f"{split_name}_metadata.json", "w", encoding="utf-8") as f:
+        json.dump(split_meta, f, indent=2)
 
-    return pred_df, hist_df, diagnostics | {"n_features": int(len(feature_names))}
+    return train_pred_df, test_pred_df, hist_df, diagnostics | {"n_features": int(len(feature_names))}, split_meta
 
 
 # =========================
@@ -590,20 +634,18 @@ def save_prediction_scatter(pred_all: pd.DataFrame, outpath: Path) -> None:
 
 
 def save_future_prediction_plot(
-    train_df: pd.DataFrame,
-    pred_df: pd.DataFrame,
+    combined_pred_df: pd.DataFrame,
     outpath: Path,
     split_name: str,
     test_start: pd.Timestamp,
     context_days: int,
-    target_col: str,
 ) -> None:
-    if pred_df.empty:
+    if combined_pred_df.empty:
         return
 
-    train_actual = train_df[[target_col]].rename(columns={target_col: "actual"}).copy()
-    test_actual_pred = pred_df[["y_true", "y_pred"]].rename(columns={"y_true": "actual", "y_pred": "predicted"}).copy()
-    combined = pd.concat([train_actual, test_actual_pred], axis=0).sort_index()
+    combined = combined_pred_df[["y_true", "y_pred", "dataset_part"]].rename(
+        columns={"y_true": "actual", "y_pred": "predicted"}
+    ).copy()
 
     start_boundary = pd.Timestamp(test_start)
     context_days = max(1, int(context_days))
@@ -628,11 +670,47 @@ def save_future_prediction_plot(
             ax.set_visible(False)
             continue
 
-        ax.plot(ticker_df.index, ticker_df["actual"], label="Actual next log return")
-        if "predicted" in ticker_df.columns and ticker_df["predicted"].notna().any():
-            ax.plot(ticker_df.index, ticker_df["predicted"], label="Predicted next log return")
+        train_mask = ticker_df["dataset_part"].eq("train")
+        test_mask = ticker_df["dataset_part"].eq("test")
 
-        ax.axvline(start_boundary, color="red", linestyle=":", linewidth=1.8, label="Prediction starts")
+        ax.plot(
+            ticker_df.index,
+            ticker_df["actual"],
+            color="blue",
+            label="Actual next log return",
+        )
+
+        if test_mask.any() and ticker_df.loc[test_mask, "predicted"].notna().any():
+            ax.plot(
+                ticker_df.index[train_mask],
+                ticker_df.loc[train_mask, "predicted"],
+                color="orange",
+                linestyle="--",
+                label="Cached train-period predictions",
+            )
+            ax.plot(
+                ticker_df.index[test_mask],
+                ticker_df.loc[test_mask, "predicted"],
+                color="green",
+                linestyle="-",
+                label="Cached test-period predictions",
+            )
+        elif ticker_df["predicted"].notna().any():
+            ax.plot(
+                ticker_df.index,
+                ticker_df["predicted"],
+                color="green",
+                linestyle="-",
+                label="Cached test-period predictions",
+            )
+
+        ax.axvline(
+            start_boundary,
+            color="red",
+            linestyle=":",
+            linewidth=1.8,
+            label="Test window starts",
+        )
         ax.set_title(str(ticker))
         ax.set_xlabel("Date")
         ax.set_ylabel("Next log return")
@@ -642,7 +720,7 @@ def save_future_prediction_plot(
     for ax in axes[n_tickers:]:
         ax.set_visible(False)
 
-    fig.suptitle(f"Task 4.1 DNN-only future predictions by ticker: {split_name}", y=0.995)
+    fig.suptitle(f"Task 4.1 DNN-only cached prediction stream by ticker: {split_name}", y=0.995)
     fig.tight_layout()
     fig.savefig(outpath, dpi=200)
     plt.close(fig)
@@ -682,7 +760,7 @@ def save_summary_tables(results_df: pd.DataFrame, diagnostics_df: pd.DataFrame, 
         pivot.to_csv(tables_dir / "task4_1_split_portfolio_metrics.csv", index=False)
 
     if not diagnostics_df.empty:
-        diag_summary = diagnostics_df[["mae", "rmse", "direction_acc", "pred_real_corr", "n_epochs_trained"]].agg(["mean", "std"]).T
+        diag_summary = diagnostics_df[["mae", "rmse", "direction_acc", "pred_real_corr", "train_mae", "train_rmse", "n_epochs_trained"]].agg(["mean", "std"]).T
         diag_summary.columns = [f"diagnostic_{c}" for c in diag_summary.columns]
         diag_summary.to_csv(tables_dir / "task4_1_diagnostic_summary.csv")
         diagnostics_df.to_csv(tables_dir / "task4_1_split_diagnostics.csv", index=False)
@@ -701,6 +779,7 @@ def run_task4_1() -> None:
     _ensure_dir(task4_outdir / "equity_curves")
     _ensure_dir(task4_outdir / "rebalances")
     _ensure_dir(task4_outdir / "weights")
+    _ensure_dir(task4_outdir / "metadata")
 
     with open(task4_outdir / "task4_1_config.json", "w", encoding="utf-8") as f:
         json.dump(CONFIG, f, indent=2)
@@ -746,7 +825,7 @@ def run_task4_1() -> None:
 
         ticker_categories = sorted(train_df.index.get_level_values("ticker").unique())
 
-        pred_df, hist_df, diagnostics = train_and_predict_split(
+        train_pred_df, test_pred_df, hist_df, diagnostics, _split_meta = train_and_predict_split(
             split_name=split_name,
             train_df=train_df,
             test_df=test_df,
@@ -755,20 +834,19 @@ def run_task4_1() -> None:
             ticker_categories=ticker_categories,
             outdir=task4_outdir,
         )
-        pred_frames.append(pred_df.assign(split=split_name))
+        combined_pred_df = pd.concat([train_pred_df, test_pred_df], axis=0).sort_index()
+        pred_frames.append(combined_pred_df.assign(split=split_name))
 
         save_history_plot(hist_df, task4_outdir / "figures" / f"{split_name}_loss.png", split_name)
 
         test_start = pd.to_datetime(split["test_start"])
         test_end = pd.to_datetime(split["test_end"])
         save_future_prediction_plot(
-            train_df=train_df,
-            pred_df=pred_df,
+            combined_pred_df=combined_pred_df,
             outpath=task4_outdir / "figures" / f"{split_name}_future_predictions.png",
             split_name=split_name,
             test_start=test_start,
             context_days=int(CONFIG["prediction_plot_context_days"]),
-            target_col=target_col,
         )
 
         train_prices = _panel_to_prices(train_df)
@@ -781,7 +859,7 @@ def run_task4_1() -> None:
 
         gross, net, turnover_total, tc_total, n_reb, reb_df = simulate_dnn_signal_portfolio(
             full_prices=full_prices,
-            pred_df=pred_df,
+            pred_df=test_pred_df,
             test_start=test_start,
             test_end=test_end,
             rebalance_every_days=int(CONFIG["rebalance_every_days"]),
@@ -869,6 +947,7 @@ def run_task4_1() -> None:
     print(f"Saved diagnostics:    {task4_outdir / 'task4_1_diagnostics_by_split.csv'}")
     print(f"Saved predictions:    {task4_outdir / 'task4_1_predictions_aggregate.csv'}")
     print(f"Saved figures in:     {task4_outdir / 'figures'}")
+    print(f"Saved metadata in:    {task4_outdir / 'metadata'}")
     print(f"Saved rebalances in:  {task4_outdir / 'rebalances'}")
     print(f"Saved weights in:     {task4_outdir / 'weights'}")
 
