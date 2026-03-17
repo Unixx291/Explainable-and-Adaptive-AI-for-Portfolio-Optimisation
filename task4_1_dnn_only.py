@@ -48,9 +48,12 @@ CONFIG = {
     # Output for Task 4.1
     "task4_outdir": "results_task4_1_dnn_only",
 
-    # Pilot scope: use only a smaller set of most recent splits first
-    "pilot_mode": True,
+    # Scope: set pilot_mode=False to run all Task 2 splits so this matches Task 3 exactly
+    "pilot_mode": False,
     "pilot_recent_splits": 6,
+
+    # Forecast plot context
+    "prediction_plot_context_days": 60,
 
     # Feature selection
     "exclude_feature_cols": ["price"],
@@ -586,6 +589,65 @@ def save_prediction_scatter(pred_all: pd.DataFrame, outpath: Path) -> None:
     plt.close()
 
 
+def save_future_prediction_plot(
+    train_df: pd.DataFrame,
+    pred_df: pd.DataFrame,
+    outpath: Path,
+    split_name: str,
+    test_start: pd.Timestamp,
+    context_days: int,
+    target_col: str,
+) -> None:
+    if pred_df.empty:
+        return
+
+    train_actual = train_df[[target_col]].rename(columns={target_col: "actual"}).copy()
+    test_actual_pred = pred_df[["y_true", "y_pred"]].rename(columns={"y_true": "actual", "y_pred": "predicted"}).copy()
+    combined = pd.concat([train_actual, test_actual_pred], axis=0).sort_index()
+
+    start_boundary = pd.Timestamp(test_start)
+    context_days = max(1, int(context_days))
+    context_start = start_boundary - pd.Timedelta(days=context_days)
+    combined = combined.loc[(slice(context_start, None), slice(None)), :].copy()
+    if combined.empty:
+        return
+
+    tickers = list(combined.index.get_level_values("ticker").unique())
+    n_tickers = len(tickers)
+    if n_tickers == 0:
+        return
+
+    ncols = 2 if n_tickers > 1 else 1
+    nrows = int(np.ceil(n_tickers / ncols))
+    fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=(12, 3.8 * nrows), sharex=False)
+    axes = np.array(axes).reshape(-1)
+
+    for ax, ticker in zip(axes, tickers):
+        ticker_df = combined.xs(ticker, level="ticker").sort_index()
+        if ticker_df.empty:
+            ax.set_visible(False)
+            continue
+
+        ax.plot(ticker_df.index, ticker_df["actual"], label="Actual next log return")
+        if "predicted" in ticker_df.columns and ticker_df["predicted"].notna().any():
+            ax.plot(ticker_df.index, ticker_df["predicted"], label="Predicted next log return")
+
+        ax.axvline(start_boundary, color="red", linestyle=":", linewidth=1.8, label="Prediction starts")
+        ax.set_title(str(ticker))
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Next log return")
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.25)
+
+    for ax in axes[n_tickers:]:
+        ax.set_visible(False)
+
+    fig.suptitle(f"Task 4.1 DNN-only future predictions by ticker: {split_name}", y=0.995)
+    fig.tight_layout()
+    fig.savefig(outpath, dpi=200)
+    plt.close(fig)
+
+
 def save_metric_bar(results_df: pd.DataFrame, outpath: Path) -> None:
     if results_df.empty:
         return
@@ -661,7 +723,8 @@ def run_task4_1() -> None:
     diagnostics_rows: List[Dict] = []
     pred_frames: List[pd.DataFrame] = []
 
-    print(f"Selected {len(selected_splits)} split(s) for Task 4.1 pilot.")
+    mode_label = "pilot" if bool(CONFIG["pilot_mode"]) else "full"
+    print(f"Selected {len(selected_splits)} split(s) for Task 4.1 ({mode_label} mode).")
 
     for split in selected_splits:
         split_name = split["name"]
@@ -696,6 +759,18 @@ def run_task4_1() -> None:
 
         save_history_plot(hist_df, task4_outdir / "figures" / f"{split_name}_loss.png", split_name)
 
+        test_start = pd.to_datetime(split["test_start"])
+        test_end = pd.to_datetime(split["test_end"])
+        save_future_prediction_plot(
+            train_df=train_df,
+            pred_df=pred_df,
+            outpath=task4_outdir / "figures" / f"{split_name}_future_predictions.png",
+            split_name=split_name,
+            test_start=test_start,
+            context_days=int(CONFIG["prediction_plot_context_days"]),
+            target_col=target_col,
+        )
+
         train_prices = _panel_to_prices(train_df)
         test_prices = _panel_to_prices(test_df)
         common = [t for t in train_prices.columns if t in test_prices.columns]
@@ -703,9 +778,6 @@ def run_task4_1() -> None:
         test_prices = test_prices[common].dropna(how="any")
         full_prices = pd.concat([train_prices, test_prices], axis=0)
         full_prices = full_prices[~full_prices.index.duplicated(keep="first")].sort_index()
-
-        test_start = pd.to_datetime(split["test_start"])
-        test_end = pd.to_datetime(split["test_end"])
 
         gross, net, turnover_total, tc_total, n_reb, reb_df = simulate_dnn_signal_portfolio(
             full_prices=full_prices,

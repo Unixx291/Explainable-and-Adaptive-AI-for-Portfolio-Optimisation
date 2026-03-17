@@ -1,8 +1,9 @@
 {
   "task2_outdir": "data_prepared_task2",
   "task4_outdir": "results_task4_1_dnn_only",
-  "pilot_mode": true,
+  "pilot_mode": false,
   "pilot_recent_splits": 6,
+  "prediction_plot_context_days": 60,
   "exclude_feature_cols": [
     "price"
   ],
