@@ -255,7 +255,7 @@ def save_boxplot(results_df: pd.DataFrame, metric: str, outpath: Path) -> None:
         return
     labels = [DISPLAY_NAMES.get(m, m) for m in model_order]
     plt.figure(figsize=(8, 4.8))
-    plt.boxplot(data, labels=labels)
+    plt.boxplot(data, tick_labels=labels)
     plt.title(f"Comparison of {METRIC_LABELS.get(metric, metric)}")
     plt.ylabel(METRIC_LABELS.get(metric, metric))
     plt.tight_layout()
