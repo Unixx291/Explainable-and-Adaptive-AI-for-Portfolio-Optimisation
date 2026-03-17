@@ -7,9 +7,8 @@ __pycache__/
 .venv/
 venv/
 
-# Local generated artefacts (your current folders)
-data_prepared_task2/
-results_task3_classical/
+# ignore Local generated artefacts (your current folders)
+
 
 # Standard local folders for this project
 data/
