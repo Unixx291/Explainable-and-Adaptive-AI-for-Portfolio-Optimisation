@@ -42,7 +42,7 @@ except Exception as e:
 # CONFIG (edit this)
 # =========================
 CONFIG = {
-    # Input from Task 2
+    # Input from Task 2 #
     "task2_outdir": "data_prepared_task2",
 
     # Output for Task 4.1
