@@ -1,0 +1,11 @@
+,value
+n_assets,4
+price_start_date,2015-01-02
+price_end_date,2025-12-31
+n_price_rows,2766
+n_panel_dates,2705
+n_panel_rows,10820
+n_features,22
+train_days,504
+test_days,63
+step_days,63

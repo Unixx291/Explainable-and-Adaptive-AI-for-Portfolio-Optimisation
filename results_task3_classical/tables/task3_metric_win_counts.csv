@@ -1,0 +1,15 @@
+metric,model,wins,direction
+net_ann_return,black_litterman,11,higher_is_better
+net_ann_return,markowitz,29,higher_is_better
+net_cumulative_return,black_litterman,11,higher_is_better
+net_cumulative_return,markowitz,29,higher_is_better
+net_max_drawdown,black_litterman,26,lower_is_better
+net_max_drawdown,markowitz,16,lower_is_better
+net_sharpe,black_litterman,12,higher_is_better
+net_sharpe,markowitz,28,higher_is_better
+net_sortino,black_litterman,12,higher_is_better
+net_sortino,markowitz,28,higher_is_better
+tc_total,black_litterman,9,lower_is_better
+tc_total,markowitz,31,lower_is_better
+turnover_total,black_litterman,9,lower_is_better
+turnover_total,markowitz,31,lower_is_better

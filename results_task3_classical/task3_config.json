@@ -1,0 +1,19 @@
+{
+  "task2_outdir": "data_prepared_task2",
+  "task3_outdir": "results_task3_classical",
+  "weight_bounds": [
+    0.0,
+    0.6
+  ],
+  "risk_free_rate": 0.0,
+  "objective": "max_sharpe",
+  "bl_delta": 2.5,
+  "bl_tau": 0.05,
+  "bl_view_top_k": 2,
+  "bl_view_bottom_k": 2,
+  "bl_view_confidence": 0.6,
+  "bl_use_idzorek": true,
+  "frequency": 252,
+  "rebalance_every_days": 21,
+  "transaction_cost_rate": 0.001
+}

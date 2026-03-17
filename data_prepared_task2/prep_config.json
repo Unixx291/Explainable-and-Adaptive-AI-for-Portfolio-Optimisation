@@ -1,0 +1,28 @@
+{
+  "tickers": [
+    "SPY",
+    "IWM",
+    "EFA",
+    "TLT"
+  ],
+  "start": "2015-01-01",
+  "end": "2026-01-01",
+  "interval": "1d",
+  "outdir": "data_prepared_task2",
+  "prefer_parquet": true,
+  "min_non_nan_ratio": 0.98,
+  "forward_fill_limit": 3,
+  "rolling_windows": [
+    5,
+    10,
+    20,
+    60
+  ],
+  "rsi_window": 14,
+  "macd_fast": 12,
+  "macd_slow": 26,
+  "macd_signal": 9,
+  "train_days": 504,
+  "test_days": 63,
+  "step_days": 63
+}

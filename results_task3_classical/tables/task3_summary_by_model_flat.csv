@@ -1,0 +1,3 @@
+model,net_ann_return_mean,net_ann_return_std,net_ann_vol_mean,net_ann_vol_std,net_sharpe_mean,net_sharpe_std,net_sortino_mean,net_sortino_std,net_cumulative_return_mean,net_cumulative_return_std,net_max_drawdown_mean,net_max_drawdown_std,turnover_total_mean,turnover_total_std,tc_total_mean,tc_total_std
+black_litterman,0.127719,0.309562,0.124207,0.064222,1.254371,2.076836,2.286154,3.392318,0.023238,0.072436,-0.060163,0.051182,1.346255,0.332619,0.001346,0.000333
+markowitz,0.138685,0.309095,0.121084,0.062427,1.373388,2.196452,2.515473,3.652419,0.025901,0.071621,-0.057904,0.049334,1.235862,0.301184,0.001236,0.000301
