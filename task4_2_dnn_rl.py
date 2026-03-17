@@ -62,8 +62,8 @@ CONFIG = {
     # Output for Task 4.2
     "task4_2_outdir": "results_task4_2_dnn_rl",
 
-    # Scope: keep pilot_mode=True first for RL cost, then switch to False later
-    "pilot_mode": True,
+    # Scope: full run so Task 4.2 covers the full Task 2 split set
+    "pilot_mode": False,
     "pilot_recent_splits": 3,
 
     # Feature selection and observation design
