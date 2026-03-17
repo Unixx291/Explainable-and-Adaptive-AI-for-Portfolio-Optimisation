@@ -2,7 +2,7 @@
   "task2_outdir": "data_prepared_task2",
   "task4_1_outdir": "results_task4_1_dnn_only",
   "task4_2_outdir": "results_task4_2_dnn_rl",
-  "pilot_mode": true,
+  "pilot_mode": false,
   "pilot_recent_splits": 3,
   "exclude_feature_cols": [
     "price"
