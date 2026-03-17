@@ -1,0 +1,34 @@
+{
+  "task2_outdir": "data_prepared_task2",
+  "task4_outdir": "results_task4_1_dnn_only",
+  "pilot_mode": true,
+  "pilot_recent_splits": 6,
+  "exclude_feature_cols": [
+    "price"
+  ],
+  "target_col": "target_next_log_return",
+  "use_ticker_one_hot": true,
+  "seed": 42,
+  "hidden_units": [
+    64,
+    32
+  ],
+  "dropout_rate": 0.1,
+  "l2_reg": 1e-05,
+  "learning_rate": 0.001,
+  "batch_size": 256,
+  "epochs": 40,
+  "patience": 6,
+  "validation_ratio": 0.2,
+  "verbose_fit": 0,
+  "weight_bounds": [
+    0.0,
+    0.6
+  ],
+  "rebalance_every_days": 21,
+  "transaction_cost_rate": 0.001,
+  "risk_free_rate": 0.0,
+  "frequency": 252,
+  "save_models": false,
+  "save_predictions": true
+}

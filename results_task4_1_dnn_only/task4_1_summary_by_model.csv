@@ -1,0 +1,4 @@
+,net_ann_return,net_ann_return,net_ann_vol,net_ann_vol,net_sharpe,net_sharpe,net_sortino,net_sortino,net_cumulative_return,net_cumulative_return,net_max_drawdown,net_max_drawdown,turnover_total,turnover_total,tc_total,tc_total
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+model,,,,,,,,,,,,,,,,
+dnn_only,0.13776823214389428,0.3120448867610486,0.1282963531395666,0.041072408497685925,0.7860963842622,2.0070423665249577,1.6082697559804373,3.1761526761505428,0.026564905919405784,0.07197016322500978,-0.054920331163136916,0.03140222254958691,2.5101602184994345,0.4666968743858487,0.0025101602184994343,0.00046669687438584856
