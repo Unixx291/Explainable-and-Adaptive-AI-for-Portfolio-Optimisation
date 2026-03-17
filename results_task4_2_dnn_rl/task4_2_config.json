@@ -1,0 +1,39 @@
+{
+  "task2_outdir": "data_prepared_task2",
+  "task4_1_outdir": "results_task4_1_dnn_only",
+  "task4_2_outdir": "results_task4_2_dnn_rl",
+  "pilot_mode": true,
+  "pilot_recent_splits": 3,
+  "exclude_feature_cols": [
+    "price"
+  ],
+  "target_col": "target_next_log_return",
+  "prediction_signal_col": "signal_for_trade",
+  "use_prev_weights_in_obs": true,
+  "weight_bounds": [
+    0.0,
+    0.6
+  ],
+  "rebalance_every_days": 21,
+  "transaction_cost_rate": 0.001,
+  "risk_free_rate": 0.0,
+  "frequency": 252,
+  "downside_penalty": 1.0,
+  "reward_scale": 100.0,
+  "seed": 42,
+  "policy": "MlpPolicy",
+  "learning_rate": 0.0003,
+  "n_steps": 64,
+  "batch_size": 64,
+  "n_epochs": 10,
+  "gamma": 0.99,
+  "gae_lambda": 0.95,
+  "clip_range": 0.2,
+  "ent_coef": 0.0,
+  "vf_coef": 0.5,
+  "max_grad_norm": 0.5,
+  "total_timesteps": 5000,
+  "verbose_learn": 0,
+  "device": "auto",
+  "save_models": false
+}

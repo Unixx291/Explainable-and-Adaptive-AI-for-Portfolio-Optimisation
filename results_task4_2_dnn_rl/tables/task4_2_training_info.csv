@@ -1,0 +1,4 @@
+split,model,n_train_records,n_test_records,n_assets,n_features_per_asset,ppo_total_timesteps,monitor_episodes,reward_scale,downside_penalty,transaction_cost_rate
+split_032_2022-12-30_2025-04-04,dnn_rl,24,3,4,21,5000,210,100.0,1.0,0.001
+split_033_2023-04-03_2025-07-08,dnn_rl,24,3,4,21,5000,210,100.0,1.0,0.001
+split_034_2023-07-05_2025-10-06,dnn_rl,24,3,4,21,5000,210,100.0,1.0,0.001
