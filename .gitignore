@@ -7,7 +7,7 @@ __pycache__/
 .venv/
 venv/
 
-# ignore Local generated artefacts (your current folders)
+# ignore Local generated artefacts
 
 
 # Standard local folders for this project
