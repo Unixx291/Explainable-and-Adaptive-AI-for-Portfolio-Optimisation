@@ -30,6 +30,6 @@
   "transaction_cost_rate": 0.001,
   "risk_free_rate": 0.0,
   "frequency": 252,
-  "save_models": false,
+  "save_models": true,
   "save_predictions": true
 }

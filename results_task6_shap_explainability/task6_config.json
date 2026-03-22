@@ -4,7 +4,7 @@
   "task6_outdir": "results_task6_shap_explainability",
   "selected_splits": [],
   "recent_splits": 2,
-  "use_saved_model_if_available": true,
+  "require_saved_models": true,
   "background_sample_size": 80,
   "explain_sample_size": 120,
   "local_case_count": 4,

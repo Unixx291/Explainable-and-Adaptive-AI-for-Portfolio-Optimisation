@@ -2,7 +2,7 @@
 Task 6: SHAP explainability for the Task 4.1 DNN predictor
 
 Purpose
-- Rebuild or load the DNN-only predictor for selected walk-forward split(s)
+- Load the saved Task 4.1 DNN predictor for selected walk-forward split(s)
 - Apply SHAP to explain the DNN's next-period log return forecasts
 - Save global and local explanation artefacts
 - Save plain-English summaries that can be surfaced directly in the demo UI
@@ -10,15 +10,18 @@ Purpose
 Notes
 - This explains the supervised DNN module, not the PPO policy directly.
 - By default, this script explains only the most recent few splits to keep runtime practical.
-- If Task 4.1 saved model files are available, the script can load them; otherwise it retrains
-  the DNN deterministically using the same split and configuration.
+- This script explains the exact fitted DNN saved by Task 4.1. It does not retrain.
 """
 
 from __future__ import annotations
 
 import json
+import os
+import warnings
 from pathlib import Path
 from typing import Dict, List, Tuple
+
+os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 
 import matplotlib
 matplotlib.use("Agg")
@@ -47,6 +50,21 @@ except Exception as e:
 
 import task4_1_dnn_only as t41
 
+warnings.filterwarnings(
+    "ignore",
+    message=r".*The structure of `inputs` doesn\'t match the expected structure.*",
+    category=UserWarning,
+)
+warnings.filterwarnings(
+    "ignore",
+    message=r".*The NumPy global RNG was seeded by calling `np.random.seed`.*",
+    category=FutureWarning,
+)
+try:
+    tf.get_logger().setLevel("ERROR")
+except Exception:
+    pass
+
 
 CONFIG = {
     # Inputs
@@ -61,7 +79,7 @@ CONFIG = {
     "recent_splits": 2,             # used when selected_splits is empty
 
     # Rebuild / load model
-    "use_saved_model_if_available": True,
+    "require_saved_models": True,
 
     # SHAP sampling controls
     "background_sample_size": 80,
@@ -220,42 +238,42 @@ def _build_dnn_from_cfg(input_dim: int, cfg: Dict) -> tf.keras.Model:
     return model
 
 
-def _rebuild_or_load_model(
+def _load_saved_model_and_data(
     split_name: str,
     train_df: pd.DataFrame,
     test_df: pd.DataFrame,
     split_meta: Dict,
     task4_outdir: Path,
-) -> Tuple[tf.keras.Model, np.ndarray, np.ndarray, np.ndarray, np.ndarray, List[str], pd.DataFrame]:
+) -> Tuple[tf.keras.Model, np.ndarray, np.ndarray, np.ndarray, np.ndarray, List[str]]:
     feature_cols = list(split_meta["feature_cols"])
     target_col = str(split_meta["target_col"])
     ticker_categories = list(split_meta["ticker_categories"])
     use_ticker_one_hot = bool(split_meta["use_ticker_one_hot"])
-    model_cfg = dict(split_meta["model_config"])
-    seed = int(split_meta.get("seed", t41.CONFIG.get("seed", 42)))
-
-    t41.set_seed(seed)
 
     model_path = task4_outdir / "models" / f"{split_name}.keras"
-    if bool(CONFIG["use_saved_model_if_available"]) and model_path.exists():
-        model = tf.keras.models.load_model(model_path)
+    if bool(CONFIG["require_saved_models"]) and not model_path.exists():
+        raise FileNotFoundError(
+            f"Saved Task 4.1 model not found for {split_name}: {model_path}. "
+            "Rerun task4_1_dnn_only.py with save_models=True before running Task 6."
+        )
 
-        x_train_full, y_train_full, feature_names = t41.build_xy(
-            train_df,
-            feature_cols=feature_cols,
-            target_col=target_col,
-            ticker_categories=ticker_categories,
-            use_ticker_one_hot=use_ticker_one_hot,
-        )
-        x_test, y_test, _ = t41.build_xy(
-            test_df,
-            feature_cols=feature_cols,
-            target_col=target_col,
-            ticker_categories=ticker_categories,
-            use_ticker_one_hot=use_ticker_one_hot,
-        )
-        hist_df = pd.DataFrame()
-        return model, x_train_full, y_train_full, x_test, y_test, feature_names, hist_df
+    model = tf.keras.models.load_model(model_path)
+
+    x_train_full, y_train_full, feature_names = t41.build_xy(
+        train_df,
+        feature_cols=feature_cols,
+        target_col=target_col,
+        ticker_categories=ticker_categories,
+        use_ticker_one_hot=use_ticker_one_hot,
+    )
+    x_test, y_test, _ = t41.build_xy(
+        test_df,
+        feature_cols=feature_cols,
+        target_col=target_col,
+        ticker_categories=ticker_categories,
+        use_ticker_one_hot=use_ticker_one_hot,
+    )
+    return model, x_train_full, y_train_full, x_test, y_test, feature_names
 
     train_part, val_part = t41.time_based_train_val_split(train_df, float(model_cfg["validation_ratio"]))
 
@@ -550,7 +568,7 @@ def main() -> None:
         train_df = t41._read_panel(train_path)
         test_df = t41._read_panel(test_path)
 
-        model, x_train_full, y_train_full, x_test, y_test, feature_names, hist_df = _rebuild_or_load_model(
+        model, x_train_full, y_train_full, x_test, y_test, feature_names = _load_saved_model_and_data(
             split_name=split_name,
             train_df=train_df,
             test_df=test_df,
@@ -567,8 +585,6 @@ def main() -> None:
             seed=int(CONFIG["random_state"]),
         )
 
-        # Build test prediction diagnostics first so the selected local cases
-        # are guaranteed to be included in the SHAP explanation sample.
         y_pred_test = model.predict(x_test, verbose=0).reshape(-1)
         test_pred_df = pd.DataFrame({
             "y_true": y_test,
@@ -584,10 +600,9 @@ def main() -> None:
         explain_idx = np.arange(len(x_test))
         if len(x_test) > explain_n:
             rng = np.random.default_rng(int(CONFIG["random_state"]))
-            explain_idx = np.sort(rng.choice(len(x_test), size=explain_n, replace=False))
-
-        # Force the selected local explanation cases into the SHAP subset.
-        explain_idx = np.array(sorted(set(explain_idx.tolist()) | set(int(p) for p in case_positions)), dtype=int)
+            sampled = np.sort(rng.choice(len(x_test), size=explain_n, replace=False))
+            required = np.array(sorted(set(int(p) for p in case_positions)), dtype=int)
+            explain_idx = np.array(sorted(set(sampled.tolist()).union(required.tolist())), dtype=int)
 
         x_explain = x_test[explain_idx].copy()
         x_explain_df = pd.DataFrame(x_explain, columns=human_feature_names)
