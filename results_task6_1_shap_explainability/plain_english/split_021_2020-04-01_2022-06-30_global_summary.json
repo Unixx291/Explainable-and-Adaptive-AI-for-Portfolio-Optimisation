@@ -5,8 +5,8 @@
     "5-day momentum",
     "MACD (12, 26)",
     "20-day average return",
-    "60-day average return",
-    "10-day average return"
+    "10-day average return",
+    "60-day average return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day momentum, MACD (12, 26), 20-day average return, 60-day average return, and 10-day average return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day momentum, MACD (12, 26), 20-day average return, 10-day average return, and 60-day average return."
 }

@@ -1,5 +1,5 @@
 """
-Task 6.1: SHAP explainability for the Task 4.1 DNN predictor
+Task 6: SHAP explainability for the Task 4.1 DNN predictor
 
 Purpose
 - Load the saved Task 4.1 DNN predictor for selected walk-forward split(s)
@@ -33,7 +33,7 @@ try:
     import shap
 except Exception as e:
     raise SystemExit(
-        "SHAP is required for Task 6.1.\n"
+        "SHAP is required for Task 6.\n"
         "Install with: pip install shap\n"
         f"Original error: {e}"
     )
@@ -43,7 +43,7 @@ try:
     from tensorflow.keras import callbacks, layers, models, optimizers, regularizers
 except Exception as e:
     raise SystemExit(
-        "TensorFlow is required for Task 6.1.\n"
+        "TensorFlow is required for Task 6.\n"
         "Install with: pip install tensorflow\n"
         f"Original error: {e}"
     )
@@ -72,7 +72,7 @@ CONFIG = {
     "task4_outdir": "results_task4_1_dnn_only",
 
     # Outputs
-    "task6_1_outdir": "results_task6_1_shap_explainability",
+    "task6_outdir": "results_task6_1_shap_explainability",
 
     # Split scope
     "selection_mode": "all_saved_models",   # "all_saved_models", "selected", "recent"
@@ -285,7 +285,7 @@ def _load_saved_model_and_data(
     if bool(CONFIG["require_saved_models"]) and not model_path.exists():
         raise FileNotFoundError(
             f"Saved Task 4.1 model not found for {split_name}: {model_path}. "
-            "Rerun task4_1_dnn_only.py with save_models=True before running Task 6.1."
+            "Rerun task4_1_dnn_only.py with save_models=True before running Task 6."
         )
 
     model = tf.keras.models.load_model(model_path)
@@ -555,15 +555,15 @@ def _make_local_summary(
 def main() -> None:
     task2_outdir = Path(CONFIG["task2_outdir"])
     task4_outdir = Path(CONFIG["task4_outdir"])
-    task6_1_outdir = Path(CONFIG["task6_1_outdir"])
+    task6_outdir = Path(CONFIG["task6_outdir"])
 
-    _ensure_dir(task6_1_outdir)
-    _ensure_dir(task6_1_outdir / "tables")
-    _ensure_dir(task6_1_outdir / "figures")
-    _ensure_dir(task6_1_outdir / "local_cases")
-    _ensure_dir(task6_1_outdir / "plain_english")
+    _ensure_dir(task6_outdir)
+    _ensure_dir(task6_outdir / "tables")
+    _ensure_dir(task6_outdir / "figures")
+    _ensure_dir(task6_outdir / "local_cases")
+    _ensure_dir(task6_outdir / "plain_english")
 
-    with open(task6_1_outdir / "task6_1_config.json", "w", encoding="utf-8") as f:
+    with open(task6_outdir / "task6_config.json", "w", encoding="utf-8") as f:
         json.dump(CONFIG, f, indent=2)
 
     meta = _load_task2_meta(task2_outdir)
@@ -582,9 +582,10 @@ def main() -> None:
     summary_rows: List[Dict] = []
     local_case_rows: List[Dict] = []
     global_texts: List[Dict] = []
+    global_importance_rows: List[Dict] = []
 
     print(
-        f"Selected {len(selected_splits)} split(s) for Task 6.1 SHAP explainability "
+        f"Selected {len(selected_splits)} split(s) for Task 6 SHAP explainability "
         f"(mode={CONFIG['selection_mode']})."
     )
 
@@ -652,18 +653,21 @@ def main() -> None:
             "feature_label": human_feature_names,
             "mean_abs_shap": mean_abs,
         }).sort_values("mean_abs_shap", ascending=False)
-        global_df.to_csv(task6_1_outdir / "tables" / f"{split_name}_global_feature_importance.csv", index=False)
+        global_df["split"] = split_name
+        global_df["rank"] = np.arange(1, len(global_df) + 1)
+        global_df.to_csv(task6_outdir / "tables" / f"{split_name}_global_feature_importance.csv", index=False)
+        global_importance_rows.extend(global_df.to_dict(orient="records"))
 
         _save_summary_plot(
             shap_values,
             x_explain_df,
-            outpath=task6_1_outdir / "figures" / f"{split_name}_shap_summary.png",
+            outpath=task6_outdir / "figures" / f"{split_name}_shap_summary.png",
             max_display=int(CONFIG["max_display_features"]),
         )
         _save_bar_plot(
             shap_values,
             x_explain_df,
-            outpath=task6_1_outdir / "figures" / f"{split_name}_shap_bar.png",
+            outpath=task6_outdir / "figures" / f"{split_name}_shap_bar.png",
             max_display=int(CONFIG["max_display_features"]),
         )
 
@@ -674,7 +678,7 @@ def main() -> None:
                     shap_values,
                     x_explain_df,
                     feature_name=feat,
-                    outpath=task6_1_outdir / "figures" / f"{split_name}_dependence_{safe_name}.png",
+                    outpath=task6_outdir / "figures" / f"{split_name}_dependence_{safe_name}.png",
                 )
 
         local_json_rows: List[Dict] = []
@@ -719,7 +723,7 @@ def main() -> None:
                 row_values=row_vals,
                 row_data=row_data,
                 feature_names=human_feature_names,
-                outpath=task6_1_outdir / "local_cases" / f"{split_name}_case_{rank}_local_bar.png",
+                outpath=task6_outdir / "local_cases" / f"{split_name}_case_{rank}_local_bar.png",
                 title=f"Task 6.1 local SHAP drivers: {split_name} case {rank}",
             )
 
@@ -731,9 +735,9 @@ def main() -> None:
         }
         global_texts.append(global_text_record)
 
-        with open(task6_1_outdir / "plain_english" / f"{split_name}_global_summary.json", "w", encoding="utf-8") as f:
+        with open(task6_outdir / "plain_english" / f"{split_name}_global_summary.json", "w", encoding="utf-8") as f:
             json.dump(global_text_record, f, indent=2)
-        with open(task6_1_outdir / "plain_english" / f"{split_name}_local_explanations.json", "w", encoding="utf-8") as f:
+        with open(task6_outdir / "plain_english" / f"{split_name}_local_explanations.json", "w", encoding="utf-8") as f:
             json.dump(local_json_rows, f, indent=2)
 
         summary_rows.append({
@@ -761,17 +765,62 @@ def main() -> None:
     summary_df = pd.DataFrame(summary_rows)
     local_cases_df = pd.DataFrame(local_case_rows)
     global_texts_df = pd.DataFrame(global_texts)
+    global_importance_df = pd.DataFrame(global_importance_rows)
 
-    summary_df.to_csv(task6_1_outdir / "task6_1_shap_summary.csv", index=False)
-    local_cases_df.to_csv(task6_1_outdir / "task6_1_local_case_summaries.csv", index=False)
-    global_texts_df.to_csv(task6_1_outdir / "task6_1_global_plain_english.csv", index=False)
+    summary_df.to_csv(task6_outdir / "task6_1_shap_summary.csv", index=False)
+    local_cases_df.to_csv(task6_outdir / "task6_1_local_case_summaries.csv", index=False)
+    global_texts_df.to_csv(task6_outdir / "task6_1_global_plain_english.csv", index=False)
+    global_importance_df.to_csv(task6_outdir / "tables" / "task6_1_global_feature_importance_long.csv", index=False)
+
+    if not global_importance_df.empty:
+        feature_trends_df = (
+            global_importance_df.groupby(["feature", "feature_label"], as_index=False)
+            .agg(
+                mean_of_mean_abs_shap=("mean_abs_shap", "mean"),
+                std_of_mean_abs_shap=("mean_abs_shap", "std"),
+                median_of_mean_abs_shap=("mean_abs_shap", "median"),
+                top1_count=("rank", lambda s: int((s == 1).sum())),
+                top3_count=("rank", lambda s: int((s <= 3).sum())),
+                top5_count=("rank", lambda s: int((s <= 5).sum())),
+                top10_count=("rank", lambda s: int((s <= 10).sum())),
+                avg_rank=("rank", "mean"),
+                best_rank=("rank", "min"),
+                worst_rank=("rank", "max"),
+                splits_present=("split", "nunique"),
+            )
+            .sort_values(["top1_count", "top3_count", "mean_of_mean_abs_shap", "avg_rank"], ascending=[False, False, False, True])
+        )
+        feature_trends_df.to_csv(task6_outdir / "tables" / "task6_1_feature_trends_across_splits.csv", index=False)
+
+        top1_counts_df = (
+            global_importance_df.loc[global_importance_df["rank"] == 1, ["feature", "feature_label", "split"]]
+            .groupby(["feature", "feature_label"], as_index=False)
+            .agg(top1_count=("split", "count"))
+            .sort_values(["top1_count", "feature_label"], ascending=[False, True])
+        )
+        top1_counts_df.to_csv(task6_outdir / "tables" / "task6_1_top1_feature_counts.csv", index=False)
+
+        top3_presence_df = (
+            global_importance_df.loc[global_importance_df["rank"] <= 3, ["feature", "feature_label", "split", "rank"]]
+            .groupby(["feature", "feature_label"], as_index=False)
+            .agg(top3_count=("split", "count"), avg_top3_rank=("rank", "mean"))
+            .sort_values(["top3_count", "avg_top3_rank", "feature_label"], ascending=[False, True, True])
+        )
+        top3_presence_df.to_csv(task6_outdir / "tables" / "task6_1_top3_feature_counts.csv", index=False)
+
+        print("\nCross-split SHAP feature trend summary:")
+        for _, row in feature_trends_df.head(10).iterrows():
+            print(
+                f"  {row['feature_label']}: top1_count={int(row['top1_count'])}, top3_count={int(row['top3_count'])}, "
+                f"mean_abs_shap={row['mean_of_mean_abs_shap']:.6f}, avg_rank={row['avg_rank']:.2f}"
+            )
 
     print("\nDone.")
-    print(f"Saved SHAP summary:   {task6_1_outdir / 'task6_1_shap_summary.csv'}")
-    print(f"Saved local summaries:{task6_1_outdir / 'task6_1_local_case_summaries.csv'}")
-    print(f"Saved tables in:      {task6_1_outdir / 'tables'}")
-    print(f"Saved figures in:     {task6_1_outdir / 'figures'}")
-    print(f"Saved demo text in:   {task6_1_outdir / 'plain_english'}")
+    print(f"Saved SHAP summary:   {task6_outdir / 'task6_1_shap_summary.csv'}")
+    print(f"Saved local summaries:{task6_outdir / 'task6_1_local_case_summaries.csv'}")
+    print(f"Saved tables in:      {task6_outdir / 'tables'}")
+    print(f"Saved figures in:     {task6_outdir / 'figures'}")
+    print(f"Saved demo text in:   {task6_outdir / 'plain_english'}")
 
 
 if __name__ == "__main__":

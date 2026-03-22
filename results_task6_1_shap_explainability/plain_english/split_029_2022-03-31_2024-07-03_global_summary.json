@@ -4,9 +4,9 @@
   "top_features": [
     "60-day return volatility",
     "Volume change",
-    "14-day RSI",
+    "5-day average return",
     "5-day momentum",
-    "5-day average return"
+    "14-day RSI"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, Volume change, 14-day RSI, 5-day momentum, and 5-day average return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, Volume change, 5-day average return, 5-day momentum, and 14-day RSI."
 }

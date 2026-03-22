@@ -7,39 +7,39 @@
     "y_pred": 0.11960472911596298,
     "base_value": -0.005372645333409309,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2019-12-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day return volatility, MACD signal (9), 1-day log return. The main downward influences were Asset indicator: IWM, MACD (12, 26), 60-day return volatility.",
+    "summary_text": "For IWM on 2019-12-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day return volatility, MACD signal (9), 1-day log return. The main downward influences were Asset indicator: IWM, MACD (12, 26), 20-day average volume.",
     "positive_drivers": [
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": 0.058400802314281464
+        "contribution": 0.05516287311911583
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.03717644512653351
+        "contribution": 0.03423522412776947
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.021663885563611984
+        "contribution": 0.026943694800138474
       }
     ],
     "negative_drivers": [
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": -0.014496042393147945
+        "contribution": -0.015893077477812767
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.012946459464728832
+        "contribution": -0.01143871434032917
       },
       {
-        "feature": "ret_std_60",
-        "feature_label": "60-day return volatility",
-        "contribution": -0.011154145002365112
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.008581364527344704
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.11920681595802307,
     "base_value": -0.005372645333409309,
     "prediction_direction": "negative",
-    "summary_text": "For TLT on 2019-10-24, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, MACD signal (9), 5-day return volatility. The main downward influences were 14-day RSI, 60-day momentum, 10-day momentum.",
+    "summary_text": "For TLT on 2019-10-24, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, MACD signal (9), 20-day average return. The main downward influences were 14-day RSI, 10-day momentum, 10-day return volatility.",
     "positive_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.006217294838279486
+        "contribution": 0.012261207215487957
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.0058564008213579655
+        "contribution": 0.008363598957657814
       },
       {
-        "feature": "ret_std_5",
-        "feature_label": "5-day return volatility",
-        "contribution": 0.0037080617621541023
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.002672450616955757
       }
     ],
     "negative_drivers": [
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.0499797947704792
-      },
-      {
-        "feature": "mom_60",
-        "feature_label": "60-day momentum",
-        "contribution": -0.024247338995337486
+        "contribution": -0.05545645207166672
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.018582362681627274
+        "contribution": -0.026315227150917053
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.015815261751413345
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.10979055613279343,
     "base_value": -0.005372645333409309,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2019-11-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day return volatility, MACD (12, 26), 20-day average volume. The main downward influences were 14-day RSI, Trading volume, 10-day return volatility.",
+    "summary_text": "For IWM on 2019-11-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day return volatility, MACD (12, 26), 20-day average volume. The main downward influences were Trading volume, 10-day return volatility, 14-day RSI.",
     "positive_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.01391008123755455
+        "contribution": 0.015027308836579323
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.013487412594258785
+        "contribution": 0.012055793777108192
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.009935712441802025
+        "contribution": 0.0065307109616696835
       }
     ],
     "negative_drivers": [
       {
-        "feature": "rsi_14",
-        "feature_label": "14-day RSI",
-        "contribution": -0.025326628237962723
-      },
-      {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.02161727100610733
+        "contribution": -0.02158421277999878
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": -0.013958794064819813
+        "contribution": -0.01818154752254486
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.017786646261811256
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.11430656164884567,
     "base_value": -0.005372645333409309,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2019-11-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 1-day log return, 10-day momentum, Asset indicator: IWM. The main downward influences were 1-day simple return, 10-day average return, 5-day momentum.",
+    "summary_text": "For IWM on 2019-11-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 1-day log return, 5-day average return, 10-day momentum. The main downward influences were 1-day simple return, 10-day average return, 5-day momentum.",
     "positive_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.04977580904960632
+        "contribution": 0.05656526982784271
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.030573293566703796
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.03330046311020851
-      },
-      {
-        "feature": "ticker_IWM",
-        "feature_label": "Asset indicator: IWM",
-        "contribution": 0.03111484833061695
+        "contribution": 0.028371401131153107
       }
     ],
     "negative_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.0870630294084549
+        "contribution": -0.07250889390707016
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.043421000242233276
+        "contribution": -0.05048432946205139
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.042374659329652786
+        "contribution": -0.04586123302578926
       }
     ],
     "case_rank": 4

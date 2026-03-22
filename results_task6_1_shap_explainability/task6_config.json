@@ -1,7 +1,7 @@
 {
   "task2_outdir": "data_prepared_task2",
   "task4_outdir": "results_task4_1_dnn_only",
-  "task6_1_outdir": "results_task6_1_shap_explainability",
+  "task6_outdir": "results_task6_1_shap_explainability",
   "selection_mode": "all_saved_models",
   "selected_splits": [],
   "recent_splits": 2,

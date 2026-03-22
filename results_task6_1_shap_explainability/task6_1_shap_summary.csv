@@ -1,35 +1,35 @@
 split,explainer,n_background_rows,n_explained_rows,n_train_rows,n_test_rows,n_features,top_feature_1,top_feature_2,top_feature_3
-split_001_2015-03-31_2017-06-28,GradientExplainer,80,121,2016,252,25,"MACD (12, 26)",1-day log return,20-day momentum
-split_002_2015-06-30_2017-09-27,GradientExplainer,80,122,2016,252,25,20-day return volatility,14-day RSI,10-day average return
+split_001_2015-03-31_2017-06-28,GradientExplainer,80,121,2016,252,25,1-day log return,"MACD (12, 26)",20-day momentum
+split_002_2015-06-30_2017-09-27,GradientExplainer,80,122,2016,252,25,20-day return volatility,10-day average return,14-day RSI
 split_003_2015-09-29_2017-12-27,GradientExplainer,80,122,2016,252,25,60-day return volatility,MACD signal (9),"MACD (12, 26)"
 split_004_2015-12-29_2018-03-29,GradientExplainer,80,123,2016,252,25,10-day momentum,MACD histogram,Trading volume
-split_005_2016-03-31_2018-06-28,GradientExplainer,80,124,2016,252,25,MACD signal (9),20-day return volatility,10-day average return
+split_005_2016-03-31_2018-06-28,GradientExplainer,80,124,2016,252,25,MACD signal (9),20-day return volatility,60-day momentum
 split_006_2016-06-29_2018-09-27,GradientExplainer,80,123,2016,252,25,14-day RSI,10-day average return,20-day momentum
 split_007_2016-09-28_2018-12-28,GradientExplainer,80,122,2016,252,25,MACD signal (9),20-day return volatility,60-day average return
 split_008_2016-12-28_2019-04-01,GradientExplainer,80,122,2016,252,25,MACD signal (9),20-day momentum,10-day return volatility
 split_009_2017-03-30_2019-07-01,GradientExplainer,80,123,2016,252,25,14-day RSI,10-day average return,1-day log return
 split_010_2017-06-29_2019-09-30,GradientExplainer,80,124,2016,252,25,Volume change,5-day momentum,5-day average return
-split_011_2017-09-28_2019-12-30,GradientExplainer,80,121,2016,252,25,14-day RSI,10-day average return,10-day momentum
+split_011_2017-09-28_2019-12-30,GradientExplainer,80,121,2016,252,25,10-day average return,14-day RSI,10-day momentum
 split_012_2017-12-28_2020-03-31,GradientExplainer,80,123,2016,252,25,20-day return volatility,10-day return volatility,60-day return volatility
 split_013_2018-04-02_2020-06-30,GradientExplainer,80,123,2016,252,25,60-day return volatility,60-day momentum,20-day return volatility
-split_014_2018-06-29_2020-09-29,GradientExplainer,80,121,2016,252,25,60-day average return,"MACD (12, 26)",60-day momentum
-split_015_2018-09-28_2020-12-29,GradientExplainer,80,122,2016,252,25,60-day average return,"MACD (12, 26)",10-day momentum
+split_014_2018-06-29_2020-09-29,GradientExplainer,80,121,2016,252,25,"MACD (12, 26)",60-day average return,MACD histogram
+split_015_2018-09-28_2020-12-29,GradientExplainer,80,122,2016,252,25,"MACD (12, 26)",60-day average return,10-day momentum
 split_016_2018-12-31_2021-03-31,GradientExplainer,80,124,2016,252,25,60-day average return,60-day momentum,MACD signal (9)
-split_017_2019-04-02_2021-06-30,GradientExplainer,80,121,2016,252,25,1-day log return,5-day return volatility,5-day momentum
+split_017_2019-04-02_2021-06-30,GradientExplainer,80,121,2016,252,25,5-day return volatility,1-day log return,1-day simple return
 split_018_2019-07-02_2021-09-29,GradientExplainer,80,122,2016,252,25,10-day return volatility,1-day log return,20-day average volume
 split_019_2019-10-01_2021-12-29,GradientExplainer,80,123,2016,252,25,20-day momentum,20-day average return,MACD histogram
-split_020_2019-12-31_2022-03-30,GradientExplainer,80,122,2016,252,25,5-day momentum,20-day average volume,MACD histogram
+split_020_2019-12-31_2022-03-30,GradientExplainer,80,122,2016,252,25,5-day momentum,20-day average volume,MACD signal (9)
 split_021_2020-04-01_2022-06-30,GradientExplainer,80,124,2016,252,25,5-day momentum,"MACD (12, 26)",20-day average return
 split_022_2020-07-01_2022-09-29,GradientExplainer,80,123,2016,252,25,10-day momentum,10-day average return,1-day simple return
 split_023_2020-09-30_2022-12-29,GradientExplainer,80,122,2016,252,25,10-day momentum,60-day return volatility,10-day average return
 split_024_2020-12-30_2023-03-31,GradientExplainer,80,121,2016,252,25,60-day momentum,10-day average return,Trading volume
 split_025_2021-04-01_2023-07-03,GradientExplainer,80,122,2016,252,25,60-day average return,60-day momentum,10-day return volatility
-split_026_2021-07-01_2023-10-02,GradientExplainer,80,121,2016,252,25,20-day return volatility,20-day average return,60-day momentum
-split_027_2021-09-30_2024-01-02,GradientExplainer,80,123,2016,252,25,MACD signal (9),20-day average return,20-day momentum
-split_028_2021-12-30_2024-04-03,GradientExplainer,80,124,2016,252,25,10-day return volatility,60-day momentum,60-day average return
-split_029_2022-03-31_2024-07-03,GradientExplainer,80,122,2016,252,25,60-day return volatility,Volume change,14-day RSI
+split_026_2021-07-01_2023-10-02,GradientExplainer,80,121,2016,252,25,20-day return volatility,20-day average return,60-day return volatility
+split_027_2021-09-30_2024-01-02,GradientExplainer,80,123,2016,252,25,20-day average return,MACD signal (9),20-day momentum
+split_028_2021-12-30_2024-04-03,GradientExplainer,80,124,2016,252,25,60-day momentum,10-day return volatility,60-day average return
+split_029_2022-03-31_2024-07-03,GradientExplainer,80,122,2016,252,25,60-day return volatility,Volume change,5-day average return
 split_030_2022-07-01_2024-10-02,GradientExplainer,80,123,2016,252,25,5-day average return,10-day average return,5-day momentum
 split_031_2022-09-30_2025-01-02,GradientExplainer,80,124,2016,252,25,14-day RSI,10-day average return,10-day return volatility
-split_032_2022-12-30_2025-04-04,GradientExplainer,80,122,2016,252,25,60-day average return,20-day momentum,1-day log return
+split_032_2022-12-30_2025-04-04,GradientExplainer,80,122,2016,252,25,60-day average return,20-day momentum,20-day average return
 split_033_2023-04-03_2025-07-08,GradientExplainer,80,121,2016,252,25,60-day return volatility,20-day return volatility,MACD signal (9)
 split_034_2023-07-05_2025-10-06,GradientExplainer,80,124,2016,252,25,10-day momentum,20-day momentum,14-day RSI

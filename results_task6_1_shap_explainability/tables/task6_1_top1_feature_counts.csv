@@ -1,0 +1,18 @@
+feature,feature_label,top1_count
+mom_10,10-day momentum,4
+ret_std_60,60-day return volatility,4
+rsi_14,14-day RSI,3
+ret_std_20,20-day return volatility,3
+ret_mean_60,60-day average return,3
+macd_signal_9,MACD signal (9),3
+mom_5,5-day momentum,2
+mom_60,60-day momentum,2
+macd_12_26,"MACD (12, 26)",2
+log_return_1,1-day log return,1
+ret_mean_10,10-day average return,1
+ret_std_10,10-day return volatility,1
+ret_mean_20,20-day average return,1
+mom_20,20-day momentum,1
+ret_mean_5,5-day average return,1
+ret_std_5,5-day return volatility,1
+volume_chg,Volume change,1

@@ -5,8 +5,8 @@
     "MACD signal (9)",
     "20-day momentum",
     "10-day return volatility",
-    "10-day average return",
-    "60-day return volatility"
+    "60-day return volatility",
+    "10-day average return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by MACD signal (9), 20-day momentum, 10-day return volatility, 10-day average return, and 60-day return volatility."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by MACD signal (9), 20-day momentum, 10-day return volatility, 60-day return volatility, and 10-day average return."
 }

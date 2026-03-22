@@ -6,7 +6,7 @@
     "10-day average return",
     "1-day simple return",
     "MACD histogram",
-    "20-day average return"
+    "1-day log return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, 10-day average return, 1-day simple return, MACD histogram, and 20-day average return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, 10-day average return, 1-day simple return, MACD histogram, and 1-day log return."
 }

@@ -7,39 +7,39 @@
     "y_pred": 0.1453752964735031,
     "base_value": 0.02305370196700096,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2023-02-07, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day momentum, Volume change, 1-day log return. The main downward influences were 20-day average return, 10-day average return, 60-day return volatility.",
+    "summary_text": "For IWM on 2023-02-07, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day momentum, MACD (12, 26), Volume change. The main downward influences were 20-day average return, 10-day average return, 60-day return volatility.",
     "positive_drivers": [
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.0434810072183609
+        "contribution": 0.030023686587810516
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.02582111582159996
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.026405878365039825
-      },
-      {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": 0.024416998028755188
+        "contribution": 0.024719204753637314
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.03154315426945686
+        "contribution": -0.03131168708205223
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.026849906891584396
+        "contribution": -0.018737301230430603
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.01953662559390068
+        "contribution": -0.018367892131209373
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.13575142621994019,
     "base_value": 0.02305370196700096,
     "prediction_direction": "negative",
-    "summary_text": "For EFA on 2023-01-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day average return, 10-day momentum, Trading volume. The main downward influences were 60-day momentum, 10-day average return, 20-day momentum.",
+    "summary_text": "For EFA on 2023-01-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day average return, 10-day momentum, Trading volume. The main downward influences were 60-day momentum, 20-day momentum, 5-day average return.",
     "positive_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.0582265742123127
+        "contribution": 0.05158383399248123
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.04934904724359512
+        "contribution": 0.04225918650627136
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.016908081248402596
+        "contribution": 0.018552139401435852
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.09865015000104904
-      },
-      {
-        "feature": "ret_mean_10",
-        "feature_label": "10-day average return",
-        "contribution": -0.0425129272043705
+        "contribution": -0.09592192620038986
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.033215466886758804
+        "contribution": -0.03178158774971962
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": -0.02389857918024063
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.11832408607006073,
     "base_value": 0.02305370196700096,
     "prediction_direction": "negative",
-    "summary_text": "For EFA on 2023-01-11, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, 60-day average return, Trading volume. The main downward influences were 60-day momentum, 10-day average return, 5-day momentum.",
+    "summary_text": "For EFA on 2023-01-11, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, Trading volume, 60-day average return. The main downward influences were 60-day momentum, 10-day average return, 20-day momentum.",
     "positive_drivers": [
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.04520191252231598
-      },
-      {
-        "feature": "ret_mean_60",
-        "feature_label": "60-day average return",
-        "contribution": 0.029156768694519997
+        "contribution": 0.04584190249443054
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.013245359994471073
+        "contribution": 0.018546702340245247
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.01696755923330784
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.10035893321037292
+        "contribution": -0.09000734984874725
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.04150017723441124
+        "contribution": -0.03791750594973564
       },
       {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": -0.020538682118058205
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.02173677831888199
       }
     ],
     "case_rank": 3
@@ -147,34 +147,34 @@
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.06547026336193085
+        "contribution": 0.05161113291978836
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.0390760600566864
+        "contribution": 0.03724607080221176
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.025884225964546204
+        "contribution": 0.019444355741143227
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.11565222591161728
+        "contribution": -0.0931844487786293
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.07335587590932846
+        "contribution": -0.072960264980793
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.048165418207645416
+        "contribution": -0.04587549716234207
       }
     ],
     "case_rank": 4

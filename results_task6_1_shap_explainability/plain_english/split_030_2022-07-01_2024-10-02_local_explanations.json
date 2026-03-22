@@ -7,39 +7,39 @@
     "y_pred": 0.12978847324848175,
     "base_value": -0.005293357186019421,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2024-07-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 5-day momentum, MACD histogram. The main downward influences were 20-day average return, 1-day log return, 14-day RSI.",
+    "summary_text": "For SPY on 2024-07-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, MACD histogram, 5-day momentum. The main downward influences were 20-day average return, 20-day average volume, 1-day log return.",
     "positive_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.04386476054787636
-      },
-      {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": 0.027014128863811493
+        "contribution": 0.04168836772441864
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.02564469538629055
+        "contribution": 0.03911951556801796
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.03818461298942566
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.013120675459504128
+        "contribution": -0.013259973376989365
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.012869340367615223
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.007290528621524572
-      },
-      {
-        "feature": "rsi_14",
-        "feature_label": "14-day RSI",
-        "contribution": -0.005085670854896307
+        "contribution": -0.008311470970511436
       }
     ],
     "case_rank": 1
@@ -57,34 +57,34 @@
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.09203358739614487
+        "contribution": 0.0815759003162384
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.04757197946310043
+        "contribution": 0.03858787938952446
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": 0.027682319283485413
+        "contribution": 0.02269194833934307
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.09985553473234177
+        "contribution": -0.08317484706640244
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.0889526903629303
+        "contribution": -0.07882353663444519
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.07078363746404648
+        "contribution": -0.06434057652950287
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.14123806357383728,
     "base_value": -0.005293357186019421,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2024-08-12, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day return volatility, 1-day log return, Asset indicator: IWM. The main downward influences were 20-day return volatility, MACD histogram, 14-day RSI.",
+    "summary_text": "For IWM on 2024-08-12, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD (12, 26), 1-day log return, Asset indicator: IWM. The main downward influences were 20-day return volatility, MACD histogram, 14-day RSI.",
     "positive_drivers": [
       {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": 0.025970444083213806
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.0311628058552742
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.025784289464354515
+        "contribution": 0.030488016083836555
       },
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": 0.023256924003362656
+        "contribution": 0.023246534168720245
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.1108512133359909
+        "contribution": -0.11887059360742569
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.04475468024611473
+        "contribution": -0.0574735626578331
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.03650854155421257
+        "contribution": -0.044633302837610245
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.1207321435213089,
     "base_value": -0.005293357186019421,
     "prediction_direction": "negative",
-    "summary_text": "For TLT on 2024-08-02, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, 60-day momentum, 14-day RSI. The main downward influences were 1-day simple return, 1-day log return, 5-day average return.",
+    "summary_text": "For TLT on 2024-08-02, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, 14-day RSI, 60-day momentum. The main downward influences were 1-day simple return, 5-day average return, 1-day log return.",
     "positive_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.05439323931932449
-      },
-      {
-        "feature": "mom_60",
-        "feature_label": "60-day momentum",
-        "contribution": 0.018055344000458717
+        "contribution": 0.05308632552623749
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": 0.017481345683336258
+        "contribution": 0.02578631602227688
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.01835753209888935
       }
     ],
     "negative_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.0546492338180542
-      },
-      {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": -0.02444957010447979
+        "contribution": -0.058153651654720306
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.02441202476620674
+        "contribution": -0.028218669816851616
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.02700011432170868
       }
     ],
     "case_rank": 4

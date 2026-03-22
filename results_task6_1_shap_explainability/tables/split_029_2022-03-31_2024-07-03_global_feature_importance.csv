@@ -1,26 +1,26 @@
-feature,feature_label,mean_abs_shap
-ret_std_60,60-day return volatility,0.02020327542580714
-volume_chg,Volume change,0.012838280735657641
-rsi_14,14-day RSI,0.012504955322061714
-mom_5,5-day momentum,0.012010675298899483
-ret_mean_5,5-day average return,0.011888284725530673
-ret_std_5,5-day return volatility,0.011505461528486194
-mom_20,20-day momentum,0.010415186323907769
-ret_std_20,20-day return volatility,0.010375142841648546
-simple_return_1,1-day simple return,0.01013517219725458
-volume,Trading volume,0.009753139241795116
-macd_signal_9,MACD signal (9),0.009658238720759505
-log_return_1,1-day log return,0.008510870831354414
-ret_mean_10,10-day average return,0.008210826142009759
-ret_std_10,10-day return volatility,0.008170895444011683
-volume_roll_mean_20,20-day average volume,0.007965333164468232
-ret_mean_60,60-day average return,0.007751384527018374
-ret_mean_20,20-day average return,0.007464681179014599
-ticker_TLT,Asset indicator: TLT,0.007122373974168306
-macd_12_26,"MACD (12, 26)",0.0070479977453703855
-mom_10,10-day momentum,0.006398045755408706
-macd_hist,MACD histogram,0.006254899267914283
-mom_60,60-day momentum,0.006219946609279923
-ticker_EFA,Asset indicator: EFA,0.005507208599887176
-ticker_IWM,Asset indicator: IWM,0.004590902031008018
-ticker_SPY,Asset indicator: SPY,0.0042824656150619155
+feature,feature_label,mean_abs_shap,split,rank
+ret_std_60,60-day return volatility,0.020236683686845457,split_029_2022-03-31_2024-07-03,1
+volume_chg,Volume change,0.012472650817248085,split_029_2022-03-31_2024-07-03,2
+ret_mean_5,5-day average return,0.011905735736162883,split_029_2022-03-31_2024-07-03,3
+mom_5,5-day momentum,0.011841647693487533,split_029_2022-03-31_2024-07-03,4
+rsi_14,14-day RSI,0.011567776227120255,split_029_2022-03-31_2024-07-03,5
+ret_std_5,5-day return volatility,0.011070334432111313,split_029_2022-03-31_2024-07-03,6
+mom_20,20-day momentum,0.010416918240674127,split_029_2022-03-31_2024-07-03,7
+volume,Trading volume,0.010366319899119725,split_029_2022-03-31_2024-07-03,8
+ret_std_20,20-day return volatility,0.010018881477513846,split_029_2022-03-31_2024-07-03,9
+simple_return_1,1-day simple return,0.00990465253490867,split_029_2022-03-31_2024-07-03,10
+macd_signal_9,MACD signal (9),0.009811948895432698,split_029_2022-03-31_2024-07-03,11
+log_return_1,1-day log return,0.008281442294215504,split_029_2022-03-31_2024-07-03,12
+ret_std_10,10-day return volatility,0.007991008023785324,split_029_2022-03-31_2024-07-03,13
+ret_mean_20,20-day average return,0.00788658932005032,split_029_2022-03-31_2024-07-03,14
+ret_mean_60,60-day average return,0.007739376793205204,split_029_2022-03-31_2024-07-03,15
+volume_roll_mean_20,20-day average volume,0.007718252587594299,split_029_2022-03-31_2024-07-03,16
+ret_mean_10,10-day average return,0.00763619153884542,split_029_2022-03-31_2024-07-03,17
+macd_12_26,"MACD (12, 26)",0.0071799207821137976,split_029_2022-03-31_2024-07-03,18
+ticker_TLT,Asset indicator: TLT,0.006760049856138796,split_029_2022-03-31_2024-07-03,19
+mom_10,10-day momentum,0.006748953345494123,split_029_2022-03-31_2024-07-03,20
+macd_hist,MACD histogram,0.00666400926093047,split_029_2022-03-31_2024-07-03,21
+mom_60,60-day momentum,0.006646442452799166,split_029_2022-03-31_2024-07-03,22
+ticker_EFA,Asset indicator: EFA,0.005471903969844818,split_029_2022-03-31_2024-07-03,23
+ticker_IWM,Asset indicator: IWM,0.004609839177438054,split_029_2022-03-31_2024-07-03,24
+ticker_SPY,Asset indicator: SPY,0.0042597664101240145,split_029_2022-03-31_2024-07-03,25

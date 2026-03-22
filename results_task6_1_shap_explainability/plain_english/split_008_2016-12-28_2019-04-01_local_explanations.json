@@ -7,39 +7,39 @@
     "y_pred": 0.17352953553199768,
     "base_value": 0.0010852634441107512,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2019-01-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day momentum, 20-day return volatility, 10-day return volatility. The main downward influences were 60-day return volatility, 10-day average return, MACD histogram.",
+    "summary_text": "For IWM on 2019-01-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day momentum, 20-day return volatility, 10-day return volatility. The main downward influences were 60-day return volatility, 10-day average return, MACD signal (9).",
     "positive_drivers": [
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.16100506484508514
+        "contribution": 0.16675187647342682
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.10638421028852463
+        "contribution": 0.09943162649869919
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.04718467593193054
+        "contribution": 0.047488175332546234
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.1317301243543625
+        "contribution": -0.1352277249097824
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.03333599865436554
+        "contribution": -0.039788149297237396
       },
       {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": -0.023132454603910446
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.020394347608089447
       }
     ],
     "case_rank": 1
@@ -57,34 +57,34 @@
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.20138514041900635
+        "contribution": 0.1842385083436966
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.15452516078948975
+        "contribution": 0.13060614466667175
       },
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.047218017280101776
+        "contribution": 0.04287106916308403
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.1721021682024002
+        "contribution": -0.1584426611661911
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.12071408331394196
+        "contribution": -0.11012537032365799
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": -0.10163047164678574
+        "contribution": -0.10048732161521912
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.14663709700107574,
     "base_value": 0.0010852634441107512,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2019-01-18, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, 20-day momentum, 14-day RSI. The main downward influences were MACD histogram, 60-day return volatility, Trading volume.",
+    "summary_text": "For SPY on 2019-01-18, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day momentum, 10-day momentum, 14-day RSI. The main downward influences were MACD histogram, 60-day return volatility, Trading volume.",
     "positive_drivers": [
-      {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": 0.06273119151592255
-      },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.05990871042013168
+        "contribution": 0.06513021886348724
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.06128523498773575
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": 0.030918391421437263
+        "contribution": 0.04077880457043648
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.10850069671869278
+        "contribution": -0.12078621983528137
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.09071387350559235
+        "contribution": -0.08622405678033829
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.06518396735191345
+        "contribution": -0.06769206374883652
       }
     ],
     "case_rank": 3
@@ -147,34 +147,34 @@
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.13897934556007385
+        "contribution": 0.152394637465477
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": 0.035188183188438416
+        "contribution": 0.03693247213959694
       },
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.03047838993370533
+        "contribution": 0.031383875757455826
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.13625864684581757
+        "contribution": -0.1353485882282257
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": -0.09188186377286911
+        "contribution": -0.09861410409212112
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.06262237578630447
+        "contribution": -0.06246136501431465
       }
     ],
     "case_rank": 4

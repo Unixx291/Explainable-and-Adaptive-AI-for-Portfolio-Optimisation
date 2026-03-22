@@ -2,11 +2,11 @@
   "split": "split_015_2018-09-28_2020-12-29",
   "explainer": "GradientExplainer",
   "top_features": [
-    "60-day average return",
     "MACD (12, 26)",
+    "60-day average return",
     "10-day momentum",
-    "20-day average return",
-    "10-day average return"
+    "10-day average return",
+    "MACD signal (9)"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day average return, MACD (12, 26), 10-day momentum, 20-day average return, and 10-day average return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by MACD (12, 26), 60-day average return, 10-day momentum, 10-day average return, and MACD signal (9)."
 }

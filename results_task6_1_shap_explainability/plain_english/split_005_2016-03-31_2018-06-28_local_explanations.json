@@ -7,39 +7,39 @@
     "y_pred": 0.11453660577535629,
     "base_value": 0.002208162099123001,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2018-04-09, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 20-day momentum, 5-day momentum. The main downward influences were MACD (12, 26), 60-day momentum, 20-day return volatility.",
+    "summary_text": "For SPY on 2018-04-09, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 20-day momentum, 60-day average return. The main downward influences were 20-day return volatility, MACD (12, 26), 60-day momentum.",
     "positive_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.14112472534179688
+        "contribution": 0.10503537952899933
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.03235793486237526
+        "contribution": 0.013476632535457611
       },
       {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": 0.019263312220573425
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.013293922878801823
       }
     ],
     "negative_drivers": [
       {
+        "feature": "ret_std_20",
+        "feature_label": "20-day return volatility",
+        "contribution": -0.0209900364279747
+      },
+      {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.0438433438539505
+        "contribution": -0.020407268777489662
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.032606180757284164
-      },
-      {
-        "feature": "ret_std_20",
-        "feature_label": "20-day return volatility",
-        "contribution": -0.02871314063668251
+        "contribution": -0.01971038058400154
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.05163635313510895,
     "base_value": 0.002208162099123001,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2018-04-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day average return, 10-day momentum, 60-day return volatility. The main downward influences were 1-day log return, Trading volume, 20-day return volatility.",
+    "summary_text": "For SPY on 2018-04-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day average return, 60-day return volatility, 60-day momentum. The main downward influences were Trading volume, 1-day log return, 20-day average volume.",
     "positive_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.011591044254601002
-      },
-      {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": 0.008175655268132687
+        "contribution": 0.021968340501189232
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": 0.006014160346239805
+        "contribution": 0.00861460529267788
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.0074655781500041485
       }
     ],
     "negative_drivers": [
       {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": -0.02555864304304123
-      },
-      {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.025388147681951523
+        "contribution": -0.02793273515999317
       },
       {
-        "feature": "ret_std_20",
-        "feature_label": "20-day return volatility",
-        "contribution": -0.013471080921590328
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.01786663569509983
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.01720060221850872
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.09300263226032257,
     "base_value": 0.002208162099123001,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2018-04-05, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 20-day average volume, 10-day return volatility. The main downward influences were 10-day average return, Volume change, 20-day momentum.",
+    "summary_text": "For SPY on 2018-04-05, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 20-day average volume, 10-day return volatility. The main downward influences were 10-day average return, 20-day momentum, Asset indicator: SPY.",
     "positive_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.08187457919120789
+        "contribution": 0.09822460263967514
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.03171800449490547
+        "contribution": 0.03913334384560585
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.02170594036579132
+        "contribution": 0.02704603224992752
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.03384007513523102
-      },
-      {
-        "feature": "volume_chg",
-        "feature_label": "Volume change",
-        "contribution": -0.0180357713252306
+        "contribution": -0.03744802623987198
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.016377465799450874
+        "contribution": -0.023002976551651955
+      },
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": -0.019426174461841583
       }
     ],
     "case_rank": 3
@@ -147,34 +147,34 @@
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.09921502321958542
+        "contribution": 0.09320586919784546
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.027756381779909134
+        "contribution": 0.02597852796316147
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": 0.02431175485253334
+        "contribution": 0.020099259912967682
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.05160747841000557
+        "contribution": -0.05473259091377258
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.027102138847112656
+        "contribution": -0.026393288746476173
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.016580576077103615
+        "contribution": -0.016499994322657585
       }
     ],
     "case_rank": 4

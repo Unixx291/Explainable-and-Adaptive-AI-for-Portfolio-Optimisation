@@ -4,9 +4,9 @@
   "top_features": [
     "20-day return volatility",
     "20-day average return",
-    "60-day momentum",
     "60-day return volatility",
-    "14-day RSI"
+    "60-day momentum",
+    "10-day average return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day return volatility, 20-day average return, 60-day momentum, 60-day return volatility, and 14-day RSI."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day return volatility, 20-day average return, 60-day return volatility, 60-day momentum, and 10-day average return."
 }

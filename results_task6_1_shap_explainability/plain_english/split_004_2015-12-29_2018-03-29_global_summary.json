@@ -6,7 +6,7 @@
     "MACD histogram",
     "Trading volume",
     "20-day momentum",
-    "5-day momentum"
+    "5-day average return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, MACD histogram, Trading volume, 20-day momentum, and 5-day momentum."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, MACD histogram, Trading volume, 20-day momentum, and 5-day average return."
 }

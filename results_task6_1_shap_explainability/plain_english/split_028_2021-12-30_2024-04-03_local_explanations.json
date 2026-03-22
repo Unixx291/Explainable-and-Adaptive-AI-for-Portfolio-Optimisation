@@ -7,39 +7,39 @@
     "y_pred": 0.14486145973205566,
     "base_value": -0.003974952735006809,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2024-02-01, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 60-day momentum, 1-day simple return, 60-day average return. The main downward influences were 1-day log return, 10-day average return, MACD (12, 26).",
+    "summary_text": "For IWM on 2024-02-01, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 60-day momentum, 60-day average return, 1-day simple return. The main downward influences were 1-day log return, 10-day average return, MACD signal (9).",
     "positive_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.046304985880851746
-      },
-      {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": 0.03385227546095848
+        "contribution": 0.03735169768333435
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.02542736381292343
+        "contribution": 0.024035893380641937
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.020563727244734764
       }
     ],
     "negative_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.037742916494607925
+        "contribution": -0.03128804638981819
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.019117968156933784
+        "contribution": -0.016758549958467484
       },
       {
-        "feature": "macd_12_26",
-        "feature_label": "MACD (12, 26)",
-        "contribution": -0.003597378497943282
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.002197993453592062
       }
     ],
     "case_rank": 1
@@ -57,34 +57,34 @@
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.0781375914812088
+        "contribution": 0.07433740794658661
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.05472609028220177
+        "contribution": 0.06194014102220535
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.047828271985054016
+        "contribution": 0.042201556265354156
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.09442733973264694
+        "contribution": -0.10067756474018097
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.05829935520887375
+        "contribution": -0.06338866055011749
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": -0.05575515702366829
+        "contribution": -0.05408822372555733
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.11236292868852615,
     "base_value": -0.003974952735006809,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2024-01-29, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day return volatility, 60-day return volatility, 5-day average return. The main downward influences were 20-day average volume, 1-day log return, 20-day momentum.",
+    "summary_text": "For SPY on 2024-01-29, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day return volatility, 1-day simple return, 5-day average return. The main downward influences were 20-day average volume, 1-day log return, 60-day momentum.",
     "positive_drivers": [
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.04600272700190544
+        "contribution": 0.048172321170568466
       },
       {
-        "feature": "ret_std_60",
-        "feature_label": "60-day return volatility",
-        "contribution": 0.01132147666066885
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.012328309938311577
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.011031653732061386
+        "contribution": 0.011692779138684273
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.03386610746383667
+        "contribution": -0.0443398579955101
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.02392270788550377
+        "contribution": -0.02785816416144371
       },
       {
-        "feature": "mom_20",
-        "feature_label": "20-day momentum",
-        "contribution": -0.023410074412822723
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.024458952248096466
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.1118064895272255,
     "base_value": -0.003974952735006809,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2024-02-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 60-day average return, 10-day momentum, Asset indicator: IWM. The main downward influences were 10-day average return, 1-day simple return, 1-day log return.",
+    "summary_text": "For IWM on 2024-02-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 60-day average return, 5-day average return, Trading volume. The main downward influences were 10-day average return, Asset indicator: TLT, 1-day simple return.",
     "positive_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.02244785986840725
+        "contribution": 0.022568216547369957
       },
       {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": 0.014864918775856495
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.012706049717962742
       },
       {
-        "feature": "ticker_IWM",
-        "feature_label": "Asset indicator: IWM",
-        "contribution": 0.012237546034157276
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.011992785148322582
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.01314518228173256
+        "contribution": -0.008004700765013695
+      },
+      {
+        "feature": "ticker_TLT",
+        "feature_label": "Asset indicator: TLT",
+        "contribution": -0.002611558185890317
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.0072333053685724735
-      },
-      {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": -0.002332745585590601
+        "contribution": -0.0010776862036436796
       }
     ],
     "case_rank": 4

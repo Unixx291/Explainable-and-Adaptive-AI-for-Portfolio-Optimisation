@@ -5,8 +5,8 @@
     "60-day momentum",
     "10-day average return",
     "Trading volume",
-    "10-day momentum",
-    "14-day RSI"
+    "14-day RSI",
+    "10-day momentum"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day momentum, 10-day average return, Trading volume, 10-day momentum, and 14-day RSI."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day momentum, 10-day average return, Trading volume, 14-day RSI, and 10-day momentum."
 }

@@ -7,39 +7,39 @@
     "y_pred": 0.12659411132335663,
     "base_value": 0.0014483024133369327,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2024-06-24, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 5-day return volatility, Volume change. The main downward influences were 60-day return volatility, 20-day return volatility, Trading volume.",
+    "summary_text": "For SPY on 2024-06-24, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), Volume change, 5-day return volatility. The main downward influences were 60-day return volatility, 20-day return volatility, 60-day momentum.",
     "positive_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.04075289145112038
-      },
-      {
-        "feature": "ret_std_5",
-        "feature_label": "5-day return volatility",
-        "contribution": 0.032130561769008636
+        "contribution": 0.05467069149017334
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.03193201124668121
+        "contribution": 0.030879264697432518
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.027550680562853813
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.06023980677127838
+        "contribution": -0.04268433153629303
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.007723966147750616
+        "contribution": -0.023772764950990677
       },
       {
-        "feature": "volume",
-        "feature_label": "Trading volume",
-        "contribution": -0.006269240286201239
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.005963506177067757
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.16877686977386475,
     "base_value": 0.0014483024133369327,
     "prediction_direction": "negative",
-    "summary_text": "For EFA on 2024-05-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day return volatility, 5-day return volatility, 20-day average volume. The main downward influences were 1-day simple return, Volume change, 20-day return volatility.",
+    "summary_text": "For EFA on 2024-05-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average volume, 10-day return volatility, 5-day return volatility. The main downward influences were Volume change, 60-day return volatility, 20-day return volatility.",
     "positive_drivers": [
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": 0.01864045485854149
+      },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": 0.023881861940026283
+        "contribution": 0.015248916111886501
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": 0.019833462312817574
-      },
-      {
-        "feature": "volume_roll_mean_20",
-        "feature_label": "20-day average volume",
-        "contribution": 0.018336201086640358
+        "contribution": 0.01478103082627058
       }
     ],
     "negative_drivers": [
       {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": -0.04802116006612778
-      },
-      {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": -0.045194368809461594
+        "contribution": -0.04623861610889435
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.04174507036805153
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.037477679550647736
+        "contribution": -0.032045409083366394
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.15337729454040527,
     "base_value": 0.0014483024133369327,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2024-04-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 1-day simple return, 5-day momentum, 10-day momentum. The main downward influences were 1-day log return, Volume change, 5-day average return.",
+    "summary_text": "For IWM on 2024-04-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 1-day simple return, 5-day momentum, 20-day average return. The main downward influences were 1-day log return, 5-day average return, Volume change.",
     "positive_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.05287613719701767
+        "contribution": 0.04995138943195343
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": 0.04394790157675743
+        "contribution": 0.03919133543968201
       },
       {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": 0.0147137101739645
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.011507481336593628
       }
     ],
     "negative_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.09419704228639603
-      },
-      {
-        "feature": "volume_chg",
-        "feature_label": "Volume change",
-        "contribution": -0.05265296995639801
+        "contribution": -0.08105019479990005
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.05038059130311012
+        "contribution": -0.05025672912597656
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": -0.041921306401491165
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.12278598546981812,
     "base_value": 0.0014483024133369327,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2024-06-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 5-day return volatility, 20-day momentum. The main downward influences were 60-day return volatility, 20-day average volume, 20-day average return.",
+    "summary_text": "For SPY on 2024-06-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD (12, 26), MACD signal (9), 5-day return volatility. The main downward influences were 60-day return volatility, 20-day average return, 1-day log return.",
     "positive_drivers": [
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.03950132429599762
+      },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.06239181011915207
+        "contribution": 0.03470389172434807
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": 0.04025602340698242
-      },
-      {
-        "feature": "mom_20",
-        "feature_label": "20-day momentum",
-        "contribution": 0.03112690895795822
+        "contribution": 0.028774267062544823
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.04518977180123329
-      },
-      {
-        "feature": "volume_roll_mean_20",
-        "feature_label": "20-day average volume",
-        "contribution": -0.011437302455306053
+        "contribution": -0.03849241882562637
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.010450192727148533
+        "contribution": -0.008635925129055977
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.005580369848757982
       }
     ],
     "case_rank": 4

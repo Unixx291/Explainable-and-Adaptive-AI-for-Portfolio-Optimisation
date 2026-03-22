@@ -4,9 +4,9 @@
   "top_features": [
     "5-day momentum",
     "20-day average volume",
-    "MACD histogram",
+    "MACD signal (9)",
     "10-day average return",
-    "MACD signal (9)"
+    "14-day RSI"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day momentum, 20-day average volume, MACD histogram, 10-day average return, and MACD signal (9)."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day momentum, 20-day average volume, MACD signal (9), 10-day average return, and 14-day RSI."
 }

@@ -7,39 +7,39 @@
     "y_pred": 0.11297141015529633,
     "base_value": -0.0026783249340951443,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2020-11-16, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, MACD (12, 26), 1-day simple return. The main downward influences were MACD signal (9), 10-day momentum, Asset indicator: IWM.",
+    "summary_text": "For SPY on 2020-11-16, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD (12, 26), MACD histogram, 1-day simple return. The main downward influences were MACD signal (9), 10-day momentum, Asset indicator: IWM.",
     "positive_drivers": [
-      {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": 0.03207869455218315
-      },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.03183457627892494
+        "contribution": 0.02974228374660015
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.02775443345308304
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.02552865259349346
+        "contribution": 0.02309875562787056
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.018056128174066544
+        "contribution": -0.016460182145237923
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.013821911066770554
+        "contribution": -0.012257736176252365
       },
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": -0.00909383874386549
+        "contribution": -0.008577688597142696
       }
     ],
     "case_rank": 1
@@ -57,34 +57,34 @@
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.03360138460993767
+        "contribution": 0.028596997261047363
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.019575249403715134
+        "contribution": 0.020764458924531937
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.01713639125227928
+        "contribution": 0.01656559854745865
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.04939445108175278
+        "contribution": -0.043459005653858185
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.04039527103304863
+        "contribution": -0.029759859666228294
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.03236775100231171
+        "contribution": -0.026618942618370056
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.09658066928386688,
     "base_value": -0.0026783249340951443,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2020-11-13, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, MACD (12, 26), 1-day simple return. The main downward influences were 10-day momentum, MACD signal (9), Asset indicator: IWM.",
+    "summary_text": "For SPY on 2020-11-13, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, Asset indicator: SPY, 1-day simple return. The main downward influences were MACD signal (9), 10-day momentum, Asset indicator: IWM.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.01981382817029953
+        "contribution": 0.021154887974262238
       },
       {
-        "feature": "macd_12_26",
-        "feature_label": "MACD (12, 26)",
-        "contribution": 0.01942441798746586
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": 0.020520731806755066
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.018609486520290375
+        "contribution": 0.01942877657711506
       }
     ],
     "negative_drivers": [
       {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": -0.01797233708202839
-      },
-      {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.01629887893795967
+        "contribution": -0.02639416605234146
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.02162013202905655
       },
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": -0.008322630077600479
+        "contribution": -0.010223353281617165
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.08317923545837402,
     "base_value": -0.0026783249340951443,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2020-10-19, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Asset indicator: SPY, 1-day log return, MACD signal (9). The main downward influences were MACD (12, 26), 20-day average volume, Asset indicator: IWM.",
+    "summary_text": "For SPY on 2020-10-19, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Asset indicator: SPY, MACD histogram, 1-day log return. The main downward influences were MACD (12, 26), 20-day average volume, Asset indicator: IWM.",
     "positive_drivers": [
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.013230876997113228
+        "contribution": 0.01541680097579956
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.01150782685726881
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.012035447172820568
-      },
-      {
-        "feature": "macd_signal_9",
-        "feature_label": "MACD signal (9)",
-        "contribution": 0.011108155362308025
+        "contribution": 0.010926165618002415
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.004683707840740681
+        "contribution": -0.004238711670041084
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.004433493595570326
+        "contribution": -0.0017345487140119076
       },
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": -0.0007635684451088309
+        "contribution": -0.0007209964678622782
       }
     ],
     "case_rank": 4

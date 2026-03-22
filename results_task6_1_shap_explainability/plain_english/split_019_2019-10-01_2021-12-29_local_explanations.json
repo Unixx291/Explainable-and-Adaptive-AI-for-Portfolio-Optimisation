@@ -7,39 +7,39 @@
     "y_pred": 0.22664973139762878,
     "base_value": 0.004131208173930645,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2021-12-03, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 20-day average return, 20-day momentum. The main downward influences were 5-day average return, 5-day return volatility, 14-day RSI.",
+    "summary_text": "For IWM on 2021-12-03, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 20-day average return, Asset indicator: IWM. The main downward influences were 5-day average return, 5-day return volatility, 14-day RSI.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.14771419763565063
+        "contribution": 0.13205164670944214
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": 0.11515603214502335
+        "contribution": 0.099235400557518
       },
       {
-        "feature": "mom_20",
-        "feature_label": "20-day momentum",
-        "contribution": 0.04794355854392052
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.030273377895355225
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.05679396167397499
+        "contribution": -0.055734843015670776
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": -0.04929688945412636
+        "contribution": -0.04199563339352608
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.03267741575837135
+        "contribution": -0.03589491546154022
       }
     ],
     "case_rank": 1
@@ -57,34 +57,34 @@
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.0455271378159523
+        "contribution": 0.03918985277414322
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.018782073631882668
+        "contribution": 0.0236312635242939
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.01781526766717434
+        "contribution": 0.012145880609750748
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.04651592671871185
+        "contribution": -0.04673560708761215
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.04142703115940094
+        "contribution": -0.0362095981836319
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.03648277372121811
+        "contribution": -0.03445194661617279
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.14646559953689575,
     "base_value": 0.004131208173930645,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2021-12-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, MACD (12, 26), 20-day return volatility. The main downward influences were 20-day momentum, 5-day return volatility, 10-day return volatility.",
+    "summary_text": "For IWM on 2021-12-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, MACD (12, 26), 20-day return volatility. The main downward influences were 20-day momentum, 10-day return volatility, 5-day return volatility.",
     "positive_drivers": [
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.08721930533647537
+        "contribution": 0.07660066336393356
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.0732646957039833
+        "contribution": 0.06517458707094193
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.03879091516137123
+        "contribution": 0.05244772136211395
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.04849126189947128
-      },
-      {
-        "feature": "ret_std_5",
-        "feature_label": "5-day return volatility",
-        "contribution": -0.034436799585819244
+        "contribution": -0.05283229425549507
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": -0.03376353904604912
+        "contribution": -0.034736260771751404
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": -0.02803443931043148
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.13278977572917938,
     "base_value": 0.004131208173930645,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2021-10-04, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, MACD (12, 26), 60-day return volatility. The main downward influences were 20-day average volume, 1-day simple return, 5-day average return.",
+    "summary_text": "For SPY on 2021-10-04, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, MACD (12, 26), MACD histogram. The main downward influences were 20-day average volume, 1-day simple return, 5-day average return.",
     "positive_drivers": [
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.19898882508277893
+        "contribution": 0.19424434006214142
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.049001097679138184
+        "contribution": 0.04553703963756561
       },
       {
-        "feature": "ret_std_60",
-        "feature_label": "60-day return volatility",
-        "contribution": 0.03656121343374252
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.03946305811405182
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.10539663583040237
+        "contribution": -0.088606096804142
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.049793556332588196
+        "contribution": -0.04901183024048805
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.03780430555343628
+        "contribution": -0.04154353588819504
       }
     ],
     "case_rank": 4

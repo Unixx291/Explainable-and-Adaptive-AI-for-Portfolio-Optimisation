@@ -12,34 +12,34 @@
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.25382566452026367
+        "contribution": 0.30351391434669495
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": 0.22852325439453125
+        "contribution": 0.2389315366744995
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.2226203978061676
+        "contribution": 0.23007947206497192
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.38596397638320923
+        "contribution": -0.4360046088695526
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.23513221740722656
+        "contribution": -0.24710309505462646
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.20695920288562775
+        "contribution": -0.22689498960971832
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.6205030083656311,
     "base_value": 0.013101768679916859,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2018-02-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD histogram, 10-day return volatility, 20-day average volume. The main downward influences were Trading volume, 1-day log return, 5-day return volatility.",
+    "summary_text": "For SPY on 2018-02-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD histogram, 20-day average volume, 10-day return volatility. The main downward influences were Trading volume, 1-day log return, 5-day return volatility.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.3286556303501129
-      },
-      {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": 0.16135913133621216
+        "contribution": 0.3274424374103546
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.1529756337404251
+        "contribution": 0.14239554107189178
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.13554267585277557
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.9811753630638123
+        "contribution": -0.8782652020454407
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.1591891348361969
+        "contribution": -0.14809440076351166
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": -0.13444896042346954
+        "contribution": -0.130960613489151
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.30372142791748047,
     "base_value": 0.013101768679916859,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2018-02-27, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average return, 20-day return volatility, Trading volume. The main downward influences were 20-day average volume, 20-day momentum, 10-day average return.",
+    "summary_text": "For SPY on 2018-02-27, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average return, Trading volume, Asset indicator: SPY. The main downward influences were 20-day average volume, 20-day momentum, 10-day average return.",
     "positive_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": 0.07731685787439346
-      },
-      {
-        "feature": "ret_std_20",
-        "feature_label": "20-day return volatility",
-        "contribution": 0.05743233859539032
+        "contribution": 0.09923321008682251
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.0351041704416275
+        "contribution": 0.04249785840511322
+      },
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": 0.03540538623929024
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.20586203038692474
+        "contribution": -0.21974843740463257
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.1039389818906784
+        "contribution": -0.10667388886213303
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.06687439233064651
+        "contribution": -0.06254930794239044
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.27860569953918457,
     "base_value": 0.013101768679916859,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2018-02-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day return volatility, 20-day average return, Trading volume. The main downward influences were 20-day momentum, 10-day return volatility, 20-day average volume.",
+    "summary_text": "For SPY on 2018-02-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Trading volume, 60-day return volatility, 20-day average return. The main downward influences were 20-day average volume, 20-day momentum, 10-day return volatility.",
     "positive_drivers": [
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.04272985830903053
+      },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": 0.034771036356687546
+        "contribution": 0.03129679337143898
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": 0.032067734748125076
-      },
-      {
-        "feature": "volume",
-        "feature_label": "Trading volume",
-        "contribution": 0.029608894139528275
+        "contribution": 0.022156205028295517
       }
     ],
     "negative_drivers": [
       {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.07537982612848282
+      },
+      {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.0790041908621788
+        "contribution": -0.07392087578773499
       },
       {
         "feature": "ret_std_10",
         "feature_label": "10-day return volatility",
-        "contribution": -0.07685460150241852
-      },
-      {
-        "feature": "volume_roll_mean_20",
-        "feature_label": "20-day average volume",
-        "contribution": -0.06538166850805283
+        "contribution": -0.059711676090955734
       }
     ],
     "case_rank": 4

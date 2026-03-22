@@ -5,8 +5,8 @@
     "14-day RSI",
     "10-day average return",
     "1-day log return",
-    "5-day return volatility",
-    "10-day momentum"
+    "10-day momentum",
+    "5-day return volatility"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 14-day RSI, 10-day average return, 1-day log return, 5-day return volatility, and 10-day momentum."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 14-day RSI, 10-day average return, 1-day log return, 10-day momentum, and 5-day return volatility."
 }
