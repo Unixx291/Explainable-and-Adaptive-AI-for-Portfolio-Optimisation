@@ -1,0 +1,12 @@
+{
+  "split": "split_014_2018-06-29_2020-09-29",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "MACD (12, 26)",
+    "60-day average return",
+    "60-day momentum",
+    "MACD histogram",
+    "Trading volume"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by MACD (12, 26), 60-day average return, 60-day momentum, MACD histogram, and Trading volume."
+}

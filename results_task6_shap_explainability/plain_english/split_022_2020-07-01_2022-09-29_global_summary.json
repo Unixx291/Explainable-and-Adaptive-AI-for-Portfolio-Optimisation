@@ -1,0 +1,12 @@
+{
+  "split": "split_022_2020-07-01_2022-09-29",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "10-day momentum",
+    "10-day average return",
+    "1-day simple return",
+    "MACD histogram",
+    "1-day log return"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, 10-day average return, 1-day simple return, MACD histogram, and 1-day log return."
+}

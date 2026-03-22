@@ -1,0 +1,12 @@
+{
+  "split": "split_024_2020-12-30_2023-03-31",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "60-day momentum",
+    "10-day average return",
+    "Trading volume",
+    "10-day momentum",
+    "14-day RSI"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day momentum, 10-day average return, Trading volume, 10-day momentum, and 14-day RSI."
+}

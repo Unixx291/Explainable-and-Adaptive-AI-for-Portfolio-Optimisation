@@ -1,0 +1,12 @@
+{
+  "split": "split_032_2022-12-30_2025-04-04",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "60-day average return",
+    "20-day momentum",
+    "1-day log return",
+    "20-day average return",
+    "10-day momentum"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day average return, 20-day momentum, 1-day log return, 20-day average return, and 10-day momentum."
+}

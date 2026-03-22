@@ -1,0 +1,12 @@
+{
+  "split": "split_003_2015-09-29_2017-12-27",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "60-day return volatility",
+    "MACD signal (9)",
+    "MACD (12, 26)",
+    "20-day return volatility",
+    "Volume change"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, MACD signal (9), MACD (12, 26), 20-day return volatility, and Volume change."
+}

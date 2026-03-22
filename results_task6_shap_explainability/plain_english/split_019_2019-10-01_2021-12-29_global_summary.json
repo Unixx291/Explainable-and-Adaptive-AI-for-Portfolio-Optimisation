@@ -1,0 +1,12 @@
+{
+  "split": "split_019_2019-10-01_2021-12-29",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "20-day momentum",
+    "20-day average return",
+    "10-day average return",
+    "MACD histogram",
+    "14-day RSI"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day momentum, 20-day average return, 10-day average return, MACD histogram, and 14-day RSI."
+}

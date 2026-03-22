@@ -1,0 +1,12 @@
+{
+  "split": "split_020_2019-12-31_2022-03-30",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "5-day momentum",
+    "20-day average volume",
+    "10-day average return",
+    "MACD signal (9)",
+    "MACD histogram"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day momentum, 20-day average volume, 10-day average return, MACD signal (9), and MACD histogram."
+}

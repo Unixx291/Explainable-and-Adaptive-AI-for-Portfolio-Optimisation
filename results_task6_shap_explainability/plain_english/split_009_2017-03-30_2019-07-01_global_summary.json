@@ -1,0 +1,12 @@
+{
+  "split": "split_009_2017-03-30_2019-07-01",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "14-day RSI",
+    "10-day average return",
+    "1-day log return",
+    "10-day momentum",
+    "5-day return volatility"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 14-day RSI, 10-day average return, 1-day log return, 10-day momentum, and 5-day return volatility."
+}

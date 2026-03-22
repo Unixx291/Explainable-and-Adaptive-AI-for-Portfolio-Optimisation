@@ -1,0 +1,12 @@
+{
+  "split": "split_017_2019-04-02_2021-06-30",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "5-day return volatility",
+    "1-day log return",
+    "5-day momentum",
+    "MACD signal (9)",
+    "1-day simple return"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 5-day return volatility, 1-day log return, 5-day momentum, MACD signal (9), and 1-day simple return."
+}

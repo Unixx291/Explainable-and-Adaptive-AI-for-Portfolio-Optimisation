@@ -1,0 +1,12 @@
+{
+  "split": "split_027_2021-09-30_2024-01-02",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "20-day average return",
+    "MACD signal (9)",
+    "20-day momentum",
+    "14-day RSI",
+    "MACD (12, 26)"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day average return, MACD signal (9), 20-day momentum, 14-day RSI, and MACD (12, 26)."
+}

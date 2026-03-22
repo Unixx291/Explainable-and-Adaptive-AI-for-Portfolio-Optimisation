@@ -1,0 +1,12 @@
+{
+  "split": "split_010_2017-06-29_2019-09-30",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "Volume change",
+    "5-day momentum",
+    "5-day average return",
+    "20-day momentum",
+    "60-day momentum"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by Volume change, 5-day momentum, 5-day average return, 20-day momentum, and 60-day momentum."
+}

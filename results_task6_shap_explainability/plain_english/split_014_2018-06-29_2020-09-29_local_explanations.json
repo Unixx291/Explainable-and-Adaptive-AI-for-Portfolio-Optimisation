@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_014_2018-06-29_2020-09-29",
+    "date": "2020-07-14",
+    "ticker": "SPY",
+    "y_true": 0.00914530549198389,
+    "y_pred": 0.07425832003355026,
+    "base_value": 0.0029831198044121265,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2020-07-14, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, Asset indicator: SPY, 10-day average return. The main downward influences were MACD signal (9), 20-day average return, Asset indicator: TLT.",
+    "positive_drivers": [
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.031628843396902084
+      },
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": 0.010532967746257782
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.009965299628674984
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.014027790166437626
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.006253059487789869
+      },
+      {
+        "feature": "ticker_TLT",
+        "feature_label": "Asset indicator: TLT",
+        "contribution": -0.004835442174226046
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_014_2018-06-29_2020-09-29",
+    "date": "2020-09-17",
+    "ticker": "SPY",
+    "y_true": -0.011579357087612152,
+    "y_pred": -0.0958903357386589,
+    "base_value": 0.0029831198044121265,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2020-09-17, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, 20-day average volume, 20-day average return. The main downward influences were MACD histogram, 14-day RSI, 1-day simple return.",
+    "positive_drivers": [
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.011051751673221588
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": 0.00796039029955864
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.007609435822814703
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.01763688400387764
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.0146265784278512
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": -0.01085920725017786
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_014_2018-06-29_2020-09-29",
+    "date": "2020-07-07",
+    "ticker": "IWM",
+    "y_true": 0.007424946874380112,
+    "y_pred": -0.08037224411964417,
+    "base_value": 0.0029831198044121265,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2020-07-07, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 1-day simple return, 20-day momentum. The main downward influences were 10-day return volatility, 60-day return volatility, 10-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.0311959870159626
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.02550550550222397
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.02464532107114792
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.04103969410061836
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.026002174243330956
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.02137255109846592
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_014_2018-06-29_2020-09-29",
+    "date": "2020-07-01",
+    "ticker": "IWM",
+    "y_true": 0.004081303719431162,
+    "y_pred": -0.07113849371671677,
+    "base_value": 0.0029831198044121265,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2020-07-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 5-day return volatility, 20-day average return. The main downward influences were 60-day average return, MACD histogram, 60-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.07426991313695908
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.012844848446547985
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.010674109682440758
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.048434268683195114
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.02921808511018753
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.028987251222133636
+      }
+    ],
+    "case_rank": 4
+  }
+]
