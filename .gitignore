@@ -31,3 +31,4 @@ results_task4_1_dnn_only/models/
 # Optional large local experiment artefacts
 results_task4_1_dnn_only/predictions/
 results_task4_1_dnn_only/histories/
+results_task6_2_lime_explainability/html
