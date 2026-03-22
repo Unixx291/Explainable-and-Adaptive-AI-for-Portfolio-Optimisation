@@ -4,8 +4,9 @@ task3_classical_baselines.py
 Task 3: Classical model design (baseline framework)
 - Loads Task 2 walk-forward splits (train/test) from disk
 - Implements classical baselines with consistent constraints:
-  1) Mean-Variance (Markowitz) via EfficientFrontier (max_sharpe)
-  2) Black-Litterman (equilibrium prior + limited views + Idzorek confidence)
+  1) Equal-Weight (1/N) naive diversification baseline
+  2) Mean-Variance (Markowitz) via EfficientFrontier (max_sharpe)
+  3) Black-Litterman (equilibrium prior + limited views + Idzorek confidence)
 - Leakage-safe walk-forward evaluation:
   - Fit weights using only data available up to each rebalance date
   - Rebalance inside the test window every N trading days (default 21)
@@ -137,6 +138,17 @@ def _load_walk_forward_meta(task2_outdir: Path) -> Dict:
 # =========================
 # Optimisers (TRAIN only at each rebalance)
 # =========================
+def solve_equal_weight(price_hist: pd.DataFrame) -> Dict[str, float]:
+    """
+    Naive 1/N equal-weight portfolio using the currently available assets.
+    """
+    tickers = list(price_hist.columns)
+    if not tickers:
+        return {}
+    w = 1.0 / len(tickers)
+    return {t: w for t in tickers}
+
+
 def solve_markowitz(
     price_hist: pd.DataFrame,
     weight_bounds: Tuple[float, float],
@@ -318,10 +330,9 @@ def compute_metrics(port_rets: pd.Series, frequency: int, risk_free_rate: float)
     rf_daily = (1.0 + risk_free_rate) ** (1.0 / frequency) - 1.0
     excess = port_rets - rf_daily
     sharpe = float(excess.mean() / (port_rets.std(ddof=1) + 1e-12) * np.sqrt(frequency))
-
-    downside = np.minimum(excess, 0.0)
-    downside_dev = float(np.sqrt(np.mean(np.square(downside))))
-    sortino = float(excess.mean() / (downside_dev + 1e-12) * np.sqrt(frequency))
+    downside = excess[excess < 0.0]
+    downside_std = float(downside.std(ddof=1)) if len(downside) > 1 else 0.0
+    sortino = float(excess.mean() / (downside_std + 1e-12) * np.sqrt(frequency))
 
     return {
         "ann_return": ann_return,
@@ -528,6 +539,10 @@ def run_task3() -> None:
         lookback_days = int(len(train_prices.index))
 
         # Define solvers that return Series weights
+        def equal_weight_solver(price_hist: pd.DataFrame) -> pd.Series:
+            w = solve_equal_weight(price_hist=price_hist)
+            return _weights_to_series(w, list(price_hist.columns))
+
         def markowitz_solver(price_hist: pd.DataFrame) -> pd.Series:
             w = solve_markowitz(
                 price_hist=price_hist,
@@ -554,7 +569,18 @@ def run_task3() -> None:
             )
             return _weights_to_series(w, list(price_hist.columns))
 
-        # Simulate both models
+        # Simulate all classical baselines
+        gross_eq, net_eq, turnover_eq, tc_eq, nreb_eq, reb_eq_df = simulate_rebalanced_portfolio(
+            full_prices=full_prices,
+            train_end=train_end,
+            test_start=test_start,
+            test_end=test_end,
+            rebalance_every_days=int(CONFIG["rebalance_every_days"]),
+            transaction_cost_rate=float(CONFIG["transaction_cost_rate"]),
+            solver=equal_weight_solver,
+            lookback_days=lookback_days,
+        )
+
         gross_m, net_m, turnover_m, tc_m, nreb_m, reb_m_df = simulate_rebalanced_portfolio(
             full_prices=full_prices,
             train_end=train_end,
@@ -578,12 +604,15 @@ def run_task3() -> None:
         )
 
         # Metrics (net is the main reported performance)
+        net_eq_metrics = compute_metrics(net_eq, int(CONFIG["frequency"]), float(CONFIG["risk_free_rate"]))
         net_m_metrics = compute_metrics(net_m, int(CONFIG["frequency"]), float(CONFIG["risk_free_rate"]))
         net_bl_metrics = compute_metrics(net_bl, int(CONFIG["frequency"]), float(CONFIG["risk_free_rate"]))
 
         # Save equity curves (gross and net)
         eq_df = pd.DataFrame(
             {
+                "equal_weight_gross": (1.0 + gross_eq).cumprod(),
+                "equal_weight_net": (1.0 + net_eq).cumprod(),
                 "markowitz_gross": (1.0 + gross_m).cumprod(),
                 "markowitz_net": (1.0 + net_m).cumprod(),
                 "black_litterman_gross": (1.0 + gross_bl).cumprod(),
@@ -593,10 +622,17 @@ def run_task3() -> None:
         eq_df.to_csv(curves_dir / f"{split_name}_equity.csv", index=True)
 
         # Save rebalance debug weights
+        reb_eq_df.to_csv(rebal_dir / f"{split_name}_equal_weight_rebalances.csv", index=False)
         reb_m_df.to_csv(rebal_dir / f"{split_name}_markowitz_rebalances.csv", index=False)
         reb_bl_df.to_csv(rebal_dir / f"{split_name}_black_litterman_rebalances.csv", index=False)
 
         # Save "final weights" for quick reference (last rebalance weights)
+        if not reb_eq_df.empty:
+            last_eq = reb_eq_df.iloc[-1].to_dict()
+            final_eq = {k.replace("w_", ""): float(v) for k, v in last_eq.items() if str(k).startswith("w_")}
+        else:
+            final_eq = {}
+
         if not reb_m_df.empty:
             last_m = reb_m_df.iloc[-1].to_dict()
             final_m = {k.replace("w_", ""): float(v) for k, v in last_m.items() if str(k).startswith("w_")}
@@ -609,12 +645,33 @@ def run_task3() -> None:
         else:
             final_bl = {}
 
+        with open(weights_dir / f"{split_name}_equal_weight_final.json", "w", encoding="utf-8") as f:
+            json.dump(final_eq, f, indent=2)
         with open(weights_dir / f"{split_name}_markowitz_final.json", "w", encoding="utf-8") as f:
             json.dump(final_m, f, indent=2)
         with open(weights_dir / f"{split_name}_black_litterman_final.json", "w", encoding="utf-8") as f:
             json.dump(final_bl, f, indent=2)
 
         # Record results
+        results_rows.append(
+            {
+                "split": split_name,
+                "model": "equal_weight",
+                "train_start": split["train_start"],
+                "train_end": split["train_end"],
+                "test_start": split["test_start"],
+                "test_end": split["test_end"],
+                "n_reb": int(nreb_eq),
+                "turnover_total": float(turnover_eq),
+                "tc_total": float(tc_eq),
+                "net_ann_return": float(net_eq_metrics["ann_return"]),
+                "net_ann_vol": float(net_eq_metrics["ann_vol"]),
+                "net_sharpe": float(net_eq_metrics["sharpe"]),
+                "net_sortino": float(net_eq_metrics["sortino"]),
+                "net_cumulative_return": float(net_eq_metrics["cumulative_return"]),
+                "net_max_drawdown": float(net_eq_metrics["max_drawdown"]),
+            }
+        )
         results_rows.append(
             {
                 "split": split_name,
@@ -655,14 +712,22 @@ def run_task3() -> None:
         )
 
         print(
-            f"  Markowitz: net_ann_return={net_m_metrics['ann_return']:.4f}, "
-            f"net_sharpe={net_m_metrics['sharpe']:.3f}, net_sortino={net_m_metrics['sortino']:.3f}, net_mdd={net_m_metrics['max_drawdown']:.3f}, "
-            f"turnover_total={turnover_m:.3f}, tc_total={tc_m:.5f}, n_reb={nreb_m}"
+            f"  Equal-weight: net_ann_return={net_eq_metrics['ann_return']:.4f}, "
+            f"net_sharpe={net_eq_metrics['sharpe']:.3f}, net_sortino={net_eq_metrics['sortino']:.3f}, "
+            f"net_mdd={net_eq_metrics['max_drawdown']:.3f}, turnover_total={turnover_eq:.3f}, "
+            f"tc_total={tc_eq:.5f}, n_reb={nreb_eq}"
         )
         print(
-            f"  BL:        net_ann_return={net_bl_metrics['ann_return']:.4f}, "
-            f"net_sharpe={net_bl_metrics['sharpe']:.3f}, net_sortino={net_bl_metrics['sortino']:.3f}, net_mdd={net_bl_metrics['max_drawdown']:.3f}, "
-            f"turnover_total={turnover_bl:.3f}, tc_total={tc_bl:.5f}, n_reb={nreb_bl}"
+            f"  Markowitz:    net_ann_return={net_m_metrics['ann_return']:.4f}, "
+            f"net_sharpe={net_m_metrics['sharpe']:.3f}, net_sortino={net_m_metrics['sortino']:.3f}, "
+            f"net_mdd={net_m_metrics['max_drawdown']:.3f}, turnover_total={turnover_m:.3f}, "
+            f"tc_total={tc_m:.5f}, n_reb={nreb_m}"
+        )
+        print(
+            f"  BL:           net_ann_return={net_bl_metrics['ann_return']:.4f}, "
+            f"net_sharpe={net_bl_metrics['sharpe']:.3f}, net_sortino={net_bl_metrics['sortino']:.3f}, "
+            f"net_mdd={net_bl_metrics['max_drawdown']:.3f}, turnover_total={turnover_bl:.3f}, "
+            f"tc_total={tc_bl:.5f}, n_reb={nreb_bl}"
         )
 
     # Save results

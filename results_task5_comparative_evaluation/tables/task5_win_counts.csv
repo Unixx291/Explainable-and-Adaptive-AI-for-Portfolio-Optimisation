@@ -1,33 +1,41 @@
 metric,metric_label,model,model_display,win_count
 net_ann_return,Net annualised return,black_litterman,Black-Litterman,5
-net_ann_return,Net annualised return,dnn_only,DNN-only,13
+net_ann_return,Net annualised return,dnn_only,DNN-only,10
 net_ann_return,Net annualised return,dnn_rl,DNN+RL,8
-net_ann_return,Net annualised return,markowitz,Markowitz,12
+net_ann_return,Net annualised return,equal_weight,Equal-weight (1/N),4
+net_ann_return,Net annualised return,markowitz,Markowitz,11
 net_ann_vol,Net annualised volatility,black_litterman,Black-Litterman,6
-net_ann_vol,Net annualised volatility,dnn_only,DNN-only,6
-net_ann_vol,Net annualised volatility,dnn_rl,DNN+RL,9
+net_ann_vol,Net annualised volatility,dnn_only,DNN-only,2
+net_ann_vol,Net annualised volatility,dnn_rl,DNN+RL,6
+net_ann_vol,Net annualised volatility,equal_weight,Equal-weight (1/N),7
 net_ann_vol,Net annualised volatility,markowitz,Markowitz,16
 net_sharpe,Net Sharpe ratio,black_litterman,Black-Litterman,4
-net_sharpe,Net Sharpe ratio,dnn_only,DNN-only,9
-net_sharpe,Net Sharpe ratio,dnn_rl,DNN+RL,9
+net_sharpe,Net Sharpe ratio,dnn_only,DNN-only,5
+net_sharpe,Net Sharpe ratio,dnn_rl,DNN+RL,7
+net_sharpe,Net Sharpe ratio,equal_weight,Equal-weight (1/N),6
 net_sharpe,Net Sharpe ratio,markowitz,Markowitz,15
 net_sortino,Net Sortino ratio,black_litterman,Black-Litterman,5
 net_sortino,Net Sortino ratio,dnn_only,DNN-only,11
 net_sortino,Net Sortino ratio,dnn_rl,DNN+RL,7
-net_sortino,Net Sortino ratio,markowitz,Markowitz,15
+net_sortino,Net Sortino ratio,equal_weight,Equal-weight (1/N),4
+net_sortino,Net Sortino ratio,markowitz,Markowitz,10
 net_cumulative_return,Net cumulative return,black_litterman,Black-Litterman,5
-net_cumulative_return,Net cumulative return,dnn_only,DNN-only,13
+net_cumulative_return,Net cumulative return,dnn_only,DNN-only,10
 net_cumulative_return,Net cumulative return,dnn_rl,DNN+RL,8
-net_cumulative_return,Net cumulative return,markowitz,Markowitz,12
-net_max_drawdown,Net max drawdown,black_litterman,Black-Litterman,7
-net_max_drawdown,Net max drawdown,dnn_only,DNN-only,9
-net_max_drawdown,Net max drawdown,dnn_rl,DNN+RL,9
-net_max_drawdown,Net max drawdown,markowitz,Markowitz,13
-turnover_total,Turnover total,black_litterman,Black-Litterman,5
+net_cumulative_return,Net cumulative return,equal_weight,Equal-weight (1/N),4
+net_cumulative_return,Net cumulative return,markowitz,Markowitz,11
+net_max_drawdown,Net max drawdown,black_litterman,Black-Litterman,5
+net_max_drawdown,Net max drawdown,dnn_only,DNN-only,8
+net_max_drawdown,Net max drawdown,dnn_rl,DNN+RL,8
+net_max_drawdown,Net max drawdown,equal_weight,Equal-weight (1/N),5
+net_max_drawdown,Net max drawdown,markowitz,Markowitz,12
+turnover_total,Turnover total,black_litterman,Black-Litterman,3
 turnover_total,Turnover total,dnn_only,DNN-only,0
-turnover_total,Turnover total,dnn_rl,DNN+RL,11
-turnover_total,Turnover total,markowitz,Markowitz,21
-tc_total,Transaction cost total,black_litterman,Black-Litterman,5
+turnover_total,Turnover total,dnn_rl,DNN+RL,9
+turnover_total,Turnover total,equal_weight,Equal-weight (1/N),25
+turnover_total,Turnover total,markowitz,Markowitz,8
+tc_total,Transaction cost total,black_litterman,Black-Litterman,3
 tc_total,Transaction cost total,dnn_only,DNN-only,0
-tc_total,Transaction cost total,dnn_rl,DNN+RL,11
-tc_total,Transaction cost total,markowitz,Markowitz,21
+tc_total,Transaction cost total,dnn_rl,DNN+RL,9
+tc_total,Transaction cost total,equal_weight,Equal-weight (1/N),25
+tc_total,Transaction cost total,markowitz,Markowitz,8

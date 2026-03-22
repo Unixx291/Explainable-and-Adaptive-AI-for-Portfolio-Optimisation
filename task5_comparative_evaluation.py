@@ -40,6 +40,7 @@ CONFIG = {
 
 
 DISPLAY_NAMES = {
+    "equal_weight": "Equal-weight (1/N)",
     "markowitz": "Markowitz",
     "black_litterman": "Black-Litterman",
     "dnn_only": "DNN-only",
@@ -215,13 +216,18 @@ def load_equity_comparison(split_name: str, task3_outdir: Path, task4_1_outdir: 
     task4_1_eq = _read_equity_csv(task4_1_outdir / "equity_curves" / f"{split_name}_equity.csv")
     task4_2_eq = _read_equity_csv(task4_2_outdir / "equity_curves" / f"{split_name}_equity.csv")
 
+    task3_net_cols = [c for c in task3_eq.columns if c.endswith("_net")]
+    task4_1_net_cols = [c for c in task4_1_eq.columns if c.endswith("_net")]
+    task4_2_net_cols = [c for c in task4_2_eq.columns if c.endswith("_net")]
+
     merged = pd.concat([
-        task3_eq[[c for c in task3_eq.columns if c.endswith("_net")]],
-        task4_1_eq[[c for c in task4_1_eq.columns if c.endswith("_net")]],
-        task4_2_eq[[c for c in task4_2_eq.columns if c.endswith("_net")]],
+        task3_eq[task3_net_cols],
+        task4_1_eq[task4_1_net_cols],
+        task4_2_eq[task4_2_net_cols],
     ], axis=1).sort_index()
 
     rename_map = {
+        "equal_weight_net": "Equal-weight (1/N)",
         "markowitz_net": "Markowitz",
         "black_litterman_net": "Black-Litterman",
         "dnn_only_net": "DNN-only",
@@ -249,7 +255,7 @@ def save_equity_comparison_plot(eq_df: pd.DataFrame, split_name: str, outpath: P
 def save_boxplot(results_df: pd.DataFrame, metric: str, outpath: Path) -> None:
     if results_df.empty or metric not in results_df.columns:
         return
-    model_order = [m for m in ["markowitz", "black_litterman", "dnn_only", "dnn_rl"] if m in results_df["model"].unique()]
+    model_order = [m for m in ["equal_weight", "markowitz", "black_litterman", "dnn_only", "dnn_rl"] if m in results_df["model"].unique()]
     data = [results_df.loc[results_df["model"] == m, metric].dropna().values for m in model_order]
     if not any(len(x) > 0 for x in data):
         return
@@ -266,7 +272,7 @@ def save_boxplot(results_df: pd.DataFrame, metric: str, outpath: Path) -> None:
 def save_mean_barplot(results_df: pd.DataFrame, metric: str, outpath: Path) -> None:
     if results_df.empty or metric not in results_df.columns:
         return
-    model_order = [m for m in ["markowitz", "black_litterman", "dnn_only", "dnn_rl"] if m in results_df["model"].unique()]
+    model_order = [m for m in ["equal_weight", "markowitz", "black_litterman", "dnn_only", "dnn_rl"] if m in results_df["model"].unique()]
     summary = results_df.groupby("model")[metric].mean().reindex(model_order)
     if summary.empty:
         return
@@ -311,7 +317,7 @@ def run_task5() -> None:
     all_results = load_all_results(task3_outdir, task4_1_outdir, task4_2_outdir)
     all_results.to_csv(task5_outdir / "task5_all_results_long.csv", index=False)
 
-    required_models = ["markowitz", "black_litterman", "dnn_only", "dnn_rl"]
+    required_models = ["equal_weight", "markowitz", "black_litterman", "dnn_only", "dnn_rl"]
     common_results = filter_common_splits(all_results, required_models=required_models)
     common_results.to_csv(task5_outdir / "task5_common_splits_long.csv", index=False)
 

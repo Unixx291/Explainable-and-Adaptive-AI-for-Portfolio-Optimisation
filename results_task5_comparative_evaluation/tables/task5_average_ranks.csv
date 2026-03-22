@@ -1,33 +1,41 @@
 metric,model,rank,model_display,metric_label
-net_ann_return,black_litterman,2.735294117647059,Black-Litterman,Net annualised return
-net_ann_return,dnn_only,2.3823529411764706,DNN-only,Net annualised return
-net_ann_return,dnn_rl,2.764705882352941,DNN+RL,Net annualised return
-net_ann_return,markowitz,2.1176470588235294,Markowitz,Net annualised return
-net_ann_vol,black_litterman,2.5588235294117645,Black-Litterman,Net annualised volatility
-net_ann_vol,dnn_only,3.0294117647058822,DNN-only,Net annualised volatility
-net_ann_vol,dnn_rl,2.5,DNN+RL,Net annualised volatility
-net_ann_vol,markowitz,1.911764705882353,Markowitz,Net annualised volatility
-net_cumulative_return,black_litterman,2.735294117647059,Black-Litterman,Net cumulative return
-net_cumulative_return,dnn_only,2.3823529411764706,DNN-only,Net cumulative return
-net_cumulative_return,dnn_rl,2.764705882352941,DNN+RL,Net cumulative return
-net_cumulative_return,markowitz,2.1176470588235294,Markowitz,Net cumulative return
-net_max_drawdown,black_litterman,2.5294117647058822,Black-Litterman,Net max drawdown
-net_max_drawdown,dnn_only,2.7058823529411766,DNN-only,Net max drawdown
-net_max_drawdown,dnn_rl,2.588235294117647,DNN+RL,Net max drawdown
-net_max_drawdown,markowitz,2.176470588235294,Markowitz,Net max drawdown
-net_sharpe,black_litterman,2.6176470588235294,Black-Litterman,Net Sharpe ratio
-net_sharpe,dnn_only,2.6176470588235294,DNN-only,Net Sharpe ratio
-net_sharpe,dnn_rl,2.764705882352941,DNN+RL,Net Sharpe ratio
-net_sharpe,markowitz,2.0,Markowitz,Net Sharpe ratio
-net_sortino,black_litterman,2.5588235294117645,Black-Litterman,Net Sortino ratio
-net_sortino,dnn_only,2.588235294117647,DNN-only,Net Sortino ratio
-net_sortino,dnn_rl,2.8823529411764706,DNN+RL,Net Sortino ratio
-net_sortino,markowitz,1.9705882352941178,Markowitz,Net Sortino ratio
-tc_total,black_litterman,2.176470588235294,Black-Litterman,Transaction cost total
-tc_total,dnn_only,3.9411764705882355,DNN-only,Transaction cost total
-tc_total,dnn_rl,2.3823529411764706,DNN+RL,Transaction cost total
-tc_total,markowitz,1.5,Markowitz,Transaction cost total
-turnover_total,black_litterman,2.176470588235294,Black-Litterman,Turnover total
-turnover_total,dnn_only,3.9411764705882355,DNN-only,Turnover total
-turnover_total,dnn_rl,2.3823529411764706,DNN+RL,Turnover total
-turnover_total,markowitz,1.5,Markowitz,Turnover total
+net_ann_return,black_litterman,3.2058823529411766,Black-Litterman,Net annualised return
+net_ann_return,dnn_only,2.8529411764705883,DNN-only,Net annualised return
+net_ann_return,dnn_rl,3.3529411764705883,DNN+RL,Net annualised return
+net_ann_return,equal_weight,3.0,Equal-weight (1/N),Net annualised return
+net_ann_return,markowitz,2.588235294117647,Markowitz,Net annualised return
+net_ann_vol,black_litterman,3.0,Black-Litterman,Net annualised volatility
+net_ann_vol,dnn_only,3.764705882352941,DNN-only,Net annualised volatility
+net_ann_vol,dnn_rl,2.9705882352941178,DNN+RL,Net annualised volatility
+net_ann_vol,equal_weight,2.9705882352941178,Equal-weight (1/N),Net annualised volatility
+net_ann_vol,markowitz,2.2941176470588234,Markowitz,Net annualised volatility
+net_cumulative_return,black_litterman,3.2058823529411766,Black-Litterman,Net cumulative return
+net_cumulative_return,dnn_only,2.8529411764705883,DNN-only,Net cumulative return
+net_cumulative_return,dnn_rl,3.3529411764705883,DNN+RL,Net cumulative return
+net_cumulative_return,equal_weight,3.0,Equal-weight (1/N),Net cumulative return
+net_cumulative_return,markowitz,2.588235294117647,Markowitz,Net cumulative return
+net_max_drawdown,black_litterman,2.9558823529411766,Black-Litterman,Net max drawdown
+net_max_drawdown,dnn_only,3.235294117647059,DNN-only,Net max drawdown
+net_max_drawdown,dnn_rl,3.1470588235294117,DNN+RL,Net max drawdown
+net_max_drawdown,equal_weight,3.0294117647058822,Equal-weight (1/N),Net max drawdown
+net_max_drawdown,markowitz,2.6323529411764706,Markowitz,Net max drawdown
+net_sharpe,black_litterman,2.911764705882353,Black-Litterman,Net Sharpe ratio
+net_sharpe,dnn_only,3.1176470588235294,DNN-only,Net Sharpe ratio
+net_sharpe,dnn_rl,3.3529411764705883,DNN+RL,Net Sharpe ratio
+net_sharpe,equal_weight,3.3529411764705883,Equal-weight (1/N),Net Sharpe ratio
+net_sharpe,markowitz,2.264705882352941,Markowitz,Net Sharpe ratio
+net_sortino,black_litterman,2.9705882352941178,Black-Litterman,Net Sortino ratio
+net_sortino,dnn_only,2.8529411764705883,DNN-only,Net Sortino ratio
+net_sortino,dnn_rl,3.2941176470588234,DNN+RL,Net Sortino ratio
+net_sortino,equal_weight,3.4411764705882355,Equal-weight (1/N),Net Sortino ratio
+net_sortino,markowitz,2.4411764705882355,Markowitz,Net Sortino ratio
+tc_total,black_litterman,3.1176470588235294,Black-Litterman,Transaction cost total
+tc_total,dnn_only,4.9411764705882355,DNN-only,Transaction cost total
+tc_total,dnn_rl,3.1176470588235294,DNN+RL,Transaction cost total
+tc_total,equal_weight,1.4705882352941178,Equal-weight (1/N),Transaction cost total
+tc_total,markowitz,2.3529411764705883,Markowitz,Transaction cost total
+turnover_total,black_litterman,3.1176470588235294,Black-Litterman,Turnover total
+turnover_total,dnn_only,4.9411764705882355,DNN-only,Turnover total
+turnover_total,dnn_rl,3.1176470588235294,DNN+RL,Turnover total
+turnover_total,equal_weight,1.4705882352941178,Equal-weight (1/N),Turnover total
+turnover_total,markowitz,2.3529411764705883,Markowitz,Turnover total
