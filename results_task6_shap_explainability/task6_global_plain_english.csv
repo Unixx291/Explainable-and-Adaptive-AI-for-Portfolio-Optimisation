@@ -1,0 +1,3 @@
+split,explainer,top_features,summary_text
+split_033_2023-04-03_2025-07-08,GradientExplainer,"['20-day return volatility', '10-day return volatility', '10-day momentum', 'MACD (12, 26)', '60-day return volatility']","Across the explained rows, the DNN was mostly influenced by 20-day return volatility, 10-day return volatility, 10-day momentum, MACD (12, 26), and 60-day return volatility."
+split_034_2023-07-05_2025-10-06,GradientExplainer,"['MACD signal (9)', '60-day momentum', 'MACD (12, 26)', '20-day momentum', '1-day log return']","Across the explained rows, the DNN was mostly influenced by MACD signal (9), 60-day momentum, MACD (12, 26), 20-day momentum, and 1-day log return."

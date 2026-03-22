@@ -1,0 +1,12 @@
+{
+  "split": "split_034_2023-07-05_2025-10-06",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "MACD signal (9)",
+    "60-day momentum",
+    "MACD (12, 26)",
+    "20-day momentum",
+    "1-day log return"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by MACD signal (9), 60-day momentum, MACD (12, 26), 20-day momentum, and 1-day log return."
+}

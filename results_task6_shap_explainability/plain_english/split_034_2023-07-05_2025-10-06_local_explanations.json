@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-08-04",
+    "ticker": "IWM",
+    "y_true": 0.005084281787276268,
+    "y_pred": 0.05381115525960922,
+    "base_value": 0.001322185038588941,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2025-08-04, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 1-day simple return, MACD histogram, 5-day momentum. The main downward influences were 60-day momentum, 60-day average return, MACD (12, 26).",
+    "positive_drivers": [
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.038036033511161804
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.01920178346335888
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.011522707529366016
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.019149739295244217
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.014264367520809174
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.008630839176476002
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-08-01",
+    "ticker": "SPY",
+    "y_true": 0.015085426159203053,
+    "y_pred": -0.07015013694763184,
+    "base_value": 0.001322185038588941,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2025-08-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Volume change, 5-day momentum, 5-day return volatility. The main downward influences were MACD signal (9), Trading volume, 1-day log return.",
+    "positive_drivers": [
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": 0.014427618123590946
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.007947653532028198
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.006385937798768282
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.04925785958766937
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": -0.04106335714459419
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.011058882810175419
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-09-22",
+    "ticker": "TLT",
+    "y_true": 0.006965467240661383,
+    "y_pred": -0.046193793416023254,
+    "base_value": 0.001322185038588941,
+    "prediction_direction": "negative",
+    "summary_text": "For TLT on 2025-09-22, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved moderately down. The main upward influences were 20-day momentum, 5-day average return, 5-day momentum. The main downward influences were 14-day RSI, 10-day return volatility, 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.01373800728470087
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.008676445111632347
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.0031105673406273127
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.023505304008722305
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.014227121137082577
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.011692761443555355
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-07-17",
+    "ticker": "IWM",
+    "y_true": -0.007126064971089363,
+    "y_pred": -0.04173443466424942,
+    "base_value": 0.001322185038588941,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2025-07-17, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved moderately down. The main upward influences were 20-day average return, 1-day log return, Asset indicator: IWM. The main downward influences were 60-day momentum, MACD signal (9), 60-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.009386639110744
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.00708443857729435
+      },
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.006763326469808817
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.029445476830005646
+      },
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.012090482749044895
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.008654512465000153
+      }
+    ],
+    "case_rank": 4
+  }
+]
