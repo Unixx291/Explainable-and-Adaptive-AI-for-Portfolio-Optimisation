@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_018_2019-07-02_2021-09-29",
+    "date": "2021-09-21",
+    "ticker": "SPY",
+    "y_true": 0.009707621298730373,
+    "y_pred": 0.1754409819841385,
+    "base_value": -0.013582278974354267,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2021-09-21, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 10-day return volatility, 5-day average return. The main downward influences were 60-day average return, Asset indicator: SPY, 1-day log return.",
+    "positive_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.09754793345928192
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.037383075803518295
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.037119101732969284
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.0321916863322258
+      },
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": -0.028864480555057526
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.01779557578265667
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_018_2019-07-02_2021-09-29",
+    "date": "2021-09-27",
+    "ticker": "SPY",
+    "y_true": -0.020357755944132805,
+    "y_pred": -0.1233709305524826,
+    "base_value": -0.013582278974354267,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2021-09-27, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 1-day simple return, 60-day return volatility, MACD histogram. The main downward influences were 60-day average return, 5-day momentum, 14-day RSI.",
+    "positive_drivers": [
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.019246002659201622
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": 0.016486790031194687
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.01634242944419384
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.03319091722369194
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.03032522462308407
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.023851821199059486
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_018_2019-07-02_2021-09-29",
+    "date": "2021-09-22",
+    "ticker": "SPY",
+    "y_true": 0.012076797895133495,
+    "y_pred": 0.11894380301237106,
+    "base_value": -0.013582278974354267,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2021-09-22, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 60-day return volatility, 5-day average return. The main downward influences were 60-day average return, Trading volume, 14-day RSI.",
+    "positive_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.07613617926836014
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": 0.04297156631946564
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.042715635150671005
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.03276224061846733
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": -0.025028716772794724
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.019634967669844627
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_018_2019-07-02_2021-09-29",
+    "date": "2021-08-20",
+    "ticker": "IWM",
+    "y_true": 0.01884484477341175,
+    "y_pred": 0.11238272488117218,
+    "base_value": -0.013582278974354267,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2021-08-20, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day return volatility, 5-day average return, 10-day average return. The main downward influences were 60-day momentum, 5-day momentum, 20-day average volume.",
+    "positive_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.03301125392317772
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.03299601748585701
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.02649562619626522
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.030985882505774498
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.024151628836989403
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.020448047667741776
+      }
+    ],
+    "case_rank": 4
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "split": "split_031_2022-09-30_2025-01-02",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "14-day RSI",
+    "10-day average return",
+    "10-day return volatility",
+    "60-day momentum",
+    "5-day return volatility"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 14-day RSI, 10-day average return, 10-day return volatility, 60-day momentum, and 5-day return volatility."
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_022_2020-07-01_2022-09-29",
+    "date": "2022-09-28",
+    "ticker": "SPY",
+    "y_true": -0.021110184490680695,
+    "y_pred": 0.11869507282972336,
+    "base_value": -0.0019019512692466378,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2022-09-28, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 14-day RSI, MACD (12, 26). The main downward influences were 20-day momentum, MACD histogram, 10-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": 0.039408113807439804
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.037750210613012314
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.03566579520702362
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.052643612027168274
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.04596029594540596
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.03260580450296402
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_022_2020-07-01_2022-09-29",
+    "date": "2022-07-08",
+    "ticker": "IWM",
+    "y_true": -0.020308442413806915,
+    "y_pred": -0.175843745470047,
+    "base_value": -0.0019019512692466378,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2022-07-08, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day return volatility, 10-day momentum, Trading volume. The main downward influences were 60-day return volatility, 20-day return volatility, 14-day RSI.",
+    "positive_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.02683659829199314
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.01654876582324505
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.01428856048732996
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.04911569133400917
+      },
+      {
+        "feature": "ret_std_20",
+        "feature_label": "20-day return volatility",
+        "contribution": -0.043714847415685654
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.028518281877040863
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_022_2020-07-01_2022-09-29",
+    "date": "2022-08-10",
+    "ticker": "EFA",
+    "y_true": -0.0003017058770637959,
+    "y_pred": -0.16470909118652344,
+    "base_value": -0.0019019512692466378,
+    "prediction_direction": "negative",
+    "summary_text": "For EFA on 2022-08-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, 14-day RSI, MACD histogram. The main downward influences were 1-day simple return, 20-day average return, 20-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.02481081709265709
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.009828891605138779
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.0006836202228441834
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": -0.052813321352005005
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.03623892739415169
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.02040005475282669
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_022_2020-07-01_2022-09-29",
+    "date": "2022-07-21",
+    "ticker": "IWM",
+    "y_true": -0.016080597415566444,
+    "y_pred": -0.14637085795402527,
+    "base_value": -0.0019019512692466378,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2022-07-21, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day return volatility, Asset indicator: IWM, 60-day average return. The main downward influences were 60-day return volatility, 5-day momentum, 20-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.022321129217743874
+      },
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.01940753683447838
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.016979722306132317
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.054341405630111694
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.04708220437169075
+      },
+      {
+        "feature": "ret_std_20",
+        "feature_label": "20-day return volatility",
+        "contribution": -0.031095435842871666
+      }
+    ],
+    "case_rank": 4
+  }
+]

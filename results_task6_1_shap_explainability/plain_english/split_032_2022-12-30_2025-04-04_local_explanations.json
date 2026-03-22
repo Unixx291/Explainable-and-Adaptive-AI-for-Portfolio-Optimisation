@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_032_2022-12-30_2025-04-04",
+    "date": "2025-03-31",
+    "ticker": "IWM",
+    "y_true": 0.00010016941814683378,
+    "y_pred": 0.07760486006736755,
+    "base_value": 0.002928833942860365,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2025-03-31, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day momentum, 5-day average return, 5-day return volatility. The main downward influences were MACD (12, 26), MACD signal (9), 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.04214197024703026
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.026609336957335472
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.016338147222995758
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.02180657908320427
+      },
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.01774950698018074
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.016356253996491432
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_032_2022-12-30_2025-04-04",
+    "date": "2025-04-03",
+    "ticker": "TLT",
+    "y_true": 0.010828341357409954,
+    "y_pred": -0.10107192397117615,
+    "base_value": 0.002928833942860365,
+    "prediction_direction": "negative",
+    "summary_text": "For TLT on 2025-04-03, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day momentum, 10-day average return, 5-day return volatility. The main downward influences were 14-day RSI, Asset indicator: TLT, 5-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.011672279797494411
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.008914614096283913
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.008425140753388405
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.02963266521692276
+      },
+      {
+        "feature": "ticker_TLT",
+        "feature_label": "Asset indicator: TLT",
+        "contribution": -0.019783593714237213
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.011626090854406357
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_032_2022-12-30_2025-04-04",
+    "date": "2025-03-07",
+    "ticker": "SPY",
+    "y_true": -0.02699664607644081,
+    "y_pred": -0.09968631714582443,
+    "base_value": 0.002928833942860365,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2025-03-07, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day momentum, 20-day average return, MACD (12, 26). The main downward influences were MACD histogram, 60-day average return, 10-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.023334011435508728
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.018502335995435715
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.016397375613451004
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.05300981551408768
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.04849271476268768
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.022815179079771042
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_032_2022-12-30_2025-04-04",
+    "date": "2025-03-19",
+    "ticker": "SPY",
+    "y_true": -0.0028959547635167837,
+    "y_pred": -0.09729289263486862,
+    "base_value": 0.002928833942860365,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2025-03-19, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day return volatility, MACD signal (9), 1-day log return. The main downward influences were Asset indicator: SPY, 10-day momentum, 20-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "ret_std_20",
+        "feature_label": "20-day return volatility",
+        "contribution": 0.011996963061392307
+      },
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": 0.009275877848267555
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.005573802627623081
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": -0.021259913221001625
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.020574098452925682
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.020130589604377747
+      }
+    ],
+    "case_rank": 4
+  }
+]

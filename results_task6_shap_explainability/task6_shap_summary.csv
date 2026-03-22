@@ -1,3 +1,0 @@
-split,explainer,n_background_rows,n_explained_rows,n_train_rows,n_test_rows,n_features,top_feature_1,top_feature_2,top_feature_3
-split_033_2023-04-03_2025-07-08,GradientExplainer,80,121,2016,252,25,60-day return volatility,20-day return volatility,MACD signal (9)
-split_034_2023-07-05_2025-10-06,GradientExplainer,80,124,2016,252,25,10-day momentum,20-day momentum,14-day RSI

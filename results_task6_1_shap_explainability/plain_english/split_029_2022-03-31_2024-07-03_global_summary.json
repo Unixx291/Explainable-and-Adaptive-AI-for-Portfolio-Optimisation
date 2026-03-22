@@ -1,0 +1,12 @@
+{
+  "split": "split_029_2022-03-31_2024-07-03",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "60-day return volatility",
+    "Volume change",
+    "14-day RSI",
+    "5-day momentum",
+    "5-day average return"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, Volume change, 14-day RSI, 5-day momentum, and 5-day average return."
+}

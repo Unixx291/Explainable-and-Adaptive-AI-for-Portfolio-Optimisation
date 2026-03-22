@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_031_2022-09-30_2025-01-02",
+    "date": "2024-12-02",
+    "ticker": "IWM",
+    "y_true": -0.007140257861465216,
+    "y_pred": 0.15596365928649902,
+    "base_value": -0.003950746729969978,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2024-12-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 60-day momentum, 10-day momentum, Volume change. The main downward influences were 60-day average return, 5-day momentum, 60-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.06429030746221542
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.053282637149095535
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": 0.03750639036297798
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.04176713153719902
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.018699191510677338
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.014487308450043201
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_031_2022-09-30_2025-01-02",
+    "date": "2024-11-14",
+    "ticker": "IWM",
+    "y_true": -0.015029964968562126,
+    "y_pred": -0.21593907475471497,
+    "base_value": -0.003950746729969978,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2024-11-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: IWM, MACD (12, 26), 60-day momentum. The main downward influences were 10-day average return, 14-day RSI, 1-day log return.",
+    "positive_drivers": [
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.02044466882944107
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.017542799934744835
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.016594767570495605
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.07655778527259827
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.03637852519750595
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.029126260429620743
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_031_2022-09-30_2025-01-02",
+    "date": "2024-11-13",
+    "ticker": "IWM",
+    "y_true": -0.013574796728789806,
+    "y_pred": -0.1693515032529831,
+    "base_value": -0.003950746729969978,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2024-11-13, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: IWM, 60-day momentum, MACD histogram. The main downward influences were 10-day average return, 14-day RSI, 1-day log return.",
+    "positive_drivers": [
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.03400575742125511
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.0301061924546957
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.028901565819978714
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.07497180253267288
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.04376007243990898
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.033840566873550415
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_031_2022-09-30_2025-01-02",
+    "date": "2024-12-23",
+    "ticker": "SPY",
+    "y_true": 0.011053589172661304,
+    "y_pred": -0.1623103767633438,
+    "base_value": -0.003950746729969978,
+    "prediction_direction": "negative",
+    "summary_text": "For SPY on 2024-12-23, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day return volatility, Asset indicator: SPY, 10-day momentum. The main downward influences were MACD histogram, Volume change, Trading volume.",
+    "positive_drivers": [
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.03514305502176285
+      },
+      {
+        "feature": "ticker_SPY",
+        "feature_label": "Asset indicator: SPY",
+        "contribution": 0.02883969061076641
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.027608811855316162
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.0976310521364212
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": -0.05690360441803932
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": -0.021013401448726654
+      }
+    ],
+    "case_rank": 4
+  }
+]

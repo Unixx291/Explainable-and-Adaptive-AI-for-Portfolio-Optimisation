@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-08-20",
+    "ticker": "TLT",
+    "y_true": -0.004963933024555445,
+    "y_pred": 0.08676382154226303,
+    "base_value": 0.000579116283915937,
+    "prediction_direction": "positive",
+    "summary_text": "For TLT on 2025-08-20, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day momentum, 60-day return volatility, Asset indicator: TLT. The main downward influences were 10-day return volatility, 60-day momentum, 5-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.015418002381920815
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": 0.01316115539520979
+      },
+      {
+        "feature": "ticker_TLT",
+        "feature_label": "Asset indicator: TLT",
+        "contribution": 0.01004114467650652
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.008968851529061794
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.002760144416242838
+      },
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": -0.0027451554778963327
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-07-10",
+    "ticker": "EFA",
+    "y_true": -0.00962193962186575,
+    "y_pred": -0.06736017018556595,
+    "base_value": 0.000579116283915937,
+    "prediction_direction": "negative",
+    "summary_text": "For EFA on 2025-07-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Trading volume, 14-day RSI, 5-day momentum. The main downward influences were 60-day momentum, 20-day average volume, 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.011609687469899654
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.006125998683273792
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.0036270245909690857
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.017061982303857803
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.01380210742354393
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.012837043963372707
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-08-18",
+    "ticker": "TLT",
+    "y_true": 0.005787016823887825,
+    "y_pred": 0.08198804408311844,
+    "base_value": 0.000579116283915937,
+    "prediction_direction": "positive",
+    "summary_text": "For TLT on 2025-08-18, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day momentum, 60-day return volatility, 5-day average return. The main downward influences were 10-day return volatility, 1-day simple return, 10-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.025312893092632294
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": 0.01702721044421196
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.012997869402170181
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": -0.013635924085974693
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": -0.006645215209573507
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.0056801349855959415
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_034_2023-07-05_2025-10-06",
+    "date": "2025-07-10",
+    "ticker": "TLT",
+    "y_true": -0.013890698552131653,
+    "y_pred": 0.07434704154729843,
+    "base_value": 0.000579116283915937,
+    "prediction_direction": "positive",
+    "summary_text": "For TLT on 2025-07-10, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 14-day RSI, 20-day average return, 20-day momentum. The main downward influences were Asset indicator: IWM, 10-day momentum, MACD signal (9).",
+    "positive_drivers": [
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.009610280394554138
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.008863338269293308
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.006175900809466839
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": -0.0017228922806680202
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.0013677750248461962
+      },
+      {
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.0009400874259881675
+      }
+    ],
+    "case_rank": 4
+  }
+]

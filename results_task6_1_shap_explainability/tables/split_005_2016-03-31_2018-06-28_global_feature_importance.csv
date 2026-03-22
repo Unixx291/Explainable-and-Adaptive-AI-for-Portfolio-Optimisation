@@ -1,0 +1,26 @@
+feature,feature_label,mean_abs_shap
+macd_signal_9,MACD signal (9),0.010426591790820243
+ret_std_20,20-day return volatility,0.0065127819966179345
+ret_mean_10,10-day average return,0.005662452423870667
+mom_20,20-day momentum,0.005430650664082702
+mom_60,60-day momentum,0.005377661922437021
+ret_std_60,60-day return volatility,0.00493218383074038
+mom_10,10-day momentum,0.004908443426918365
+ret_std_10,10-day return volatility,0.0049031653685644066
+volume_roll_mean_20,20-day average volume,0.004863847809525807
+ret_mean_20,20-day average return,0.004614350579583603
+macd_hist,MACD histogram,0.004598610835478945
+rsi_14,14-day RSI,0.004419803256965797
+macd_12_26,"MACD (12, 26)",0.004174966325932004
+simple_return_1,1-day simple return,0.004111615708449878
+mom_5,5-day momentum,0.004072500673784464
+log_return_1,1-day log return,0.004035041282335324
+ret_std_5,5-day return volatility,0.004029882708099678
+ret_mean_5,5-day average return,0.0039836720299659175
+ret_mean_60,60-day average return,0.003728529042834247
+volume,Trading volume,0.0036823244913245117
+volume_chg,Volume change,0.0033466198297468683
+ticker_TLT,Asset indicator: TLT,0.002933359381190272
+ticker_SPY,Asset indicator: SPY,0.00283488430612476
+ticker_IWM,Asset indicator: IWM,0.002505123689080656
+ticker_EFA,Asset indicator: EFA,0.0021282318191204524

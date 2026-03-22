@@ -1,0 +1,12 @@
+{
+  "split": "split_025_2021-04-01_2023-07-03",
+  "explainer": "GradientExplainer",
+  "top_features": [
+    "60-day average return",
+    "60-day momentum",
+    "10-day return volatility",
+    "20-day average return",
+    "5-day return volatility"
+  ],
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day average return, 60-day momentum, 10-day return volatility, 20-day average return, and 5-day return volatility."
+}

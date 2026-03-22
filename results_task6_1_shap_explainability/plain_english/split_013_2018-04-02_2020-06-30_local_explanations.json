@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_013_2018-04-02_2020-06-30",
+    "date": "2020-06-12",
+    "ticker": "SPY",
+    "y_true": 0.009292429313063622,
+    "y_pred": 0.2959222197532654,
+    "base_value": -0.00575731648132205,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2020-06-12, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Trading volume, 60-day momentum, 60-day average return. The main downward influences were 5-day momentum, 20-day average volume, MACD (12, 26).",
+    "positive_drivers": [
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.14698843657970428
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.09391839057207108
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.056069523096084595
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.06773125380277634
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.06534471362829208
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.02819267101585865
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_013_2018-04-02_2020-06-30",
+    "date": "2020-05-20",
+    "ticker": "IWM",
+    "y_true": 0.0017891994211822748,
+    "y_pred": -0.5195600986480713,
+    "base_value": -0.00575731648132205,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2020-05-20, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day average return, 60-day momentum, 1-day log return. The main downward influences were 60-day return volatility, 5-day momentum, 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.06465541571378708
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.058388661593198776
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.029683079570531845
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.2551218867301941
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.0682646781206131
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.06079450249671936
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_013_2018-04-02_2020-06-30",
+    "date": "2020-05-19",
+    "ticker": "IWM",
+    "y_true": 0.029844211414456367,
+    "y_pred": -0.5008453726768494,
+    "base_value": -0.00575731648132205,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2020-05-19, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 20-day momentum, Asset indicator: IWM. The main downward influences were 60-day return volatility, 60-day average return, 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.1275007128715515
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.03426479548215866
+      },
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.03130681440234184
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.28569623827934265
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.1215754821896553
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.06922843307256699
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_013_2018-04-02_2020-06-30",
+    "date": "2020-05-21",
+    "ticker": "IWM",
+    "y_true": 0.004830799996852875,
+    "y_pred": -0.48868101835250854,
+    "base_value": -0.00575731648132205,
+    "prediction_direction": "negative",
+    "summary_text": "For IWM on 2020-05-21, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 5-day average return, MACD histogram. The main downward influences were 60-day return volatility, 5-day momentum, 20-day average return.",
+    "positive_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.07965808361768723
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.04838443920016289
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.024147188290953636
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.29521286487579346
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.09108246117830276
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.06509353965520859
+      }
+    ],
+    "case_rank": 4
+  }
+]

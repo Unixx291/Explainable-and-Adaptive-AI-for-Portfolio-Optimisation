@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_024_2020-12-30_2023-03-31",
+    "date": "2023-02-07",
+    "ticker": "IWM",
+    "y_true": -0.014731227420270443,
+    "y_pred": 0.1453752964735031,
+    "base_value": 0.02305370196700096,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2023-02-07, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day momentum, Volume change, 1-day log return. The main downward influences were 20-day average return, 10-day average return, 60-day return volatility.",
+    "positive_drivers": [
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.0434810072183609
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": 0.026405878365039825
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.024416998028755188
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.03154315426945686
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.026849906891584396
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.01953662559390068
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_024_2020-12-30_2023-03-31",
+    "date": "2023-01-10",
+    "ticker": "EFA",
+    "y_true": 0.00754936458542943,
+    "y_pred": -0.13575142621994019,
+    "base_value": 0.02305370196700096,
+    "prediction_direction": "negative",
+    "summary_text": "For EFA on 2023-01-10, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day average return, 10-day momentum, Trading volume. The main downward influences were 60-day momentum, 10-day average return, 20-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.0582265742123127
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.04934904724359512
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.016908081248402596
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.09865015000104904
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.0425129272043705
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.033215466886758804
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_024_2020-12-30_2023-03-31",
+    "date": "2023-01-11",
+    "ticker": "EFA",
+    "y_true": 0.014645038172602654,
+    "y_pred": -0.11832408607006073,
+    "base_value": 0.02305370196700096,
+    "prediction_direction": "negative",
+    "summary_text": "For EFA on 2023-01-11, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, 60-day average return, Trading volume. The main downward influences were 60-day momentum, 10-day average return, 5-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.04520191252231598
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.029156768694519997
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.013245359994471073
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.10035893321037292
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.04150017723441124
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.020538682118058205
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_024_2020-12-30_2023-03-31",
+    "date": "2023-01-12",
+    "ticker": "EFA",
+    "y_true": 0.005259653087705374,
+    "y_pred": -0.11767173558473587,
+    "base_value": 0.02305370196700096,
+    "prediction_direction": "negative",
+    "summary_text": "For EFA on 2023-01-12, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day momentum, 60-day average return, Trading volume. The main downward influences were 60-day momentum, 10-day average return, 5-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": 0.06547026336193085
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.0390760600566864
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.025884225964546204
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.11565222591161728
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.07335587590932846
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.048165418207645416
+      }
+    ],
+    "case_rank": 4
+  }
+]

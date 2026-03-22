@@ -1,0 +1,182 @@
+[
+  {
+    "split": "split_021_2020-04-01_2022-06-30",
+    "date": "2022-06-15",
+    "ticker": "EFA",
+    "y_true": -0.022267553955316544,
+    "y_pred": 0.20822054147720337,
+    "base_value": 0.009184090420603752,
+    "prediction_direction": "positive",
+    "summary_text": "For EFA on 2022-06-15, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day momentum, 60-day average return, 60-day momentum. The main downward influences were 5-day return volatility, 5-day average return, 10-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.09311624616384506
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.03308131545782089
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.032088231295347214
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": -0.022678673267364502
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": -0.015640903264284134
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.010266504250466824
+      }
+    ],
+    "case_rank": 1
+  },
+  {
+    "split": "split_021_2020-04-01_2022-06-30",
+    "date": "2022-05-31",
+    "ticker": "TLT",
+    "y_true": -0.0011437610955908895,
+    "y_pred": -0.15089277923107147,
+    "base_value": 0.009184090420603752,
+    "prediction_direction": "negative",
+    "summary_text": "For TLT on 2022-05-31, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD (12, 26), 5-day average return, 60-day return volatility. The main downward influences were 60-day momentum, Volume change, 14-day RSI.",
+    "positive_drivers": [
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.013021375983953476
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.009250141680240631
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": 0.008410227485001087
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": -0.03391338884830475
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": -0.03136032819747925
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": -0.02579037845134735
+      }
+    ],
+    "case_rank": 2
+  },
+  {
+    "split": "split_021_2020-04-01_2022-06-30",
+    "date": "2022-04-29",
+    "ticker": "SPY",
+    "y_true": 0.006001481786370277,
+    "y_pred": 0.18898668885231018,
+    "base_value": 0.009184090420603752,
+    "prediction_direction": "positive",
+    "summary_text": "For SPY on 2022-04-29, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, Trading volume, 10-day return volatility. The main downward influences were MACD (12, 26), 10-day average return, 5-day momentum.",
+    "positive_drivers": [
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.07897945493459702
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": 0.07284025847911835
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.054197411984205246
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.12156711518764496
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.1035885214805603
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.05835626646876335
+      }
+    ],
+    "case_rank": 3
+  },
+  {
+    "split": "split_021_2020-04-01_2022-06-30",
+    "date": "2022-06-14",
+    "ticker": "IWM",
+    "y_true": 0.014535544440150261,
+    "y_pred": 0.1824357956647873,
+    "base_value": 0.009184090420603752,
+    "prediction_direction": "positive",
+    "summary_text": "For IWM on 2022-06-14, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day momentum, 10-day return volatility, 60-day average return. The main downward influences were 5-day average return, 20-day average return, MACD (12, 26).",
+    "positive_drivers": [
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.14413407444953918
+      },
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.0829327329993248
+      },
+      {
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": 0.05371197685599327
+      }
+    ],
+    "negative_drivers": [
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": -0.08444022387266159
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.05161033198237419
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.044953685253858566
+      }
+    ],
+    "case_rank": 4
+  }
+]
