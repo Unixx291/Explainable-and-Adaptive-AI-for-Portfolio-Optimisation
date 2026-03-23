@@ -1,0 +1,15 @@
+# Final Year Project - core Python dependencies
+# Recommended Python version: 3.10
+
+numpy
+pandas
+matplotlib
+joblib
+yfinance
+scikit-learn
+PyPortfolioOpt
+tensorflow
+gymnasium
+stable-baselines3
+shap
+lime
