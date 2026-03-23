@@ -16,12 +16,19 @@ CONFIG = {
     "task6_3_outdir": "results_task6_3_feature_ablation",
     # Representative splits chosen from SHAP trends
     "selected_splits": [
-        "split_032_2022-12-30_2025-04-04",  # return-level dominated
-        "split_033_2023-04-03_2025-07-08",  # volatility dominated
-        "split_034_2023-07-05_2025-10-06",  # momentum dominated
-        "split_031_2022-09-30_2025-01-02",  # RSI dominated
-        "split_008_2016-12-28_2019-04-01",  # MACD signal dominated
+        "split_032_2022-12-30_2025-04-04",
+        "split_033_2023-04-03_2025-07-08",
+        "split_034_2023-07-05_2025-10-06",
+        "split_031_2022-09-30_2025-01-02",
+        "split_008_2016-12-28_2019-04-01",
     ],
+    "split_family_context": {
+        "split_032_2022-12-30_2025-04-04": "return-level dominated from SHAP",
+        "split_033_2023-04-03_2025-07-08": "volatility dominated from SHAP",
+        "split_034_2023-07-05_2025-10-06": "momentum dominated from SHAP",
+        "split_031_2022-09-30_2025-01-02": "RSI dominated from SHAP",
+        "split_008_2016-12-28_2019-04-01": "MACD-signal dominated from SHAP",
+    },
     "feature_families": {
         "return_level": ["ret_mean_5", "ret_mean_10", "ret_mean_20", "ret_mean_60"],
         "volatility": ["ret_std_5", "ret_std_10", "ret_std_20", "ret_std_60"],
@@ -277,13 +284,24 @@ def main() -> None:
     results_rows: List[Dict[str, object]] = []
 
     print(f"Selected {len(selected_splits)} split(s) for Task 6.3 family ablation.")
+    split_family_context = dict(CONFIG.get("split_family_context", {}))
+    for s in selected_splits:
+        context = split_family_context.get(s)
+        if context:
+            print(f"  - {s} [{context}]")
+        else:
+            print(f"  - {s}")
 
     for split_name in selected_splits:
         if split_name not in split_map:
             print(f"Skipping missing split metadata: {split_name}")
             continue
 
-        print(f"\nRunning Task 6.3 on split: {split_name}")
+        split_context = split_family_context.get(split_name)
+        if split_context:
+            print(f"\nRunning Task 6.3 on split: {split_name} [{split_context}]")
+        else:
+            print(f"\nRunning Task 6.3 on split: {split_name}")
         split_meta_task2 = split_map[split_name]
         train_df, test_df, full_panel = _load_split_data(task2_outdir, split_meta_task2)
         split_meta_task4 = _load_task4_split_metadata(task4_outdir, split_name)
@@ -313,6 +331,8 @@ def main() -> None:
             **full_port,
         }
         results_rows.append(full_row)
+        if split_context:
+            print(f"  Dominant SHAP family reference: {split_context}")
         print(f"  Full model: sharpe={full_port['net_sharpe']:.3f}, sortino={full_port['net_sortino']:.3f}, rmse={full_diag['rmse']:.6f}")
 
         for family_name, fam_features in CONFIG["feature_families"].items():
