@@ -14,20 +14,36 @@ CONFIG = {
     "task2_outdir": "data_prepared_task2",
     "task4_outdir": "results_task4_1_dnn_only",
     "task6_3_outdir": "results_task6_3_feature_ablation",
-    # Representative splits chosen from SHAP trends
+    # 10 representative splits chosen from SHAP trends:
+    # keep the original 5 and add 5 earlier / complementary regimes so the
+    # family ablation is less clustered near the end of the sample.
     "selected_splits": [
+        # original 5
         "split_032_2022-12-30_2025-04-04",
         "split_033_2023-04-03_2025-07-08",
         "split_034_2023-07-05_2025-10-06",
         "split_031_2022-09-30_2025-01-02",
         "split_008_2016-12-28_2019-04-01",
+        # added 5 from SHAP outputs
+        "split_001_2015-03-31_2017-06-28",
+        "split_009_2017-03-30_2019-07-01",
+        "split_010_2017-06-29_2019-09-30",
+        "split_012_2017-12-28_2020-03-31",
+        "split_024_2020-12-30_2023-03-31",
     ],
     "split_family_context": {
+        # original 5
         "split_032_2022-12-30_2025-04-04": "return-level dominated from SHAP",
         "split_033_2023-04-03_2025-07-08": "volatility dominated from SHAP",
         "split_034_2023-07-05_2025-10-06": "momentum dominated from SHAP",
         "split_031_2022-09-30_2025-01-02": "RSI dominated from SHAP",
         "split_008_2016-12-28_2019-04-01": "MACD-signal dominated from SHAP",
+        # added 5
+        "split_001_2015-03-31_2017-06-28": "short-horizon return dominated from SHAP",
+        "split_009_2017-03-30_2019-07-01": "10-day average-return dominated from SHAP",
+        "split_010_2017-06-29_2019-09-30": "volume dominated from SHAP",
+        "split_012_2017-12-28_2020-03-31": "volatility dominated from SHAP (crisis window)",
+        "split_024_2020-12-30_2023-03-31": "60-day momentum dominated from SHAP",
     },
     "feature_families": {
         "return_level": ["ret_mean_5", "ret_mean_10", "ret_mean_20", "ret_mean_60"],
