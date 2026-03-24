@@ -14,37 +14,22 @@ CONFIG = {
     "task2_outdir": "data_prepared_task2",
     "task4_outdir": "results_task4_1_dnn_only",
     "task6_3_outdir": "results_task6_3_feature_ablation",
-    # 10 representative splits chosen from SHAP trends:
-    # keep the original 5 and add 5 earlier / complementary regimes so the
-    # family ablation is less clustered near the end of the sample.
+    "task6_1_outdir": "results_task6_1_shap_explainability",
+    # Use every saved Task 4.1 model by default for the strongest ablation study
+    "selection_mode": "all_saved_models",  # options: all_saved_models, selected
+    # Kept for convenience if you ever want to run a subset manually
     "selected_splits": [
-        # original 5
         "split_032_2022-12-30_2025-04-04",
         "split_033_2023-04-03_2025-07-08",
         "split_034_2023-07-05_2025-10-06",
         "split_031_2022-09-30_2025-01-02",
         "split_008_2016-12-28_2019-04-01",
-        # added 5 from SHAP outputs
         "split_001_2015-03-31_2017-06-28",
         "split_009_2017-03-30_2019-07-01",
         "split_010_2017-06-29_2019-09-30",
         "split_012_2017-12-28_2020-03-31",
         "split_024_2020-12-30_2023-03-31",
     ],
-    "split_family_context": {
-        # original 5
-        "split_032_2022-12-30_2025-04-04": "return-level dominated from SHAP",
-        "split_033_2023-04-03_2025-07-08": "volatility dominated from SHAP",
-        "split_034_2023-07-05_2025-10-06": "momentum dominated from SHAP",
-        "split_031_2022-09-30_2025-01-02": "RSI dominated from SHAP",
-        "split_008_2016-12-28_2019-04-01": "MACD-signal dominated from SHAP",
-        # added 5
-        "split_001_2015-03-31_2017-06-28": "short-horizon return dominated from SHAP",
-        "split_009_2017-03-30_2019-07-01": "10-day average-return dominated from SHAP",
-        "split_010_2017-06-29_2019-09-30": "volume dominated from SHAP",
-        "split_012_2017-12-28_2020-03-31": "volatility dominated from SHAP (crisis window)",
-        "split_024_2020-12-30_2023-03-31": "60-day momentum dominated from SHAP",
-    },
     "feature_families": {
         "return_level": ["ret_mean_5", "ret_mean_10", "ret_mean_20", "ret_mean_60"],
         "volatility": ["ret_std_5", "ret_std_10", "ret_std_20", "ret_std_60"],
@@ -55,6 +40,68 @@ CONFIG = {
     },
 }
 
+
+
+
+def _feature_to_family_label(feature_name: str) -> str:
+    name = str(feature_name)
+    if name.startswith("ret_mean_"):
+        return "return-level dominated from SHAP"
+    if name.startswith("ret_std_"):
+        return "volatility dominated from SHAP"
+    if name.startswith("mom_"):
+        return "momentum dominated from SHAP"
+    if name in {"macd_12_26", "macd_signal_9", "macd_hist"}:
+        return "MACD dominated from SHAP"
+    if name == "rsi_14":
+        return "RSI dominated from SHAP"
+    if name in {"volume", "volume_chg", "volume_roll_mean_20"}:
+        return "volume dominated from SHAP"
+    if name in {"log_return_1", "simple_return_1"}:
+        return "short-horizon return dominated from SHAP"
+    return f"{name} dominated from SHAP"
+
+
+def _load_shap_context_map(task6_1_outdir: Path) -> Dict[str, str]:
+    summary_path = task6_1_outdir / "task6_1_shap_summary.csv"
+    if not summary_path.exists():
+        return {}
+    try:
+        df = pd.read_csv(summary_path)
+    except Exception:
+        return {}
+    if "split" not in df.columns:
+        return {}
+    context_map: Dict[str, str] = {}
+    for _, row in df.iterrows():
+        split_name = str(row.get("split", "")).strip()
+        top_feature = row.get("top_feature_1")
+        if not split_name:
+            continue
+        if pd.isna(top_feature):
+            context_map[split_name] = "context not specified"
+        else:
+            context_map[split_name] = _feature_to_family_label(str(top_feature))
+    return context_map
+
+
+def _select_splits(split_map: Dict[str, Dict], task4_outdir: Path) -> List[str]:
+    mode = str(CONFIG.get("selection_mode", "all_saved_models")).strip().lower()
+    if mode == "selected":
+        return [s for s in CONFIG.get("selected_splits", []) if s in split_map]
+    if mode == "all_saved_models":
+        models_dir = task4_outdir / "models"
+        if not models_dir.exists():
+            raise RuntimeError(
+                f"Could not find saved Task 4.1 models directory: {models_dir}. "
+                "Run Task 4.1 with model saving enabled first."
+            )
+        saved = sorted(p.stem for p in models_dir.glob("*.keras"))
+        selected = [s for s in saved if s in split_map]
+        if not selected:
+            raise RuntimeError("No saved Task 4.1 models matched Task 2 split metadata.")
+        return selected
+    raise RuntimeError(f"Unknown selection_mode={mode!r}. Use 'all_saved_models' or 'selected'.")
 
 def _ensure_dir(p: Path) -> None:
     p.mkdir(parents=True, exist_ok=True)
@@ -270,6 +317,38 @@ def _safe_delta(full_val: float, ablated_val: float, higher_is_better: bool = Tr
     return float(full_val - ablated_val) if higher_is_better else float(ablated_val - full_val)
 
 
+def _detect_full_model_outliers(full_df: pd.DataFrame) -> pd.DataFrame:
+    if full_df.empty:
+        return pd.DataFrame(columns=["split", "rmse", "is_outlier_rmse", "outlier_reason"])
+    vals = pd.to_numeric(full_df["rmse"], errors="coerce")
+    q1 = float(vals.quantile(0.25))
+    q3 = float(vals.quantile(0.75))
+    iqr = q3 - q1
+    upper_iqr = q3 + 1.5 * iqr
+    med = float(vals.median())
+    mad = float(np.median(np.abs(vals - med)))
+
+    rows = []
+    for split, value in vals.items():
+        reasons = []
+        if np.isfinite(value):
+            if iqr > 0 and value > upper_iqr:
+                reasons.append(f"rmse_above_iqr_upper({upper_iqr:.6f})")
+            if mad > 0:
+                robust_z = 0.6745 * (float(value) - med) / mad
+                if robust_z > 3.5:
+                    reasons.append(f"rmse_robust_z_gt_3.5({robust_z:.2f})")
+            if value > 1.0:
+                reasons.append("rmse_gt_1.0")
+        rows.append({
+            "split": split,
+            "rmse": float(value),
+            "is_outlier_rmse": bool(len(reasons) > 0),
+            "outlier_reason": "; ".join(reasons),
+        })
+    return pd.DataFrame(rows)
+
+
 def save_family_delta_plot(summary_df: pd.DataFrame, outpath: Path) -> None:
     if summary_df.empty:
         return
@@ -287,6 +366,7 @@ def save_family_delta_plot(summary_df: pd.DataFrame, outpath: Path) -> None:
 def main() -> None:
     task2_outdir = Path(CONFIG["task2_outdir"])
     task4_outdir = Path(CONFIG["task4_outdir"])
+    task6_1_outdir = Path(CONFIG["task6_1_outdir"])
     outdir = Path(CONFIG["task6_3_outdir"])
     tables_dir = outdir / "tables"
     figures_dir = outdir / "figures"
@@ -295,18 +375,15 @@ def main() -> None:
     _ensure_dir(figures_dir)
 
     split_map = _load_task2_split_map(task2_outdir)
-    selected_splits = list(CONFIG["selected_splits"])
+    selected_splits = _select_splits(split_map, task4_outdir)
+    split_family_context = _load_shap_context_map(task6_1_outdir)
 
     results_rows: List[Dict[str, object]] = []
 
     print(f"Selected {len(selected_splits)} split(s) for Task 6.3 family ablation.")
-    split_family_context = dict(CONFIG.get("split_family_context", {}))
-    for s in selected_splits:
-        context = split_family_context.get(s)
-        if context:
-            print(f"  - {s} [{context}]")
-        else:
-            print(f"  - {s}")
+    for split_name in selected_splits:
+        label = split_family_context.get(split_name, "context not specified")
+        print(f"  - {split_name} [{label}]")
 
     for split_name in selected_splits:
         if split_name not in split_map:
@@ -347,8 +424,7 @@ def main() -> None:
             **full_port,
         }
         results_rows.append(full_row)
-        if split_context:
-            print(f"  Dominant SHAP family reference: {split_context}")
+        print(f"  Dominant SHAP family reference: {split_context}")
         print(f"  Full model: sharpe={full_port['net_sharpe']:.3f}, sortino={full_port['net_sortino']:.3f}, rmse={full_diag['rmse']:.6f}")
 
         for family_name, fam_features in CONFIG["feature_families"].items():
@@ -394,16 +470,26 @@ def main() -> None:
 
     full_df = results_df[results_df["family"] == "full"].copy().set_index("split")
     ablated_df = results_df[results_df["family"] != "full"].copy()
+
+    full_outliers_df = _detect_full_model_outliers(full_df)
+    full_outliers_df.to_csv(tables_dir / "task6_3_full_model_outlier_flags.csv", index=False)
+    outlier_map = full_outliers_df.set_index("split").to_dict("index") if not full_outliers_df.empty else {}
+
     delta_rows: List[Dict[str, object]] = []
     for _, row in ablated_df.iterrows():
         split = row["split"]
         if split not in full_df.index:
             continue
         full = full_df.loc[split]
+        outlier_info = outlier_map.get(split, {"is_outlier_rmse": False, "outlier_reason": ""})
         delta_rows.append({
             "split": split,
             "family": row["family"],
             "family_label": row["family_label"],
+            "full_rmse": float(full["rmse"]),
+            "ablated_rmse": float(row["rmse"]),
+            "is_outlier_rmse": bool(outlier_info.get("is_outlier_rmse", False)),
+            "outlier_reason": outlier_info.get("outlier_reason", ""),
             "delta_mae": _safe_delta(full["mae"], row["mae"], higher_is_better=False),
             "delta_rmse": _safe_delta(full["rmse"], row["rmse"], higher_is_better=False),
             "delta_direction_acc": _safe_delta(full["direction_acc"], row["direction_acc"], higher_is_better=True),
@@ -421,21 +507,41 @@ def main() -> None:
     if not delta_df.empty:
         grouped = delta_df.groupby(["family", "family_label"], dropna=False)
         for (family, family_label), g in grouped:
+            g_no_out = g[~g["is_outlier_rmse"]].copy()
+            if g_no_out.empty:
+                g_no_out = g.copy()
             summary_rows.append({
                 "family": family,
                 "family_label": family_label,
                 "n_splits": int(g["split"].nunique()),
+                "n_outlier_splits": int(g["is_outlier_rmse"].sum()),
                 "delta_mae_mean": float(g["delta_mae"].mean()),
+                "delta_mae_median": float(g["delta_mae"].median()),
                 "delta_rmse_mean": float(g["delta_rmse"].mean()),
+                "delta_rmse_median": float(g["delta_rmse"].median()),
+                "delta_rmse_mean_excl_outliers": float(g_no_out["delta_rmse"].mean()),
                 "delta_direction_acc_mean": float(g["delta_direction_acc"].mean()),
+                "delta_direction_acc_median": float(g["delta_direction_acc"].median()),
                 "delta_net_ann_return_mean": float(g["delta_net_ann_return"].mean()),
+                "delta_net_ann_return_median": float(g["delta_net_ann_return"].median()),
                 "delta_net_sharpe_mean": float(g["delta_net_sharpe"].mean()),
+                "delta_net_sharpe_median": float(g["delta_net_sharpe"].median()),
                 "delta_net_sortino_mean": float(g["delta_net_sortino"].mean()),
+                "delta_net_sortino_median": float(g["delta_net_sortino"].median()),
                 "delta_net_max_drawdown_mean": float(g["delta_net_max_drawdown"].mean()),
                 "delta_turnover_total_mean": float(g["delta_turnover_total"].mean()),
                 "delta_tc_total_mean": float(g["delta_tc_total"].mean()),
+                "sharpe_hurt_count": int((g["delta_net_sharpe"] > 0).sum()),
+                "sharpe_help_count": int((g["delta_net_sharpe"] < 0).sum()),
+                "sharpe_neutral_count": int((g["delta_net_sharpe"] == 0).sum()),
+                "sortino_hurt_count": int((g["delta_net_sortino"] > 0).sum()),
+                "sortino_help_count": int((g["delta_net_sortino"] < 0).sum()),
+                "sortino_neutral_count": int((g["delta_net_sortino"] == 0).sum()),
+                "rmse_hurt_count": int((g["delta_rmse"] > 0).sum()),
+                "rmse_help_count": int((g["delta_rmse"] < 0).sum()),
+                "rmse_neutral_count": int((g["delta_rmse"] == 0).sum()),
             })
-    summary_df = pd.DataFrame(summary_rows).sort_values("delta_net_sharpe_mean", ascending=False)
+    summary_df = pd.DataFrame(summary_rows).sort_values(["delta_net_sharpe_mean", "delta_net_sortino_mean"], ascending=False)
     summary_df.to_csv(tables_dir / "task6_3_ablation_summary_by_family.csv", index=False)
 
     # plain-English summary
@@ -445,9 +551,11 @@ def main() -> None:
             "family": row["family"],
             "family_label": row["family_label"],
             "summary": (
-                f"Removing the {row['family_label'].lower()} reduced average Sharpe by {row['delta_net_sharpe_mean']:.4f}, "
-                f"Sortino by {row['delta_net_sortino_mean']:.4f}, and changed RMSE by {row['delta_rmse_mean']:.6f} "
-                f"across {int(row['n_splits'])} representative split(s)."
+                f"Removing the {row['family_label'].lower()} reduced average Sharpe by {row['delta_net_sharpe_mean']:.4f} "
+                f"(median {row['delta_net_sharpe_median']:.4f}), reduced average Sortino by {row['delta_net_sortino_mean']:.4f} "
+                f"(median {row['delta_net_sortino_median']:.4f}), and changed RMSE by {row['delta_rmse_mean']:.6f} "
+                f"(median {row['delta_rmse_median']:.6f}; excluding RMSE outliers: {row['delta_rmse_mean_excl_outliers']:.6f}) across "
+                f"{int(row['n_splits'])} representative split(s). Removal hurt Sharpe in {int(row['sharpe_hurt_count'])} split(s) and improved it in {int(row['sharpe_help_count'])}."
             ),
         })
     pd.DataFrame(pe_rows).to_csv(tables_dir / "task6_3_plain_english_summary.csv", index=False)
