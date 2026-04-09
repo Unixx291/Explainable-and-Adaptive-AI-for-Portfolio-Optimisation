@@ -1,0 +1,48 @@
+{
+  "split_name": "split_013_2018-04-02_2020-06-30",
+  "global_summary": "Across the selected LIME cases, the DNN was most locally influenced by 20-day return volatility > 0.11, 10-day return volatility > 0.07, MACD signal (9) > 0.47, 5-day average return <= -0.29, and 5-day momentum <= -0.31.",
+  "local_cases": [
+    {
+      "split_name": "split_013_2018-04-02_2020-06-30",
+      "case_id": 1,
+      "date": "2020-06-12",
+      "ticker": "SPY",
+      "y_true": 0.009292429313063622,
+      "y_pred": 0.2959222197532654,
+      "local_pred": -0.07608804536915856,
+      "intercept": 0.03122090017421517,
+      "fidelity_score": 0.11903586539752486,
+      "plain_english": "For SPY on 2020-06-12, the DNN predicted a negative next-period log return. Relative to the local surrogate baseline, the forecast moved strongly down. The main upward influences were 20-day return volatility > 0.11, MACD signal (9) > 0.47. The main downward influences were 10-day return volatility > 0.07, 5-day average return <= -0.29, 5-day momentum <= -0.31.",
+      "top_positive_features": "20-day return volatility > 0.11; MACD signal (9) > 0.47",
+      "top_negative_features": "10-day return volatility > 0.07; 5-day average return <= -0.29; 5-day momentum <= -0.31"
+    },
+    {
+      "split_name": "split_013_2018-04-02_2020-06-30",
+      "case_id": 2,
+      "date": "2020-05-20",
+      "ticker": "IWM",
+      "y_true": 0.0017891994211822748,
+      "y_pred": -0.5195600986480713,
+      "local_pred": 0.09248747981048237,
+      "intercept": -0.04384250538277863,
+      "fidelity_score": 0.09511661444058972,
+      "plain_english": "For IWM on 2020-05-20, the DNN predicted a positive next-period log return. Relative to the local surrogate baseline, the forecast moved strongly up. The main upward influences were 20-day return volatility > 0.11, MACD signal (9) > 0.47, 60-day average return <= -0.41. The main downward influences were 10-day return volatility > 0.07, Asset indicator: TLT <= 0.00.",
+      "top_positive_features": "20-day return volatility > 0.11; MACD signal (9) > 0.47; 60-day average return <= -0.41",
+      "top_negative_features": "10-day return volatility > 0.07; Asset indicator: TLT <= 0.00"
+    },
+    {
+      "split_name": "split_013_2018-04-02_2020-06-30",
+      "case_id": 3,
+      "date": "2020-05-19",
+      "ticker": "IWM",
+      "y_true": 0.029844211414456367,
+      "y_pred": -0.5008453726768494,
+      "local_pred": 0.0457797851550163,
+      "intercept": -0.03038208624400155,
+      "fidelity_score": 0.07837516941987499,
+      "plain_english": "For IWM on 2020-05-19, the DNN predicted a positive next-period log return. Relative to the local surrogate baseline, the forecast moved strongly up. The main upward influences were 20-day return volatility > 0.11, MACD signal (9) > 0.47, 5-day momentum > 0.46. The main downward influences were 10-day return volatility > 0.07, Asset indicator: TLT <= 0.00, MACD (12, 26) > 0.47.",
+      "top_positive_features": "20-day return volatility > 0.11; MACD signal (9) > 0.47; 5-day momentum > 0.46",
+      "top_negative_features": "10-day return volatility > 0.07; Asset indicator: TLT <= 0.00; MACD (12, 26) > 0.47"
+    }
+  ]
+}

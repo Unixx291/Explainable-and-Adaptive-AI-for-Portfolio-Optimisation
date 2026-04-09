@@ -6,7 +6,7 @@
     "20-day return volatility",
     "MACD signal (9)",
     "1-day log return",
-    "MACD (12, 26)"
+    "5-day return volatility"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, 20-day return volatility, MACD signal (9), 1-day log return, and MACD (12, 26)."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, 20-day return volatility, MACD signal (9), 1-day log return, and 5-day return volatility."
 }

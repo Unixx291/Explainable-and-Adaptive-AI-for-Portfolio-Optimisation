@@ -57,7 +57,7 @@ CONFIG = {
     "task2_outdir": "data_prepared_task2",
     "task4_outdir": "results_task4_1_dnn_only",
     "task6_2_outdir": "results_task6_2_lime_explainability",
-    "selected_split": "split_032_2022-12-30_2025-04-04",
+    "selected_split": "split_013_2018-04-02_2020-06-30",
     "random_state": 42,
     "num_features": 10,
     "num_samples": 4000,

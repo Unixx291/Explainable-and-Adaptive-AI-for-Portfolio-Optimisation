@@ -3,10 +3,10 @@
   "explainer": "GradientExplainer",
   "top_features": [
     "10-day momentum",
-    "60-day return volatility",
     "10-day average return",
+    "60-day return volatility",
     "20-day average return",
     "MACD signal (9)"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, 60-day return volatility, 10-day average return, 20-day average return, and MACD signal (9)."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day momentum, 10-day average return, 60-day return volatility, 20-day average return, and MACD signal (9)."
 }

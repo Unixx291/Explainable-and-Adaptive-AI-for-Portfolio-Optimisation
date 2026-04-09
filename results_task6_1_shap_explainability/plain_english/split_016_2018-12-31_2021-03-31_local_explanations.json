@@ -7,39 +7,39 @@
     "y_pred": 0.1078520342707634,
     "base_value": 0.0004012373392470181,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2021-01-15, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 60-day momentum, 10-day average return. The main downward influences were 60-day average return, 20-day average return, 10-day momentum.",
+    "summary_text": "For IWM on 2021-01-15, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD signal (9), 60-day momentum, 1-day log return. The main downward influences were 60-day average return, 10-day momentum, 20-day average return.",
     "positive_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.06427883356809616
+        "contribution": 0.0595257394015789
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.029773013666272163
+        "contribution": 0.039314135909080505
       },
       {
-        "feature": "ret_mean_10",
-        "feature_label": "10-day average return",
-        "contribution": 0.023899400606751442
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.022113006561994553
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.019823666661977768
-      },
-      {
-        "feature": "ret_mean_20",
-        "feature_label": "20-day average return",
-        "contribution": -0.017846912145614624
+        "contribution": -0.01890704594552517
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.016323236748576164
+        "contribution": -0.014768529683351517
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.011490183882415295
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.12202613800764084,
     "base_value": 0.0004012373392470181,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2021-02-02, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD (12, 26), 1-day simple return, MACD signal (9). The main downward influences were 60-day average return, 60-day momentum, 20-day average return.",
+    "summary_text": "For IWM on 2021-02-02, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD (12, 26), MACD signal (9), 1-day simple return. The main downward influences were 60-day average return, 60-day momentum, 20-day average return.",
     "positive_drivers": [
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.023991169407963753
-      },
-      {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": 0.010638299398124218
+        "contribution": 0.022334259003400803
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.004803284537047148
+        "contribution": 0.011723656207323074
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.010327467694878578
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.054663192480802536
+        "contribution": -0.06237850338220596
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.04200761020183563
+        "contribution": -0.039640720933675766
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.03849480301141739
+        "contribution": -0.0367475189268589
       }
     ],
     "case_rank": 2
@@ -102,34 +102,34 @@
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.025585666298866272
+        "contribution": 0.021293025463819504
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.008148733526468277
+        "contribution": 0.00895792804658413
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": 0.004234223160892725
+        "contribution": 0.00498409615829587
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.03305983170866966
+        "contribution": -0.032549742609262466
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.028359362855553627
+        "contribution": -0.03152043744921684
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.015036062337458134
+        "contribution": -0.016380351036787033
       }
     ],
     "case_rank": 3
@@ -147,34 +147,34 @@
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.0293924268335104
+        "contribution": 0.02793242782354355
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.02288399450480938
+        "contribution": 0.0227582398802042
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.01521928422152996
+        "contribution": 0.01629987545311451
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.051134128123521805
+        "contribution": -0.05664096400141716
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.04514473304152489
+        "contribution": -0.04647038131952286
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.02627502754330635
+        "contribution": -0.030192049220204353
       }
     ],
     "case_rank": 4

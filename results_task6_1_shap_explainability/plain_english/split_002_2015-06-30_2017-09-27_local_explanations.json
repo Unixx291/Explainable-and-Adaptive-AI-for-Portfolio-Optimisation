@@ -7,39 +7,39 @@
     "y_pred": 0.08194412291049957,
     "base_value": -0.005710081197321415,
     "prediction_direction": "positive",
-    "summary_text": "For EFA on 2017-08-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 10-day average return, 1-day log return. The main downward influences were 1-day simple return, 20-day momentum, MACD signal (9).",
+    "summary_text": "For EFA on 2017-08-17, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 10-day average return, Asset indicator: IWM. The main downward influences were 1-day simple return, 5-day momentum, 20-day momentum.",
     "positive_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.021439500153064728
+        "contribution": 0.016722403466701508
       },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.01120536308735609
+        "contribution": 0.011345189064741135
       },
       {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": 0.00897377822548151
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.007152600213885307
       }
     ],
     "negative_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.005899186711758375
+        "contribution": -0.006970828399062157
+      },
+      {
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": -0.002245668787509203
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.0036147069185972214
-      },
-      {
-        "feature": "macd_signal_9",
-        "feature_label": "MACD signal (9)",
-        "contribution": -0.0032501823734492064
+        "contribution": -0.001947685144841671
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.06220725178718567,
     "base_value": -0.005710081197321415,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2017-08-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, 10-day momentum, Trading volume. The main downward influences were 1-day log return, MACD histogram, 14-day RSI.",
+    "summary_text": "For IWM on 2017-08-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 10-day average return, 20-day momentum, 10-day momentum. The main downward influences were MACD histogram, 14-day RSI, MACD (12, 26).",
     "positive_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.007228282280266285
+        "contribution": 0.013622425496578217
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.009616224095225334
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.006303295958787203
-      },
-      {
-        "feature": "volume",
-        "feature_label": "Trading volume",
-        "contribution": 0.0052683972753584385
+        "contribution": 0.008746503852307796
       }
     ],
     "negative_drivers": [
       {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": -0.025831932201981544
-      },
-      {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.019535599276423454
+        "contribution": -0.03017795830965042
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.010470233857631683
+        "contribution": -0.02023579180240631
+      },
+      {
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.013034841045737267
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.0579296350479126,
     "base_value": -0.005710081197321415,
     "prediction_direction": "positive",
-    "summary_text": "For EFA on 2017-08-10, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 5-day average return, 10-day return volatility. The main downward influences were 5-day momentum, 20-day momentum, MACD signal (9).",
+    "summary_text": "For EFA on 2017-08-10, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 10-day average return, 5-day average return. The main downward influences were 5-day momentum, MACD signal (9), 20-day momentum.",
     "positive_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.028004104271531105
+        "contribution": 0.02024499885737896
+      },
+      {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.008756451308727264
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.012140698730945587
-      },
-      {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": 0.01209957990795374
+        "contribution": 0.008523711934685707
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.012998437508940697
-      },
-      {
-        "feature": "mom_20",
-        "feature_label": "20-day momentum",
-        "contribution": -0.00453477306291461
+        "contribution": -0.01180828083306551
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.003756917081773281
+        "contribution": -0.0039050825871527195
+      },
+      {
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": -0.0019093678565695882
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.045585185289382935,
     "base_value": -0.005710081197321415,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2017-09-05, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 1-day simple return, MACD histogram, 14-day RSI. The main downward influences were 5-day momentum, 10-day return volatility, 10-day momentum.",
+    "summary_text": "For IWM on 2017-09-05, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 1-day simple return, 20-day average return, 14-day RSI. The main downward influences were 10-day average return, 5-day momentum, MACD signal (9).",
     "positive_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.021674921736121178
+        "contribution": 0.015796981751918793
       },
       {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": 0.012622633948922157
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.012705212458968163
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": 0.011402352713048458
+        "contribution": 0.01269732229411602
       }
     ],
     "negative_drivers": [
       {
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": -0.012495756149291992
+      },
+      {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.011288628913462162
+        "contribution": -0.01225583627820015
       },
       {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": -0.010764706879854202
-      },
-      {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": -0.006121328100562096
+        "feature": "macd_signal_9",
+        "feature_label": "MACD signal (9)",
+        "contribution": -0.007188203278928995
       }
     ],
     "case_rank": 4

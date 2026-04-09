@@ -6,7 +6,7 @@
     "60-day momentum",
     "20-day return volatility",
     "60-day average return",
-    "MACD histogram"
+    "20-day average return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, 60-day momentum, 20-day return volatility, 60-day average return, and MACD histogram."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day return volatility, 60-day momentum, 20-day return volatility, 60-day average return, and 20-day average return."
 }

@@ -1,0 +1,18 @@
+feature,mean_abs_weight,count_appears
+20-day return volatility > 0.11,0.05842166701262519,3
+10-day return volatility > 0.07,0.04493037764102368,3
+MACD signal (9) > 0.47,0.0394728618371279,3
+5-day average return <= -0.29,0.03723114437183431,1
+5-day momentum <= -0.31,0.0323685320049113,1
+Trading volume > 0.27,0.02559033519074012,1
+Asset indicator: IWM <= 0.00,0.024612219603526716,1
+60-day average return <= -0.41,0.022300677882788715,2
+Asset indicator: IWM > 0.25,0.020378928981845228,2
+60-day return volatility > 0.31,0.0199922519191198,1
+Asset indicator: TLT <= 0.00,0.01825780476032778,3
+5-day momentum > 0.46,0.01654907634596013,2
+"MACD (12, 26) > 0.47",0.016283426435624044,2
+5-day average return > 0.45,0.015560591451673173,2
+10-day average return > 0.51,0.014167719896759837,1
+5-day return volatility > 0.08,0.013337172138024767,1
+60-day momentum <= -0.47,0.011367046537091077,1

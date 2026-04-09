@@ -7,39 +7,39 @@
     "y_pred": 0.17914658784866333,
     "base_value": 0.0067906128242611885,
     "prediction_direction": "positive",
-    "summary_text": "For EFA on 2018-08-28, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day average return, 1-day simple return, 10-day return volatility. The main downward influences were 5-day average return, MACD (12, 26), 1-day log return.",
+    "summary_text": "For EFA on 2018-08-28, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day return volatility, 10-day average return, 1-day simple return. The main downward influences were 5-day average return, MACD histogram, MACD (12, 26).",
     "positive_drivers": [
+      {
+        "feature": "ret_std_10",
+        "feature_label": "10-day return volatility",
+        "contribution": 0.04257765784859657
+      },
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": 0.03396474942564964
+        "contribution": 0.03762499988079071
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.03088933788239956
-      },
-      {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": 0.029174985364079475
+        "contribution": 0.02768120728433132
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.01694897562265396
+        "contribution": -0.01960042305290699
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.014323064126074314
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.011103956960141659
-      },
-      {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": -0.006095767021179199
+        "contribution": -0.013451789505779743
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.12947863340377808,
     "base_value": 0.0067906128242611885,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2018-07-09, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day momentum, Asset indicator: SPY, 60-day return volatility. The main downward influences were 20-day average volume, 5-day average return, 1-day simple return.",
+    "summary_text": "For SPY on 2018-07-09, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 5-day momentum, 14-day RSI. The main downward influences were 5-day average return, 20-day average volume, 1-day simple return.",
     "positive_drivers": [
-      {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": 0.02139555849134922
-      },
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.017419831827282906
+        "contribution": 0.019269663840532303
       },
       {
-        "feature": "ret_std_60",
-        "feature_label": "60-day return volatility",
-        "contribution": 0.006371088791638613
+        "feature": "mom_5",
+        "feature_label": "5-day momentum",
+        "contribution": 0.014087148942053318
+      },
+      {
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.011425383388996124
       }
     ],
     "negative_drivers": [
       {
-        "feature": "volume_roll_mean_20",
-        "feature_label": "20-day average volume",
-        "contribution": -0.050994835793972015
-      },
-      {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.050804972648620605
+        "contribution": -0.059754110872745514
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.04981984198093414
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.031339019536972046
+        "contribution": -0.029372137039899826
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.1413961946964264,
     "base_value": 0.0067906128242611885,
     "prediction_direction": "positive",
-    "summary_text": "For TLT on 2018-08-01, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 1-day simple return, Volume change, MACD signal (9). The main downward influences were 1-day log return, 20-day momentum, 14-day RSI.",
+    "summary_text": "For TLT on 2018-08-01, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Volume change, 1-day simple return, MACD signal (9). The main downward influences were 1-day log return, 20-day momentum, 14-day RSI.",
     "positive_drivers": [
-      {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": 0.06790197640657425
-      },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.05592416226863861
+        "contribution": 0.06579069048166275
+      },
+      {
+        "feature": "simple_return_1",
+        "feature_label": "1-day simple return",
+        "contribution": 0.049156490713357925
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.03247637301683426
+        "contribution": 0.03874535486102104
       }
     ],
     "negative_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.07064583897590637
+        "contribution": -0.05723540484905243
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.021913299337029457
+        "contribution": -0.017820298671722412
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.007970372214913368
+        "contribution": -0.01281973160803318
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.1384204775094986,
     "base_value": 0.0067906128242611885,
     "prediction_direction": "positive",
-    "summary_text": "For EFA on 2018-08-30, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day momentum, 20-day momentum, 10-day average return. The main downward influences were 1-day log return, MACD histogram, Volume change.",
+    "summary_text": "For EFA on 2018-08-30, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 10-day average return, 20-day momentum, 14-day RSI. The main downward influences were 1-day log return, MACD histogram, Volume change.",
     "positive_drivers": [
       {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": 0.036083925515413284
+        "feature": "ret_mean_10",
+        "feature_label": "10-day average return",
+        "contribution": 0.03880267217755318
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.028946630656719208
+        "contribution": 0.0326957069337368
       },
       {
-        "feature": "ret_mean_10",
-        "feature_label": "10-day average return",
-        "contribution": 0.02840334177017212
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.020897675305604935
       }
     ],
     "negative_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.02847225032746792
+        "contribution": -0.022329749539494514
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.006451398599892855
+        "contribution": -0.011311952956020832
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": -0.005791946779936552
+        "contribution": -0.006285006180405617
       }
     ],
     "case_rank": 4

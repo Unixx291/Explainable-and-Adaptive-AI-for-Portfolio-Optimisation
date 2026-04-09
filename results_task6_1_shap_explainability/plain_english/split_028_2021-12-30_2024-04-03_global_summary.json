@@ -6,7 +6,7 @@
     "10-day return volatility",
     "60-day average return",
     "1-day log return",
-    "1-day simple return"
+    "60-day return volatility"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day momentum, 10-day return volatility, 60-day average return, 1-day log return, and 1-day simple return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 60-day momentum, 10-day return volatility, 60-day average return, 1-day log return, and 60-day return volatility."
 }

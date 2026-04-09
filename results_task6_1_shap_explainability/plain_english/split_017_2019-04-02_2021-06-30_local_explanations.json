@@ -7,39 +7,39 @@
     "y_pred": 0.0527261346578598,
     "base_value": 0.001998386112973094,
     "prediction_direction": "positive",
-    "summary_text": "For TLT on 2021-06-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 5-day return volatility, MACD (12, 26). The main downward influences were 5-day momentum, 1-day log return, MACD signal (9).",
+    "summary_text": "For TLT on 2021-06-02, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day return volatility, 20-day momentum, 14-day RSI. The main downward influences were 1-day log return, 5-day average return, MACD signal (9).",
     "positive_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.02796480618417263
+        "contribution": 0.018854379653930664
       },
       {
-        "feature": "ret_std_5",
-        "feature_label": "5-day return volatility",
-        "contribution": 0.014857321977615356
+        "feature": "mom_20",
+        "feature_label": "20-day momentum",
+        "contribution": 0.012554398737847805
       },
       {
-        "feature": "macd_12_26",
-        "feature_label": "MACD (12, 26)",
-        "contribution": 0.010173363611102104
+        "feature": "rsi_14",
+        "feature_label": "14-day RSI",
+        "contribution": 0.010992700234055519
       }
     ],
     "negative_drivers": [
       {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": -0.012545458972454071
-      },
-      {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.008363190107047558
+        "contribution": -0.009167886339128017
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": -0.006193007808178663
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.007415434345602989
+        "contribution": -0.005737775471061468
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.08287303894758224,
     "base_value": 0.001998386112973094,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2021-05-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day return volatility, Asset indicator: SPY, Trading volume. The main downward influences were MACD (12, 26), MACD histogram, 20-day average volume.",
+    "summary_text": "For SPY on 2021-05-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day return volatility, Asset indicator: SPY, Trading volume. The main downward influences were MACD (12, 26), 20-day average volume, MACD histogram.",
     "positive_drivers": [
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": 0.030408555641770363
+        "contribution": 0.025590894743800163
       },
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.012553740292787552
+        "contribution": 0.018551411107182503
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.005554004106670618
+        "contribution": 0.01248934492468834
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.04476306959986687
-      },
-      {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": -0.016572201624512672
+        "contribution": -0.057852741330862045
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.016312384977936745
+        "contribution": -0.024529745802283287
+      },
+      {
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.015333866700530052
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.07889033854007721,
     "base_value": 0.001998386112973094,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2021-04-13, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day momentum, 1-day simple return, 60-day average return. The main downward influences were 20-day average return, 20-day return volatility, 60-day return volatility.",
+    "summary_text": "For IWM on 2021-04-13, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day momentum, Asset indicator: IWM, MACD (12, 26). The main downward influences were 20-day average return, 20-day return volatility, 60-day return volatility.",
     "positive_drivers": [
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.040822628885507584
+        "contribution": 0.04325117915868759
       },
       {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": 0.006380155216902494
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.004205510951578617
       },
       {
-        "feature": "ret_mean_60",
-        "feature_label": "60-day average return",
-        "contribution": 0.0033533438108861446
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.0021007684990763664
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.03360697627067566
+        "contribution": -0.034458551555871964
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.025976046919822693
+        "contribution": -0.025424743071198463
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.016661932691931725
+        "contribution": -0.01889115199446678
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.048721786588430405,
     "base_value": 0.001998386112973094,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2021-05-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average volume, 5-day momentum, 10-day momentum. The main downward influences were Trading volume, Asset indicator: TLT, MACD signal (9).",
+    "summary_text": "For SPY on 2021-05-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average volume, 5-day momentum, 10-day momentum. The main downward influences were 5-day average return, Trading volume, MACD histogram.",
     "positive_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.049788326025009155
+        "contribution": 0.04711770638823509
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": 0.01488342322409153
+        "contribution": 0.021551787853240967
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.008233105763792992
+        "contribution": 0.007066837977617979
       }
     ],
     "negative_drivers": [
       {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": -0.01946336030960083
+      },
+      {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.017380503937602043
+        "contribution": -0.01685437746345997
       },
       {
-        "feature": "ticker_TLT",
-        "feature_label": "Asset indicator: TLT",
-        "contribution": -0.014631477184593678
-      },
-      {
-        "feature": "macd_signal_9",
-        "feature_label": "MACD signal (9)",
-        "contribution": -0.013234306126832962
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": -0.013415397144854069
       }
     ],
     "case_rank": 4

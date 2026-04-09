@@ -7,39 +7,39 @@
     "y_pred": 0.08455560356378555,
     "base_value": 0.005448339972645044,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2023-07-27, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day average return, 60-day average return, Asset indicator: IWM. The main downward influences were 20-day average volume, 20-day momentum, 1-day log return.",
+    "summary_text": "For IWM on 2023-07-27, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 20-day average return, 60-day average return, MACD (12, 26). The main downward influences were 20-day momentum, 20-day average volume, 1-day log return.",
     "positive_drivers": [
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": 0.023342344909906387
+        "contribution": 0.025680558755993843
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.022864144295454025
+        "contribution": 0.022588331252336502
       },
       {
-        "feature": "ticker_IWM",
-        "feature_label": "Asset indicator: IWM",
-        "contribution": 0.014203166589140892
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.022330760955810547
       }
     ],
     "negative_drivers": [
       {
-        "feature": "volume_roll_mean_20",
-        "feature_label": "20-day average volume",
-        "contribution": -0.021276121959090233
-      },
-      {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.01563921384513378
+        "contribution": -0.025509001687169075
+      },
+      {
+        "feature": "volume_roll_mean_20",
+        "feature_label": "20-day average volume",
+        "contribution": -0.018633965402841568
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.013426811434328556
+        "contribution": -0.016758184880018234
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.11849475651979446,
     "base_value": 0.005448339972645044,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2023-08-31, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 60-day average return, 1-day log return. The main downward influences were 20-day return volatility, Volume change, 60-day momentum.",
+    "summary_text": "For SPY on 2023-08-31, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 60-day average return, 1-day log return. The main downward influences were 20-day return volatility, 5-day return volatility, 60-day return volatility.",
     "positive_drivers": [
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.012973573990166187
+        "contribution": 0.012801259756088257
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.011600831523537636
+        "contribution": 0.012416456826031208
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": 0.00301260850392282
+        "contribution": 0.008238840848207474
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.020236732438206673
+        "contribution": -0.030477438122034073
       },
       {
-        "feature": "volume_chg",
-        "feature_label": "Volume change",
-        "contribution": -0.014468534849584103
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": -0.01561629306524992
       },
       {
-        "feature": "mom_60",
-        "feature_label": "60-day momentum",
-        "contribution": -0.013842443004250526
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.01514657773077488
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.1183791533112526,
     "base_value": 0.005448339972645044,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2023-09-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average volume, 60-day average return, Volume change. The main downward influences were 20-day return volatility, Trading volume, MACD histogram.",
+    "summary_text": "For SPY on 2023-09-06, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 20-day average volume, 60-day average return, Volume change. The main downward influences were 20-day return volatility, 60-day return volatility, Trading volume.",
     "positive_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": 0.023541159927845
+        "contribution": 0.0275538582354784
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.015350023284554482
+        "contribution": 0.014642843045294285
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.009872322902083397
+        "contribution": 0.0067167729139328
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.04506855830550194
+        "contribution": -0.051164280623197556
+      },
+      {
+        "feature": "ret_std_60",
+        "feature_label": "60-day return volatility",
+        "contribution": -0.03656288981437683
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.019669227302074432
-      },
-      {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": -0.017337895929813385
+        "contribution": -0.023293741047382355
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.09040965139865875,
     "base_value": 0.005448339972645044,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2023-09-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 60-day average return, 1-day log return. The main downward influences were 60-day return volatility, 20-day return volatility, 5-day return volatility.",
+    "summary_text": "For SPY on 2023-09-01, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 60-day average return, MACD (12, 26). The main downward influences were 20-day return volatility, 5-day return volatility, Volume change.",
     "positive_drivers": [
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.0241414662450552
+        "contribution": 0.017764661461114883
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.015639152377843857
+        "contribution": 0.008598437532782555
       },
       {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": 0.0071573699824512005
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": 0.004906183574348688
       }
     ],
     "negative_drivers": [
       {
-        "feature": "ret_std_60",
-        "feature_label": "60-day return volatility",
-        "contribution": -0.0180645901709795
-      },
-      {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": -0.017815591767430305
+        "contribution": -0.01650368981063366
       },
       {
         "feature": "ret_std_5",
         "feature_label": "5-day return volatility",
-        "contribution": -0.01609673537313938
+        "contribution": -0.01391581166535616
+      },
+      {
+        "feature": "volume_chg",
+        "feature_label": "Volume change",
+        "contribution": -0.013547241687774658
       }
     ],
     "case_rank": 4

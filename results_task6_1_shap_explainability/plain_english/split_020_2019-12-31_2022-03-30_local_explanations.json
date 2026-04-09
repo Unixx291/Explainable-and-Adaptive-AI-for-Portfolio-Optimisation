@@ -7,39 +7,39 @@
     "y_pred": 0.1252918243408203,
     "base_value": 0.0011483144480735064,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2022-01-21, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 1-day log return, Volume change. The main downward influences were 5-day momentum, Trading volume, 10-day momentum.",
+    "summary_text": "For SPY on 2022-01-21, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, Volume change, 1-day log return. The main downward influences were 5-day momentum, Trading volume, 10-day momentum.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.07752963900566101
-      },
-      {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": 0.039268311113119125
+        "contribution": 0.06759624183177948
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.03192611411213875
+        "contribution": 0.02892979234457016
+      },
+      {
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": 0.026226859539747238
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.05686935782432556
+        "contribution": -0.05704860761761665
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.022428104653954506
+        "contribution": -0.02068793959915638
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": -0.019568057730793953
+        "contribution": -0.015608370304107666
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.10635422170162201,
     "base_value": 0.0011483144480735064,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2022-02-04, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 20-day return volatility, 20-day average return. The main downward influences were MACD signal (9), 14-day RSI, MACD (12, 26).",
+    "summary_text": "For IWM on 2022-02-04, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 20-day return volatility, 20-day average return. The main downward influences were MACD signal (9), 14-day RSI, 60-day average return.",
     "positive_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.032387930899858475
+        "contribution": 0.033052146434783936
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.02256506122648716
+        "contribution": 0.01940506137907505
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": 0.014322526752948761
+        "contribution": 0.011789403855800629
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": -0.02953069470822811
+        "contribution": -0.026304585859179497
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.0258847214281559
+        "contribution": -0.023810090497136116
       },
       {
-        "feature": "macd_12_26",
-        "feature_label": "MACD (12, 26)",
-        "contribution": -0.017298879101872444
+        "feature": "ret_mean_60",
+        "feature_label": "60-day average return",
+        "contribution": -0.02087215706706047
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": 0.11164792627096176,
     "base_value": 0.0011483144480735064,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2022-01-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 5-day average return, 60-day average return. The main downward influences were 5-day momentum, Trading volume, 20-day average volume.",
+    "summary_text": "For SPY on 2022-01-25, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were MACD histogram, 60-day average return, 5-day average return. The main downward influences were 5-day momentum, 20-day average volume, Trading volume.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.1323169469833374
-      },
-      {
-        "feature": "ret_mean_5",
-        "feature_label": "5-day average return",
-        "contribution": 0.03068484738469124
+        "contribution": 0.14809782803058624
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.027447104454040527
+        "contribution": 0.02850949577987194
+      },
+      {
+        "feature": "ret_mean_5",
+        "feature_label": "5-day average return",
+        "contribution": 0.025797732174396515
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.04851043224334717
-      },
-      {
-        "feature": "volume",
-        "feature_label": "Trading volume",
-        "contribution": -0.04235002398490906
+        "contribution": -0.05359327420592308
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.03392619267106056
+        "contribution": -0.043714918196201324
+      },
+      {
+        "feature": "volume",
+        "feature_label": "Trading volume",
+        "contribution": -0.03675191476941109
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.10621495544910431,
     "base_value": 0.0011483144480735064,
     "prediction_direction": "positive",
-    "summary_text": "For SPY on 2022-01-27, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 14-day RSI, 5-day average return, 60-day average return. The main downward influences were 20-day average volume, 20-day momentum, MACD histogram.",
+    "summary_text": "For SPY on 2022-01-27, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 14-day RSI, 5-day average return, 60-day average return. The main downward influences were 20-day average volume, 20-day momentum, MACD (12, 26).",
     "positive_drivers": [
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": 0.07443688809871674
+        "contribution": 0.06668967008590698
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.027491038665175438
+        "contribution": 0.02292620949447155
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.020079663023352623
+        "contribution": 0.022276675328612328
       }
     ],
     "negative_drivers": [
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.0721399262547493
+        "contribution": -0.06457779556512833
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.029984429478645325
+        "contribution": -0.02066011354327202
       },
       {
-        "feature": "macd_hist",
-        "feature_label": "MACD histogram",
-        "contribution": -0.0068438416346907616
+        "feature": "macd_12_26",
+        "feature_label": "MACD (12, 26)",
+        "contribution": -0.019753120839595795
       }
     ],
     "case_rank": 4

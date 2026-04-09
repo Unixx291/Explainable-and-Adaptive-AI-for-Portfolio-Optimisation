@@ -3,10 +3,10 @@
   "explainer": "GradientExplainer",
   "top_features": [
     "10-day return volatility",
-    "1-day log return",
     "20-day average volume",
+    "1-day log return",
     "5-day average return",
     "1-day simple return"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day return volatility, 1-day log return, 20-day average volume, 5-day average return, and 1-day simple return."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 10-day return volatility, 20-day average volume, 1-day log return, 5-day average return, and 1-day simple return."
 }

@@ -5,8 +5,8 @@
     "20-day return volatility",
     "10-day return volatility",
     "60-day return volatility",
-    "5-day return volatility",
-    "5-day momentum"
+    "5-day momentum",
+    "5-day return volatility"
   ],
-  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day return volatility, 10-day return volatility, 60-day return volatility, 5-day return volatility, and 5-day momentum."
+  "summary_text": "Across the explained rows, the DNN was mostly influenced by 20-day return volatility, 10-day return volatility, 60-day return volatility, 5-day momentum, and 5-day return volatility."
 }

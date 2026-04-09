@@ -1,0 +1,48 @@
+{
+  "split_name": "split_010_2017-06-29_2019-09-30",
+  "global_summary": "Across the selected LIME cases, the DNN was most locally influenced by -0.67 < 20-day average Trading volume <= -0.39, -0.51 < 20-day average return <= 0.13, Volume change > 0.47, 5-day return volatility > 0.35, and Asset indicator: IWM > 0.25.",
+  "local_cases": [
+    {
+      "split_name": "split_010_2017-06-29_2019-09-30",
+      "case_id": 1,
+      "date": "2019-07-31",
+      "ticker": "IWM",
+      "y_true": -0.014605767093598843,
+      "y_pred": 1167.63671875,
+      "local_pred": 16.90461303871738,
+      "intercept": -5.050001603543996,
+      "fidelity_score": 0.014076593140655236,
+      "plain_english": "For IWM on 2019-07-31, the DNN predicted a positive next-period log return. Relative to the local surrogate baseline, the forecast moved strongly up. The main upward influences were 0.11 < 10-day momentum <= 0.60, 10-day return volatility > 0.31, -0.67 < 20-day average Trading volume <= -0.39. The main downward influences were none.",
+      "top_positive_features": "0.11 < 10-day momentum <= 0.60; 10-day return volatility > 0.31; -0.67 < 20-day average Trading volume <= -0.39",
+      "top_negative_features": ""
+    },
+    {
+      "split_name": "split_010_2017-06-29_2019-09-30",
+      "case_id": 2,
+      "date": "2019-08-30",
+      "ticker": "TLT",
+      "y_true": 0.0012918146094307303,
+      "y_pred": -0.14293530583381653,
+      "local_pred": -0.025389580736750964,
+      "intercept": -0.0010558596795508524,
+      "fidelity_score": 0.08006656301053494,
+      "plain_english": "For TLT on 2019-08-30, the DNN predicted a negative next-period log return. Relative to the local surrogate baseline, the forecast moved moderately down. The main upward influences were MACD signal (9) > 0.49, 60-day average return > 0.62, 0.09 < 5-day average return <= 0.60. The main downward influences were 60-day momentum > 0.62, MACD (12, 26) > 0.53, 20-day average return > 0.61.",
+      "top_positive_features": "MACD signal (9) > 0.49; 60-day average return > 0.62; 0.09 < 5-day average return <= 0.60",
+      "top_negative_features": "60-day momentum > 0.62; MACD (12, 26) > 0.53; 20-day average return > 0.61"
+    },
+    {
+      "split_name": "split_010_2017-06-29_2019-09-30",
+      "case_id": 3,
+      "date": "2019-09-13",
+      "ticker": "TLT",
+      "y_true": 0.012663067318499088,
+      "y_pred": 0.1457071155309677,
+      "local_pred": -0.006644753557885071,
+      "intercept": -0.014802316952416726,
+      "fidelity_score": 0.10472047333894641,
+      "plain_english": "For TLT on 2019-09-13, the DNN predicted a negative next-period log return. Relative to the local surrogate baseline, the forecast moved slightly up. The main upward influences were MACD signal (9) > 0.49, 5-day momentum <= -0.49, 10-day return volatility > 0.31. The main downward influences were 5-day average return <= -0.48, 1-day simple return <= -0.47, 0.12 < 60-day momentum <= 0.62.",
+      "top_positive_features": "MACD signal (9) > 0.49; 5-day momentum <= -0.49; 10-day return volatility > 0.31",
+      "top_negative_features": "5-day average return <= -0.48; 1-day simple return <= -0.47; 0.12 < 60-day momentum <= 0.62"
+    }
+  ]
+}

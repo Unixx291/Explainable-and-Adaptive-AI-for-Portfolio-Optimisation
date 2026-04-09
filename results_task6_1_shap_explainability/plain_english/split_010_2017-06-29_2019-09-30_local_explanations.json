@@ -7,39 +7,39 @@
     "y_pred": 1167.63671875,
     "base_value": 0.008100609295070171,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2019-07-31, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Volume change, 1-day simple return, 60-day momentum. The main downward influences were 1-day log return, MACD (12, 26), 60-day average return.",
+    "summary_text": "For IWM on 2019-07-31, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were Volume change, 1-day simple return, 60-day momentum. The main downward influences were 1-day log return, MACD (12, 26), 10-day momentum.",
     "positive_drivers": [
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 1167.6234130859375
+        "contribution": 1167.625
       },
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": 0.07382524758577347
+        "contribution": 0.05710315704345703
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.031007295474410057
+        "contribution": 0.025744419544935226
       }
     ],
     "negative_drivers": [
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.04140510410070419
+        "contribution": -0.032052621245384216
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.021217191591858864
+        "contribution": -0.021090464666485786
       },
       {
-        "feature": "ret_mean_60",
-        "feature_label": "60-day average return",
-        "contribution": -0.020041951909661293
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.020679468289017677
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.14293530583381653,
     "base_value": 0.008100609295070171,
     "prediction_direction": "negative",
-    "summary_text": "For TLT on 2019-08-30, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD signal (9), Volume change, 20-day return volatility. The main downward influences were 20-day momentum, 60-day average return, 60-day momentum.",
+    "summary_text": "For TLT on 2019-08-30, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD signal (9), 20-day return volatility, 20-day average return. The main downward influences were 20-day momentum, 60-day average return, 60-day momentum.",
     "positive_drivers": [
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.01750498078763485
-      },
-      {
-        "feature": "volume_chg",
-        "feature_label": "Volume change",
-        "contribution": 0.014094704762101173
+        "contribution": 0.02024998515844345
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.014068841002881527
+        "contribution": 0.012060808949172497
+      },
+      {
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": 0.010284248739480972
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": -0.09178826212882996
+        "contribution": -0.06621827185153961
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.060308150947093964
+        "contribution": -0.046723488718271255
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": -0.028885245323181152
+        "contribution": -0.034098245203495026
       }
     ],
     "case_rank": 2
@@ -102,34 +102,34 @@
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": 0.10465899109840393
+        "contribution": 0.08785932511091232
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.06785716861486435
+        "contribution": 0.06174495071172714
       },
       {
         "feature": "macd_signal_9",
         "feature_label": "MACD signal (9)",
-        "contribution": 0.04005010426044464
+        "contribution": 0.05330695956945419
       }
     ],
     "negative_drivers": [
       {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.05001844838261604
+        "contribution": -0.054014015942811966
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.045238226652145386
+        "contribution": -0.05389481410384178
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": -0.04350108653306961
+        "contribution": -0.04199211671948433
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": 0.13428807258605957,
     "base_value": 0.008100609295070171,
     "prediction_direction": "positive",
-    "summary_text": "For IWM on 2019-09-24, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day momentum, 20-day momentum, 20-day return volatility. The main downward influences were 10-day momentum, 1-day simple return, 14-day RSI.",
+    "summary_text": "For IWM on 2019-09-24, the DNN predicted a positive next-period log return. Relative to the baseline prediction, the forecast moved strongly up. The main upward influences were 5-day momentum, 20-day momentum, 20-day return volatility. The main downward influences were 1-day simple return, 14-day RSI, 10-day momentum.",
     "positive_drivers": [
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": 0.04913180693984032
+        "contribution": 0.04030471295118332
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.039989277720451355
+        "contribution": 0.035642560571432114
       },
       {
         "feature": "ret_std_20",
         "feature_label": "20-day return volatility",
-        "contribution": 0.033409785479307175
+        "contribution": 0.02773149684071541
       }
     ],
     "negative_drivers": [
       {
-        "feature": "mom_10",
-        "feature_label": "10-day momentum",
-        "contribution": -0.016524644568562508
-      },
-      {
         "feature": "simple_return_1",
         "feature_label": "1-day simple return",
-        "contribution": -0.015391143970191479
+        "contribution": -0.01792529970407486
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.013641033321619034
+        "contribution": -0.012906641699373722
+      },
+      {
+        "feature": "mom_10",
+        "feature_label": "10-day momentum",
+        "contribution": -0.012403980828821659
       }
     ],
     "case_rank": 4

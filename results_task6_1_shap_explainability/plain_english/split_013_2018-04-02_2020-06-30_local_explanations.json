@@ -12,34 +12,34 @@
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": 0.15085221827030182
+        "contribution": 0.14046262204647064
       },
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.1032780259847641
+        "contribution": 0.09914198517799377
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": 0.055438704788684845
+        "contribution": 0.05203559994697571
       }
     ],
     "negative_drivers": [
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.0742284506559372
+        "contribution": -0.07197502255439758
       },
       {
         "feature": "volume_roll_mean_20",
         "feature_label": "20-day average volume",
-        "contribution": -0.0651654452085495
+        "contribution": -0.06446649134159088
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": -0.032246898859739304
+        "contribution": -0.03342781960964203
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.5195600986480713,
     "base_value": -0.00575731648132205,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2020-05-20, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 5-day average return, 1-day log return. The main downward influences were 60-day return volatility, 5-day momentum, 1-day simple return.",
+    "summary_text": "For IWM on 2020-05-20, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 5-day average return, MACD histogram. The main downward influences were 60-day return volatility, 5-day momentum, 20-day average return.",
     "positive_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.07382705807685852
+        "contribution": 0.07311840355396271
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.0662388876080513
+        "contribution": 0.05254553630948067
       },
       {
-        "feature": "log_return_1",
-        "feature_label": "1-day log return",
-        "contribution": 0.0351923406124115
+        "feature": "macd_hist",
+        "feature_label": "MACD histogram",
+        "contribution": 0.0215317290276289
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.28111785650253296
+        "contribution": -0.2766261398792267
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.0681784451007843
+        "contribution": -0.07016602158546448
       },
       {
-        "feature": "simple_return_1",
-        "feature_label": "1-day simple return",
-        "contribution": -0.06008045747876167
+        "feature": "ret_mean_20",
+        "feature_label": "20-day average return",
+        "contribution": -0.06159660965204239
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.5008453726768494,
     "base_value": -0.00575731648132205,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2020-05-19, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, Asset indicator: IWM, 20-day momentum. The main downward influences were 60-day return volatility, 60-day average return, 20-day average return.",
+    "summary_text": "For IWM on 2020-05-19, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 60-day momentum, 20-day momentum, Asset indicator: IWM. The main downward influences were 60-day return volatility, 60-day average return, 20-day average return.",
     "positive_drivers": [
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.1108531653881073
-      },
-      {
-        "feature": "ticker_IWM",
-        "feature_label": "Asset indicator: IWM",
-        "contribution": 0.029641354456543922
+        "contribution": 0.12321663647890091
       },
       {
         "feature": "mom_20",
         "feature_label": "20-day momentum",
-        "contribution": 0.02125772461295128
+        "contribution": 0.030853427946567535
+      },
+      {
+        "feature": "ticker_IWM",
+        "feature_label": "Asset indicator: IWM",
+        "contribution": 0.029896268621087074
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.25621122121810913
+        "contribution": -0.2608564496040344
       },
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.1149459257721901
+        "contribution": -0.11102695763111115
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.07800529152154922
+        "contribution": -0.06807151436805725
       }
     ],
     "case_rank": 3
@@ -147,34 +147,34 @@
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.06973405927419662
+        "contribution": 0.07929420471191406
       },
       {
         "feature": "ret_mean_5",
         "feature_label": "5-day average return",
-        "contribution": 0.05582226812839508
+        "contribution": 0.05386851355433464
       },
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.02365531027317047
+        "contribution": 0.028107430785894394
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.2734330892562866
+        "contribution": -0.28261497616767883
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.0880608931183815
+        "contribution": -0.0923549011349678
       },
       {
         "feature": "ret_mean_20",
         "feature_label": "20-day average return",
-        "contribution": -0.059157077223062515
+        "contribution": -0.05931355431675911
       }
     ],
     "case_rank": 4

@@ -12,34 +12,34 @@
       {
         "feature": "mom_60",
         "feature_label": "60-day momentum",
-        "contribution": 0.048120055347681046
+        "contribution": 0.05842048302292824
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.0367092527449131
+        "contribution": 0.045532550662755966
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": 0.031396083533763885
+        "contribution": 0.034239016473293304
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_60",
         "feature_label": "60-day average return",
-        "contribution": -0.03343256562948227
+        "contribution": -0.03395726531744003
       },
       {
         "feature": "mom_5",
         "feature_label": "5-day momentum",
-        "contribution": -0.012257838621735573
+        "contribution": -0.009470385499298573
       },
       {
         "feature": "ret_std_60",
         "feature_label": "60-day return volatility",
-        "contribution": -0.009036922827363014
+        "contribution": -0.009026422165334225
       }
     ],
     "case_rank": 1
@@ -52,39 +52,39 @@
     "y_pred": -0.21593907475471497,
     "base_value": -0.003950746729969978,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2024-11-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: IWM, 5-day average return, MACD (12, 26). The main downward influences were 10-day average return, 14-day RSI, 5-day momentum.",
+    "summary_text": "For IWM on 2024-11-14, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: IWM, 60-day momentum, MACD (12, 26). The main downward influences were 10-day average return, 14-day RSI, 1-day log return.",
     "positive_drivers": [
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": 0.028913848102092743
+        "contribution": 0.023295171558856964
       },
       {
-        "feature": "ret_mean_5",
-        "feature_label": "5-day average return",
-        "contribution": 0.021448452025651932
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.016231467947363853
       },
       {
         "feature": "macd_12_26",
         "feature_label": "MACD (12, 26)",
-        "contribution": 0.018124336376786232
+        "contribution": 0.01615026406943798
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.07301253825426102
+        "contribution": -0.07203950732946396
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.03380545973777771
+        "contribution": -0.04025958478450775
       },
       {
-        "feature": "mom_5",
-        "feature_label": "5-day momentum",
-        "contribution": -0.027767663821578026
+        "feature": "log_return_1",
+        "feature_label": "1-day log return",
+        "contribution": -0.02460508979856968
       }
     ],
     "case_rank": 2
@@ -97,39 +97,39 @@
     "y_pred": -0.1693515032529831,
     "base_value": -0.003950746729969978,
     "prediction_direction": "negative",
-    "summary_text": "For IWM on 2024-11-13, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD histogram, 10-day return volatility, Asset indicator: IWM. The main downward influences were 10-day average return, 14-day RSI, 1-day log return.",
+    "summary_text": "For IWM on 2024-11-13, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were MACD histogram, Asset indicator: IWM, 60-day momentum. The main downward influences were 10-day average return, 14-day RSI, 1-day log return.",
     "positive_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": 0.0384783111512661
-      },
-      {
-        "feature": "ret_std_10",
-        "feature_label": "10-day return volatility",
-        "contribution": 0.03462531790137291
+        "contribution": 0.03893355280160904
       },
       {
         "feature": "ticker_IWM",
         "feature_label": "Asset indicator: IWM",
-        "contribution": 0.031450867652893066
+        "contribution": 0.03606326878070831
+      },
+      {
+        "feature": "mom_60",
+        "feature_label": "60-day momentum",
+        "contribution": 0.02791590616106987
       }
     ],
     "negative_drivers": [
       {
         "feature": "ret_mean_10",
         "feature_label": "10-day average return",
-        "contribution": -0.09695852547883987
+        "contribution": -0.08934525400400162
       },
       {
         "feature": "rsi_14",
         "feature_label": "14-day RSI",
-        "contribution": -0.05489549785852432
+        "contribution": -0.05329040065407753
       },
       {
         "feature": "log_return_1",
         "feature_label": "1-day log return",
-        "contribution": -0.03612396493554115
+        "contribution": -0.03967191278934479
       }
     ],
     "case_rank": 3
@@ -142,39 +142,39 @@
     "y_pred": -0.1623103767633438,
     "base_value": -0.003950746729969978,
     "prediction_direction": "negative",
-    "summary_text": "For SPY on 2024-12-23, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were Asset indicator: SPY, 10-day momentum, 5-day return volatility. The main downward influences were MACD histogram, Volume change, Trading volume.",
+    "summary_text": "For SPY on 2024-12-23, the DNN predicted a negative next-period log return. Relative to the baseline prediction, the forecast moved strongly down. The main upward influences were 5-day return volatility, Asset indicator: SPY, 10-day momentum. The main downward influences were MACD histogram, Volume change, Trading volume.",
     "positive_drivers": [
+      {
+        "feature": "ret_std_5",
+        "feature_label": "5-day return volatility",
+        "contribution": 0.03942646086215973
+      },
       {
         "feature": "ticker_SPY",
         "feature_label": "Asset indicator: SPY",
-        "contribution": 0.03954290971159935
+        "contribution": 0.03150709718465805
       },
       {
         "feature": "mom_10",
         "feature_label": "10-day momentum",
-        "contribution": 0.032066863030195236
-      },
-      {
-        "feature": "ret_std_5",
-        "feature_label": "5-day return volatility",
-        "contribution": 0.031677715480327606
+        "contribution": 0.02743619680404663
       }
     ],
     "negative_drivers": [
       {
         "feature": "macd_hist",
         "feature_label": "MACD histogram",
-        "contribution": -0.10500634461641312
+        "contribution": -0.10952628403902054
       },
       {
         "feature": "volume_chg",
         "feature_label": "Volume change",
-        "contribution": -0.06103227287530899
+        "contribution": -0.06903069466352463
       },
       {
         "feature": "volume",
         "feature_label": "Trading volume",
-        "contribution": -0.027459044009447098
+        "contribution": -0.0222831591963768
       }
     ],
     "case_rank": 4
