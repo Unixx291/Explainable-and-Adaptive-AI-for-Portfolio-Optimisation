@@ -10,7 +10,6 @@ venv/
 # Standard local folders for this project
 data/
 outputs/
-models/
 
 # Common large files
 *.parquet
