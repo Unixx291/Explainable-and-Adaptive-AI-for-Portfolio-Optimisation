@@ -22,11 +22,7 @@ models/
 *.pkl
 *.joblib
 *.zip
-
-# Local DNN model artefacts for Task 4.1 and SHAP loading
-results_task4_1_dnn_only/models/
 *.keras
-*.h5
 
 # Optional large local experiment artefacts
 results_task4_1_dnn_only/predictions/
