@@ -7,10 +7,6 @@ __pycache__/
 .venv/
 venv/
 
-# Standard local folders for this project
-data/
-outputs/
-
 
 # Common large files
 *.parquet
