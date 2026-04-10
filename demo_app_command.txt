@@ -1,0 +1,2 @@
+python -m streamlit run demo_app.py ## local pc
+streamlit run demo_app.py ## local laptop
