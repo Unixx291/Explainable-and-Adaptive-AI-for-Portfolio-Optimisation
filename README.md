@@ -175,6 +175,12 @@ The Streamlit app is a lightweight evidence browser for the completed project. I
 
 The app is intentionally designed around **precomputed results** rather than live retraining.
 
+### Demo preview
+
+<p align="center">
+  <img src="assets/demo-overview.jpg" alt="Streamlit demo app overview page" width="900">
+</p>
+
 ## Practical notes
 
 - Run **Task 2** first. All later stages depend on the saved walk-forward metadata and split files.

@@ -11,6 +11,7 @@ venv/
 data/
 outputs/
 
+
 # Common large files
 *.parquet
 *.h5
@@ -27,3 +28,4 @@ outputs/
 results_task4_1_dnn_only/predictions/
 results_task4_1_dnn_only/histories/
 results_task6_2_lime_explainability/html
+/how to run local pc.txt
